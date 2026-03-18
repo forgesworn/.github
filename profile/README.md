@@ -4,7 +4,7 @@ Open-source building blocks for:
 
 - sovereign commerce and machine-payable APIs
 - spatial coordination and fair meeting points
-- spoken-word and zero-knowledge identity verification
+- spoken-word, Nostr, and zero-knowledge identity primitives
 - jurisdiction and professional-registry intelligence
 
 Built on Nostr, Lightning, and zero-trust cryptography. The projects in this org are designed to work standalone or as composable parts of a larger stack.
@@ -19,6 +19,8 @@ Built on Nostr, Lightning, and zero-trust cryptography. The projects in this org
   Add **[geohash-kit](https://github.com/forgesworn/geohash-kit)** and **[rendezvous-mcp](https://github.com/forgesworn/rendezvous-mcp)**.
 - **[spoken-token](https://github.com/forgesworn/spoken-token)**: add human-speakable rotating verification codes.
   Pair it with **[canary-kit](https://github.com/forgesworn/canary-kit)**.
+- **[nsec-tree](https://github.com/forgesworn/nsec-tree)**: derive deterministic, unlinkable Nostr sub-identities from one master secret.
+  Use it when one seed needs separate identities for roles, apps, bots, or privacy boundaries.
 - **[canary-kit](https://github.com/forgesworn/canary-kit)**: build spoken verification, duress detection, or privacy-preserving identity flows.
   Add **[ring-sig](https://github.com/forgesworn/ring-sig)**, **[range-proof](https://github.com/forgesworn/range-proof)**, and **[shamir-words](https://github.com/forgesworn/shamir-words)**.
 - **[jurisdiction-kit](https://github.com/forgesworn/jurisdiction-kit)**: work with jurisdiction and professional-registry data.
@@ -28,6 +30,7 @@ Built on Nostr, Lightning, and zero-trust cryptography. The projects in this org
 
 - `toll-booth -> toll-booth-announce -> 402-announce -> 402-indexer -> 402-pub -> 402-mcp`: charge for an API, announce it on Nostr, index it, publish it in a directory, and let AI agents consume it.
 - `geohash-kit -> rendezvous-kit -> rendezvous-mcp`: encode spatial data, compute fair meeting points, and expose the workflow to AI agents.
+- `nsec-tree -> spoken-token / canary-kit`: derive purpose-specific Nostr identities, then attach spoken verification or higher-trust identity flows.
 - `spoken-token -> canary-kit -> ring-sig / range-proof / shamir-words`: combine spoken verification, privacy-preserving proofs, and human-recoverable secret handling.
 
 ## L402 / Machine Payments
@@ -61,13 +64,14 @@ Start with **[rendezvous-kit](https://github.com/forgesworn/rendezvous-kit)** fo
 
 ## Identity / Verification
 
-Build spoken verification, anti-deepfake, and privacy-preserving cryptographic workflows.
+Build spoken verification, anti-deepfake, deterministic Nostr identity trees, and privacy-preserving cryptographic workflows.
 
-Start with **[spoken-token](https://github.com/forgesworn/spoken-token)** for human-speakable rotating codes or **[canary-kit](https://github.com/forgesworn/canary-kit)** for full spoken-verification flows with duress detection and group sync.
+Start with **[spoken-token](https://github.com/forgesworn/spoken-token)** for human-speakable rotating codes, **[nsec-tree](https://github.com/forgesworn/nsec-tree)** for deterministic unlinkable Nostr identities, or **[canary-kit](https://github.com/forgesworn/canary-kit)** for full spoken-verification flows with duress detection and group sync.
 
 | Repository | What it does |
 |:-----------|:-------------|
 | **[spoken-token](https://github.com/forgesworn/spoken-token)** | TOTP, but you say it out loud. Derive time-rotating, human-speakable verification tokens from a shared secret. |
+| **[nsec-tree](https://github.com/forgesworn/nsec-tree)** | Deterministic Nostr sub-identity derivation. One master secret, unlimited unlinkable identities. |
 | **[canary-kit](https://github.com/forgesworn/canary-kit)** | Deepfake-proof identity verification with per-member spoken words, silent duress detection, encrypted group sync, and an open protocol. |
 | **[ring-sig](https://github.com/forgesworn/ring-sig)** | SAG and LSAG ring signatures on secp256k1 for proving group membership without revealing identity. |
 | **[range-proof](https://github.com/forgesworn/range-proof)** | Pedersen commitment range proofs on secp256k1 for proving a value is in range without revealing it. |
