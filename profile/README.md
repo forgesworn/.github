@@ -39,6 +39,7 @@ Spoken-word verification, deepfake-resistant protocols, and zero-knowledge primi
 | **[canary-kit](https://github.com/forgesworn/canary-kit)** | Deepfake-proof identity verification. Per-member spoken words, silent duress detection, encrypted group sync. |
 | **[ring-sig](https://github.com/forgesworn/ring-sig)** | SAG and LSAG ring signatures on secp256k1 — prove group membership without revealing identity. |
 | **[range-proof](https://github.com/forgesworn/range-proof)** | Pedersen commitment range proofs on secp256k1 — prove a value is in range without revealing it. |
+| **[shamir-words](https://github.com/forgesworn/shamir-words)** | Split secrets into human-readable BIP-39 word shares using Shamir's Secret Sharing over GF(256). |
 
 ## Compliance
 
