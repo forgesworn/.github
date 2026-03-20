@@ -8,10 +8,15 @@ How the ForgeSworn building blocks fit together. Three independent stacks built 
 graph TB
     subgraph payments["⚡ L402 / Machine Payments — 9 repos"]
         direction LR
-        p1["toll-booth<br/>toll-booth-dvm"]
-        p2["402-announce<br/>toll-booth-announce"]
-        p3["402-indexer · 402-pub<br/>402-mcp"]
-        p4["aperture-announce<br/>aperture-phoenixd"]
+        p1["toll-booth"]
+        p2["toll-booth-dvm"]
+        p3["toll-booth-announce"]
+        p4["402-announce"]
+        p5["402-indexer"]
+        p6["402-pub"]
+        p7["402-mcp"]
+        p8["aperture-announce"]
+        p9["aperture-phoenixd"]
     end
 
     subgraph spatial["📍 Spatial / Meeting — 3 repos"]
@@ -23,16 +28,19 @@ graph TB
 
     subgraph identity["🔑 Identity / Verification — 5 repos"]
         direction LR
-        i1["spoken-token<br/>canary-kit"]
-        i2["nsec-tree<br/>nsec-tree-cli"]
-        i3["nostr-attestations"]
+        i1["spoken-token"]
+        i2["canary-kit"]
+        i3["nsec-tree"]
+        i4["nsec-tree-cli"]
+        i5["nostr-attestations"]
     end
 
     subgraph foundation["🔒 Foundation — 4 repos"]
         direction LR
         f1["ring-sig"]
-        f2["range-proof<br/>shamir-words"]
-        f3["jurisdiction-kit"]
+        f2["range-proof"]
+        f3["shamir-words"]
+        f4["jurisdiction-kit"]
     end
 
     foundation --> identity
