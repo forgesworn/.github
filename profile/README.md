@@ -12,7 +12,7 @@ Built on Nostr, Lightning, and zero-trust cryptography. The projects in this org
 ## Start Here
 
 - **[toll-booth](https://github.com/forgesworn/toll-booth)**: charge for an HTTP API.
-  Add **[toll-booth-announce](https://github.com/forgesworn/toll-booth-announce)**, **[402-announce](https://github.com/forgesworn/402-announce)**, **[402-indexer](https://github.com/forgesworn/402-indexer)**, and **[402-pub](https://github.com/forgesworn/402-pub)** for discovery.
+  Add **[toll-booth-announce](https://github.com/forgesworn/toll-booth-announce)**, **[toll-booth-dvm](https://github.com/forgesworn/toll-booth-dvm)**, **[402-announce](https://github.com/forgesworn/402-announce)**, **[402-indexer](https://github.com/forgesworn/402-indexer)**, and **[402-pub](https://github.com/forgesworn/402-pub)** for discovery and NIP-90 exposure.
 - **[402-mcp](https://github.com/forgesworn/402-mcp)**: let AI agents discover and buy paid APIs.
   Pair it with **[toll-booth](https://github.com/forgesworn/toll-booth)** and **[402-pub](https://github.com/forgesworn/402-pub)**.
 - **[rendezvous-kit](https://github.com/forgesworn/rendezvous-kit)**: build fair meeting-point or spatial apps.
@@ -20,7 +20,7 @@ Built on Nostr, Lightning, and zero-trust cryptography. The projects in this org
 - **[spoken-token](https://github.com/forgesworn/spoken-token)**: add human-speakable rotating verification codes.
   Pair it with **[canary-kit](https://github.com/forgesworn/canary-kit)**.
 - **[nsec-tree](https://github.com/forgesworn/nsec-tree)**: derive deterministic, unlinkable Nostr sub-identities from one master secret.
-  Use it when one seed needs separate identities for roles, apps, bots, or privacy boundaries.
+  Use it when one seed needs separate identities for roles, apps, bots, or privacy boundaries. Add **[nsec-tree-cli](https://github.com/forgesworn/nsec-tree-cli)** for an offline-first CLI.
 - **[canary-kit](https://github.com/forgesworn/canary-kit)**: build spoken verification, duress detection, or privacy-preserving identity flows.
   Add **[ring-sig](https://github.com/forgesworn/ring-sig)**, **[range-proof](https://github.com/forgesworn/range-proof)**, and **[shamir-words](https://github.com/forgesworn/shamir-words)**.
 - **[jurisdiction-kit](https://github.com/forgesworn/jurisdiction-kit)**: work with jurisdiction and professional-registry data.
@@ -46,6 +46,7 @@ Start with **[toll-booth](https://github.com/forgesworn/toll-booth)** to put a L
 | **[402-mcp](https://github.com/forgesworn/402-mcp)** | MCP client for AI agents to discover, pay for, and consume L402 and x402 APIs. |
 | **[402-pub](https://github.com/forgesworn/402-pub)** | [402.pub](https://402.pub) ecosystem landing page and live directory for Lightning-paid APIs. |
 | **[toll-booth-announce](https://github.com/forgesworn/toll-booth-announce)** | Bridge between `toll-booth` and `402-announce` so a toll-booth service can be announced on Nostr. |
+| **[toll-booth-dvm](https://github.com/forgesworn/toll-booth-dvm)** | Expose any toll-booth-gated API as a NIP-90 Data Vending Machine on Nostr. |
 | **[402-indexer](https://github.com/forgesworn/402-indexer)** | Nostr-native crawler that discovers L402 and x402 paid APIs and publishes kind `31402` events. |
 | **[aperture-phoenixd](https://github.com/forgesworn/aperture-phoenixd)** | Use Phoenixd as the Lightning backend for Aperture, with no LND required. `Go` |
 | **[aperture-announce](https://github.com/forgesworn/aperture-announce)** | Announce Aperture L402 services on Nostr for decentralised discovery. `Go` |
@@ -72,6 +73,7 @@ Start with **[spoken-token](https://github.com/forgesworn/spoken-token)** for hu
 |:-----------|:-------------|
 | **[spoken-token](https://github.com/forgesworn/spoken-token)** | TOTP, but you say it out loud. Derive time-rotating, human-speakable verification tokens from a shared secret. |
 | **[nsec-tree](https://github.com/forgesworn/nsec-tree)** | Deterministic Nostr sub-identity derivation. One master secret, unlimited unlinkable identities. |
+| **[nsec-tree-cli](https://github.com/forgesworn/nsec-tree-cli)** | Offline-first CLI for nsec-tree with derivation, proofs, and Shamir recovery. |
 | **[canary-kit](https://github.com/forgesworn/canary-kit)** | Deepfake-proof identity verification with per-member spoken words, silent duress detection, encrypted group sync, and an open protocol. |
 | **[ring-sig](https://github.com/forgesworn/ring-sig)** | SAG and LSAG ring signatures on secp256k1 for proving group membership without revealing identity. |
 | **[range-proof](https://github.com/forgesworn/range-proof)** | Pedersen commitment range proofs on secp256k1 for proving a value is in range without revealing it. |
