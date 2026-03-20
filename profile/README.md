@@ -23,6 +23,7 @@ Built on Nostr, Lightning, and zero-trust cryptography. The projects in this org
   Use it when one seed needs separate identities for roles, apps, bots, or privacy boundaries. Add **[nsec-tree-cli](https://github.com/forgesworn/nsec-tree-cli)** for an offline-first CLI.
 - **[canary-kit](https://github.com/forgesworn/canary-kit)**: build spoken verification, duress detection, or privacy-preserving identity flows.
   Add **[ring-sig](https://github.com/forgesworn/ring-sig)**, **[range-proof](https://github.com/forgesworn/range-proof)**, and **[shamir-words](https://github.com/forgesworn/shamir-words)**.
+- **[nostr-attestations](https://github.com/forgesworn/nostr-attestations)**: one Nostr event kind for all attestations — credentials, endorsements, vouches, provenance, licensing, and trust (NIP-VA, kind 31000).
 - **[jurisdiction-kit](https://github.com/forgesworn/jurisdiction-kit)**: work with jurisdiction and professional-registry data.
   Pair it with **[canary-kit](https://github.com/forgesworn/canary-kit)** for identity-sensitive flows.
 
@@ -31,6 +32,7 @@ Built on Nostr, Lightning, and zero-trust cryptography. The projects in this org
 - `toll-booth -> toll-booth-announce -> 402-announce -> 402-indexer -> 402-pub -> 402-mcp`: charge for an API, announce it on Nostr, index it, publish it in a directory, and let AI agents consume it.
 - `geohash-kit -> rendezvous-kit -> rendezvous-mcp`: encode spatial data, compute fair meeting points, and expose the workflow to AI agents.
 - `nsec-tree -> spoken-token / canary-kit`: derive purpose-specific Nostr identities, then attach spoken verification or higher-trust identity flows.
+- `nostr-attestations -> canary-kit / jurisdiction-kit`: issue verifiable attestations on Nostr with identity verification and jurisdiction context.
 - `spoken-token -> canary-kit -> ring-sig / range-proof / shamir-words`: combine spoken verification, privacy-preserving proofs, and human-recoverable secret handling.
 
 ## L402 / Machine Payments
@@ -78,6 +80,7 @@ Start with **[spoken-token](https://github.com/forgesworn/spoken-token)** for hu
 | **[ring-sig](https://github.com/forgesworn/ring-sig)** | SAG and LSAG ring signatures on secp256k1 for proving group membership without revealing identity. |
 | **[range-proof](https://github.com/forgesworn/range-proof)** | Pedersen commitment range proofs on secp256k1 for proving a value is in range without revealing it. |
 | **[shamir-words](https://github.com/forgesworn/shamir-words)** | Split secrets into human-readable BIP-39 word shares using Shamir's Secret Sharing over GF(256). |
+| **[nostr-attestations](https://github.com/forgesworn/nostr-attestations)** | One Nostr event kind for all attestations — credentials, endorsements, vouches, provenance, licensing, and trust. NIP-VA (kind 31000). |
 
 ## Compliance
 
