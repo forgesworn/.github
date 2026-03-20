@@ -5,41 +5,40 @@ How the ForgeSworn building blocks fit together. Three independent stacks built 
 ## System Context
 
 ```mermaid
-block-beta
-    columns 3
-
-    space:3
-
-    block:payments["⚡ L402 / Machine Payments"]:1
-        columns 1
-        p1["toll-booth · toll-booth-dvm"]
-        p2["402-announce · toll-booth-announce"]
-        p3["402-indexer · 402-pub · 402-mcp"]
-        p4["aperture-announce · aperture-phoenixd"]
+graph TB
+    subgraph payments["⚡ L402 / Machine Payments — 9 repos"]
+        direction LR
+        p1["toll-booth<br/>toll-booth-dvm"]
+        p2["402-announce<br/>toll-booth-announce"]
+        p3["402-indexer · 402-pub<br/>402-mcp"]
+        p4["aperture-announce<br/>aperture-phoenixd"]
     end
 
-    block:spatial["📍 Spatial / Meeting"]:1
-        columns 1
+    subgraph spatial["📍 Spatial / Meeting — 3 repos"]
+        direction LR
         s1["geohash-kit"]
         s2["rendezvous-kit"]
         s3["rendezvous-mcp"]
     end
 
-    block:identity["🔑 Identity / Verification"]:1
-        columns 1
-        i1["spoken-token · canary-kit"]
-        i2["nsec-tree · nsec-tree-cli"]
+    subgraph identity["🔑 Identity / Verification — 5 repos"]
+        direction LR
+        i1["spoken-token<br/>canary-kit"]
+        i2["nsec-tree<br/>nsec-tree-cli"]
         i3["nostr-attestations"]
     end
 
-    space:3
-
-    block:foundation["🔒 Foundation"]:3
-        columns 3
+    subgraph foundation["🔒 Foundation — 4 repos"]
+        direction LR
         f1["ring-sig"]
-        f2["range-proof · shamir-words"]
+        f2["range-proof<br/>shamir-words"]
         f3["jurisdiction-kit"]
     end
+
+    foundation --> identity
+    foundation -.-> payments
+    identity -.-> payments
+    identity -.-> spatial
 
     style payments fill:#2d1b3d,stroke:#e94560,color:#eee,stroke-width:2px
     style spatial fill:#1b2d3d,stroke:#0f3460,color:#eee,stroke-width:2px
