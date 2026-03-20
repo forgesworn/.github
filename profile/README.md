@@ -9,6 +9,8 @@ Open-source building blocks for:
 
 Built on Nostr, Lightning, and zero-trust cryptography. The projects in this org are designed to work standalone or as composable parts of a larger stack.
 
+**Visual guides:** [Ecosystem overview](../docs/ecosystem-overview.md) | [L402 pipeline](../docs/l402-pipeline.md) | [Identity stack](../docs/identity-stack.md)
+
 ## Start Here
 
 - **[toll-booth](https://github.com/forgesworn/toll-booth)**: charge for an HTTP API.
