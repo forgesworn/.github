@@ -48,6 +48,28 @@ graph TB
     identity -.-> payments
     identity -.-> spatial
 
+    click p1 "https://github.com/forgesworn/toll-booth" _blank
+    click p2 "https://github.com/forgesworn/toll-booth-dvm" _blank
+    click p3 "https://github.com/forgesworn/toll-booth-announce" _blank
+    click p4 "https://github.com/forgesworn/402-announce" _blank
+    click p5 "https://github.com/forgesworn/402-indexer" _blank
+    click p6 "https://github.com/forgesworn/402-pub" _blank
+    click p7 "https://github.com/forgesworn/402-mcp" _blank
+    click p8 "https://github.com/forgesworn/aperture-announce" _blank
+    click p9 "https://github.com/forgesworn/aperture-phoenixd" _blank
+    click s1 "https://github.com/forgesworn/geohash-kit" _blank
+    click s2 "https://github.com/forgesworn/rendezvous-kit" _blank
+    click s3 "https://github.com/forgesworn/rendezvous-mcp" _blank
+    click i1 "https://github.com/forgesworn/spoken-token" _blank
+    click i2 "https://github.com/forgesworn/canary-kit" _blank
+    click i3 "https://github.com/forgesworn/nsec-tree" _blank
+    click i4 "https://github.com/forgesworn/nsec-tree-cli" _blank
+    click i5 "https://github.com/forgesworn/nostr-attestations" _blank
+    click f1 "https://github.com/forgesworn/ring-sig" _blank
+    click f2 "https://github.com/forgesworn/range-proof" _blank
+    click f3 "https://github.com/forgesworn/shamir-words" _blank
+    click f4 "https://github.com/forgesworn/jurisdiction-kit" _blank
+
     style payments fill:#2d1b3d,stroke:#e94560,color:#eee,stroke-width:2px
     style spatial fill:#1b2d3d,stroke:#0f3460,color:#eee,stroke-width:2px
     style identity fill:#1b3d2d,stroke:#16c79a,color:#eee,stroke-width:2px
@@ -67,6 +89,11 @@ graph LR
     FND -.-> PAY
     IDN -.->|"verify payers"| PAY
     IDN -.->|"verify participants"| SPA
+
+    click PAY "l402-pipeline.md" _blank
+    click SPA "ecosystem-overview.md" _blank
+    click IDN "identity-stack.md" _blank
+    click FND "identity-stack.md" _blank
 
     style PAY fill:#2d1b3d,stroke:#e94560,color:#eee,stroke-width:3px
     style SPA fill:#1b2d3d,stroke:#0f3460,color:#eee,stroke-width:3px

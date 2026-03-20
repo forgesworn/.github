@@ -45,6 +45,16 @@ graph TB
     layer3 --> layer4
     layer1 -->|"direct"| layer4
 
+    click TB "https://github.com/forgesworn/toll-booth" _blank
+    click TBA "https://github.com/forgesworn/toll-booth-announce" _blank
+    click ANN "https://github.com/forgesworn/402-announce" _blank
+    click APXPH "https://github.com/forgesworn/aperture-phoenixd" _blank
+    click APX "https://github.com/forgesworn/aperture-announce" _blank
+    click IDX "https://github.com/forgesworn/402-indexer" _blank
+    click PUB "https://github.com/forgesworn/402-pub" _blank
+    click MCP "https://github.com/forgesworn/402-mcp" _blank
+    click DVM "https://github.com/forgesworn/toll-booth-dvm" _blank
+
     style layer1 fill:#2d1b3d,stroke:#e94560,color:#eee,stroke-width:2px
     style layer2 fill:#3d2d1b,stroke:#f5a623,color:#eee,stroke-width:2px
     style layer2alt fill:#3d2d1b,stroke:#f5a623,color:#eee,stroke-width:2px

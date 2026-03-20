@@ -35,6 +35,16 @@ graph TB
     layer2 --> layer1
     layer4 --> layer1
 
+    click CK "https://github.com/forgesworn/canary-kit" _blank
+    click NA "https://github.com/forgesworn/nostr-attestations" _blank
+    click ST "https://github.com/forgesworn/spoken-token" _blank
+    click NT "https://github.com/forgesworn/nsec-tree" _blank
+    click NTCLI "https://github.com/forgesworn/nsec-tree-cli" _blank
+    click RS "https://github.com/forgesworn/ring-sig" _blank
+    click RP "https://github.com/forgesworn/range-proof" _blank
+    click SW "https://github.com/forgesworn/shamir-words" _blank
+    click JK "https://github.com/forgesworn/jurisdiction-kit" _blank
+
     style layer1 fill:#1b3d2d,stroke:#16c79a,color:#eee,stroke-width:2px
     style layer2 fill:#1b2d3d,stroke:#0f3460,color:#eee,stroke-width:2px
     style layer3 fill:#2d2d1b,stroke:#f5a623,color:#eee,stroke-width:2px
