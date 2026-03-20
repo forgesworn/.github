@@ -2,74 +2,76 @@
 
 The full lifecycle of a Lightning-paid API: create, gate, announce, index, discover, pay, consume.
 
+## Pipeline Overview
+
 ```mermaid
-graph LR
-    subgraph create["Create & Gate"]
-        api["Your API"]
-        tb["toll-booth"]
-        api --> tb
+graph TB
+    subgraph layer1["Layer 1 — Gate Your API"]
+        direction LR
+        TB["<b>toll-booth</b><br/><i>L402 middleware for Express,<br/>Hono, Deno, Bun, Workers</i>"]
     end
 
-    subgraph announce["Announce"]
-        tba["toll-booth-announce"]
-        ann["402-announce"]
-        tb --> tba
-        tba --> ann
+    subgraph layer2["Layer 2 — Announce on Nostr"]
+        direction LR
+        TBA["<b>toll-booth-announce</b><br/><i>Bridge: toll-booth config<br/>→ 402-announce</i>"]
+        ANN["<b>402-announce</b><br/><i>Publish kind 31402<br/>to Nostr relays</i>"]
+        TBA --> ANN
     end
 
-    subgraph index["Index & List"]
-        idx["402-indexer"]
-        pub["402-pub"]
-        ann -->|kind 31402| idx
-        idx --> pub
+    subgraph layer2alt["Layer 2 — Announce (Aperture)"]
+        direction LR
+        APXPH["<b>aperture-phoenixd</b><br/><i>Phoenixd backend<br/>for Aperture</i>"]
+        APX["<b>aperture-announce</b><br/><i>Aperture YAML<br/>→ kind 31402</i>"]
+        APXPH -.-> APX
     end
 
-    subgraph consume["Discover & Pay"]
-        mcp["402-mcp"]
-        agent["AI Agent"]
-        pub --> mcp
-        mcp --> agent
+    subgraph layer3["Layer 3 — Index & Discover"]
+        direction LR
+        IDX["<b>402-indexer</b><br/><i>Crawl Nostr for<br/>kind 31402 events</i>"]
+        PUB["<b>402-pub</b><br/><i>Live directory<br/>at 402.pub</i>"]
+        IDX --> PUB
     end
 
-    subgraph dvm["NIP-90 DVM"]
-        tbdvm["toll-booth-dvm"]
-        tb --> tbdvm
-        tbdvm -->|"DVM job results"| agent
+    subgraph layer4["Layer 4 — Consume"]
+        direction LR
+        MCP["<b>402-mcp</b><br/><i>AI agents discover,<br/>pay, and consume</i>"]
+        DVM["<b>toll-booth-dvm</b><br/><i>Expose as NIP-90<br/>Data Vending Machine</i>"]
     end
 
-    classDef create fill:#0d1b2a,stroke:#e94560,color:#eee
-    classDef announce fill:#0d1b2a,stroke:#f5a623,color:#eee
-    classDef index fill:#0d1b2a,stroke:#0f3460,color:#eee
-    classDef consume fill:#0d1b2a,stroke:#16c79a,color:#eee
-    classDef dvm fill:#0d1b2a,stroke:#9b59b6,color:#eee
+    layer1 --> layer2
+    layer1 --> layer2alt
+    layer2 --> layer3
+    layer2alt --> layer3
+    layer3 --> layer4
+    layer1 -->|"direct"| layer4
 
-    class api,tb create
-    class tba,ann announce
-    class idx,pub index
-    class mcp,agent consume
-    class tbdvm dvm
+    style layer1 fill:#2d1b3d,stroke:#e94560,color:#eee,stroke-width:2px
+    style layer2 fill:#3d2d1b,stroke:#f5a623,color:#eee,stroke-width:2px
+    style layer2alt fill:#3d2d1b,stroke:#f5a623,color:#eee,stroke-width:2px
+    style layer3 fill:#1b2d3d,stroke:#0f3460,color:#eee,stroke-width:2px
+    style layer4 fill:#1b3d2d,stroke:#16c79a,color:#eee,stroke-width:2px
 ```
 
-## The Pipeline
+## The Layers
 
-### 1. Gate your API
+### Layer 1 — Gate Your API
 
 **[toll-booth](https://github.com/forgesworn/toll-booth)** wraps any HTTP endpoint with L402 authentication. One line of middleware — supports Express, Hono, Deno, Bun, and Workers. Connects to Phoenixd, LND, CLN, LNbits, or NWC for Lightning invoices.
 
-### 2. Announce on Nostr
+### Layer 2 — Announce on Nostr
 
-**[toll-booth-announce](https://github.com/forgesworn/toll-booth-announce)** reads your toll-booth config and passes it to **[402-announce](https://github.com/forgesworn/402-announce)**, which publishes kind `31402` parameterised replaceable events to Nostr relays.
+Two paths depending on your setup:
 
-Already running Aperture? **[aperture-announce](https://github.com/forgesworn/aperture-announce)** reads Aperture YAML and publishes the same kind `31402` events. **[aperture-phoenixd](https://github.com/forgesworn/aperture-phoenixd)** lets you use Phoenixd as the Lightning backend instead of LND.
+- **toll-booth users:** **[toll-booth-announce](https://github.com/forgesworn/toll-booth-announce)** reads your config and passes it to **[402-announce](https://github.com/forgesworn/402-announce)**, which publishes kind `31402` events to Nostr relays.
+- **Aperture users:** **[aperture-announce](https://github.com/forgesworn/aperture-announce)** reads Aperture YAML and publishes the same events. **[aperture-phoenixd](https://github.com/forgesworn/aperture-phoenixd)** lets you use Phoenixd instead of LND.
 
-### 3. Index and list
+### Layer 3 — Index & Discover
 
-**[402-indexer](https://github.com/forgesworn/402-indexer)** crawls Nostr for kind `31402` events and builds a searchable index. **[402-pub](https://github.com/forgesworn/402-pub)** is the live directory at [402.pub](https://402.pub) — a static site streaming services from relays.
+**[402-indexer](https://github.com/forgesworn/402-indexer)** crawls Nostr for kind `31402` events and builds a searchable index. **[402-pub](https://github.com/forgesworn/402-pub)** is the live directory at [402.pub](https://402.pub).
 
-### 4. AI agents discover and pay
+### Layer 4 — Consume
 
-**[402-mcp](https://github.com/forgesworn/402-mcp)** is an MCP client that lets AI agents discover paid APIs from the directory, pay Lightning invoices, and consume the results — fully autonomous.
+- **[402-mcp](https://github.com/forgesworn/402-mcp)** — MCP client for AI agents to discover, pay, and consume paid APIs autonomously.
+- **[toll-booth-dvm](https://github.com/forgesworn/toll-booth-dvm)** — expose any toll-booth-gated API as a NIP-90 Data Vending Machine on Nostr.
 
-### 5. NIP-90 Data Vending Machines
-
-**[toll-booth-dvm](https://github.com/forgesworn/toll-booth-dvm)** exposes any toll-booth-gated API as a NIP-90 DVM on Nostr, so clients can request jobs and receive results through the Nostr DVM protocol.
+**Back to:** [Ecosystem overview](ecosystem-overview.md)
