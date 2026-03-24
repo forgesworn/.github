@@ -2,6 +2,7 @@
 
 Open-source building blocks for:
 
+- Nostr protocol extensions for service coordination, trust, payments, and attestations
 - sovereign commerce and machine-payable APIs
 - spatial coordination and fair meeting points
 - spoken-word, Nostr, and zero-knowledge identity primitives
@@ -26,6 +27,7 @@ Built on Nostr, Lightning, and zero-trust cryptography. The projects in this org
 - **[canary-kit](https://github.com/forgesworn/canary-kit)**: build spoken verification, duress detection, or privacy-preserving identity flows.
   Add **[ring-sig](https://github.com/forgesworn/ring-sig)**, **[range-proof](https://github.com/forgesworn/range-proof)**, and **[shamir-words](https://github.com/forgesworn/shamir-words)**.
 - **[nostr-attestations](https://github.com/forgesworn/nostr-attestations)**: one Nostr event kind for all attestations — credentials, endorsements, vouches, provenance, licensing, and trust (NIP-VA, kind 31000).
+- **[nip-drafts](https://github.com/forgesworn/nip-drafts)**: 28 Nostr protocol extensions for service coordination, trust, reputation, payments, escrow, and dispute resolution. All published on [NostrHub](https://nostrhub.io).
 - **[jurisdiction-kit](https://github.com/forgesworn/jurisdiction-kit)**: work with jurisdiction and professional-registry data.
   Pair it with **[canary-kit](https://github.com/forgesworn/canary-kit)** for identity-sensitive flows.
 
@@ -84,6 +86,16 @@ Start with **[spoken-token](https://github.com/forgesworn/spoken-token)** for hu
 | **[shamir-words](https://github.com/forgesworn/shamir-words)** | Split secrets into human-readable BIP-39 word shares using Shamir's Secret Sharing over GF(256). |
 | **[nostr-attestations](https://github.com/forgesworn/nostr-attestations)** | One Nostr event kind for all attestations — credentials, endorsements, vouches, provenance, licensing, and trust. NIP-VA (kind 31000). |
 
+## Protocol / Standards
+
+Nostr protocol extensions and payment method specifications. NIP drafts are published on [NostrHub](https://nostrhub.io) as community NIPs (kind `30817`).
+
+| Repository | What it does |
+|:-----------|:-------------|
+| **[nip-drafts](https://github.com/forgesworn/nip-drafts)** | 28 Nostr protocol extensions covering attestations, credentials, trust, reputation, escrow, matching, booking, disputes, custody, evidence, location, and more. Each defines 1-2 new event kinds for problems without a standard solution. |
+| **[nostr-attestations](https://github.com/forgesworn/nostr-attestations)** | Reference implementation for NIP-VA (kind `31000`) — builders, parsers, validators, and 17 frozen test vectors for verifiable attestations on Nostr. |
+| **[payment-methods](https://github.com/forgesworn/payment-methods)** | Lightning and Cashu payment method specifications for the IETF HTTP Payment Authentication scheme (`draft-ryan-httpauth-payment-01`). |
+
 ## Compliance
 
 Work with jurisdiction and professional-registry intelligence for regulated or identity-sensitive flows.
@@ -91,3 +103,9 @@ Work with jurisdiction and professional-registry intelligence for regulated or i
 | Repository | What it does |
 |:-----------|:-------------|
 | **[jurisdiction-kit](https://github.com/forgesworn/jurisdiction-kit)** | Professional body registries and jurisdiction intelligence for 30+ countries, including compliance, data protection, and mutual recognition contexts. |
+
+## Testing
+
+| Repository | What it does |
+|:-----------|:-------------|
+| **[trott-conformance](https://github.com/forgesworn/trott-conformance)** | Conformance test suite for TROTT protocol implementations. |
