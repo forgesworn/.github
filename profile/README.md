@@ -4,6 +4,8 @@ Open-source building blocks for:
 
 - Nostr protocol extensions for service coordination, trust, payments, and attestations
 - sovereign commerce and machine-payable APIs
+- sovereign Nostr identities for AI agents
+- privacy-preserving Web of Trust with ring signatures
 - spatial coordination and fair meeting points
 - spoken-word, Nostr, and zero-knowledge identity primitives
 - jurisdiction and professional-registry intelligence
@@ -28,6 +30,10 @@ Built on Nostr, Lightning, and zero-trust cryptography. The projects in this org
   Add **[ring-sig](https://github.com/forgesworn/ring-sig)**, **[range-proof](https://github.com/forgesworn/range-proof)**, and **[shamir-words](https://github.com/forgesworn/shamir-words)**.
 - **[nostr-attestations](https://github.com/forgesworn/nostr-attestations)**: one Nostr event kind for all attestations — credentials, endorsements, vouches, provenance, licensing, and trust (NIP-VA, kind 31000).
 - **[nip-drafts](https://github.com/forgesworn/nip-drafts)**: 28 Nostr protocol extensions for service coordination, trust, reputation, payments, escrow, and dispute resolution. All published on [NostrHub](https://nostrhub.io).
+- **[bray](https://github.com/forgesworn/bray)**: give AI agents a sovereign Nostr identity — post, DM, zap, verify trust, and manage keys via MCP.
+  Pair it with **[nsec-tree](https://github.com/forgesworn/nsec-tree)** for derived identities and **[nostr-attestations](https://github.com/forgesworn/nostr-attestations)** for trust.
+- **[nostr-veil](https://github.com/forgesworn/nostr-veil)**: privacy-preserving Web of Trust — prove trust graph membership with LSAG ring signatures, without revealing who vouched.
+  Built on **[ring-sig](https://github.com/forgesworn/ring-sig)** and **[nostr-attestations](https://github.com/forgesworn/nostr-attestations)**.
 - **[jurisdiction-kit](https://github.com/forgesworn/jurisdiction-kit)**: work with jurisdiction and professional-registry data.
   Pair it with **[canary-kit](https://github.com/forgesworn/canary-kit)** for identity-sensitive flows.
 
@@ -38,6 +44,8 @@ Built on Nostr, Lightning, and zero-trust cryptography. The projects in this org
 - `nsec-tree -> spoken-token / canary-kit`: derive purpose-specific Nostr identities, then attach spoken verification or higher-trust identity flows.
 - `nostr-attestations -> canary-kit / jurisdiction-kit`: issue verifiable attestations on Nostr with identity verification and jurisdiction context.
 - `spoken-token -> canary-kit -> ring-sig / range-proof / shamir-words`: combine spoken verification, privacy-preserving proofs, and human-recoverable secret handling.
+- `nsec-tree -> bray`: derive purpose-specific identities, then give an AI agent its own Nostr presence via MCP.
+- `nostr-attestations -> nostr-veil -> ring-sig`: issue attestations, then prove trust graph membership anonymously with ring signatures.
 
 ## L402 / Machine Payments
 
@@ -85,6 +93,8 @@ Start with **[spoken-token](https://github.com/forgesworn/spoken-token)** for hu
 | **[range-proof](https://github.com/forgesworn/range-proof)** | Pedersen commitment range proofs on secp256k1 for proving a value is in range without revealing it. |
 | **[shamir-words](https://github.com/forgesworn/shamir-words)** | Split secrets into human-readable BIP-39 word shares using Shamir's Secret Sharing over GF(256). |
 | **[nostr-attestations](https://github.com/forgesworn/nostr-attestations)** | One Nostr event kind for all attestations — credentials, endorsements, vouches, provenance, licensing, and trust. NIP-VA (kind 31000). |
+| **[nostr-veil](https://github.com/forgesworn/nostr-veil)** | Privacy-preserving, verifiable Web of Trust for Nostr. LSAG ring-signature-backed NIP-85 assertions — prove trust without revealing who vouched. |
+| **[bray](https://github.com/forgesworn/bray)** | Nostr MCP server — sovereign identities for AI agents. 76 tools covering social, DMs, trust, zaps, key management, and relay operations. |
 
 ## Protocol / Standards
 
