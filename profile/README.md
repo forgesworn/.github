@@ -30,7 +30,9 @@ Built on Nostr, Lightning, and zero-trust cryptography. Every repo works standal
 - **[spoken-token](https://github.com/forgesworn/spoken-token)**: Add human-speakable rotating verification codes.
   Pair with **[canary-kit](https://github.com/forgesworn/canary-kit)**.
 - **[nsec-tree](https://github.com/forgesworn/nsec-tree)**: Derive deterministic, unlinkable Nostr sub-identities from one master secret.
-  Use it when one seed needs separate identities for roles, apps, bots, or privacy boundaries. Add **[nsec-tree-cli](https://github.com/forgesworn/nsec-tree-cli)** for an offline-first CLI. Used by **[bray](https://github.com/forgesworn/bray)** and **[signet](https://github.com/forgesworn/signet)**.
+  Use it when one seed needs separate identities for roles, apps, bots, or privacy boundaries. Add **[nsec-tree-cli](https://github.com/forgesworn/nsec-tree-cli)** for an offline-first CLI. Used by **[bray](https://github.com/forgesworn/bray)**, **[heartwood](https://github.com/forgesworn/heartwood)**, and **[signet](https://github.com/forgesworn/signet)**.
+- **[heartwood](https://github.com/forgesworn/heartwood)**: Nostr signing software for Raspberry Pi.
+  NIP-46 remote signing with Tor, AES-256-GCM encrypted storage, per-client kind permissions, and unlimited unlinkable personas from one mnemonic via **[nsec-tree](https://github.com/forgesworn/nsec-tree)**. Flash an SD card, boot, scan QR. `Rust`
 - **[canary-kit](https://github.com/forgesworn/canary-kit)**: Build spoken verification, duress detection, or privacy-preserving identity flows.
   Add **[ring-sig](https://github.com/forgesworn/ring-sig)**, **[range-proof](https://github.com/forgesworn/range-proof)**, and **[shamir-words](https://github.com/forgesworn/shamir-words)**.
 - **[signet](https://github.com/forgesworn/signet)**: Decentralised identity verification for Nostr.
@@ -48,6 +50,7 @@ Built on Nostr, Lightning, and zero-trust cryptography. Every repo works standal
 - `toll-booth -> toll-booth-announce -> 402-announce -> 402-indexer -> 402-pub -> 402-mcp`: Gate an API, announce it on Nostr, index it, publish a directory, let AI agents consume it.
 - `toll-booth -> toll-booth-mcp`: Monitor a toll-booth with analytics dashboards and widget UIs.
 - `geohash-kit -> rendezvous-kit -> rendezvous-mcp`: Encode spatial data, compute fair meeting points, expose to AI agents.
+- `nsec-tree -> heartwood`: Derive sub-identities on a dedicated Pi, sign remotely via NIP-46 over Tor.
 - `nsec-tree -> bray -> dominion`: Derive sub-identities, give them to an AI agent, gate content access by tier and epoch.
 - `nsec-tree -> spoken-token / canary-kit`: Derive purpose-specific Nostr identities, attach spoken verification or higher-trust identity flows.
 - `ring-sig -> nostr-veil`: Anonymous trust assertions -- prove group membership without revealing who endorsed.
@@ -91,10 +94,11 @@ Start with **[rendezvous-kit](https://github.com/forgesworn/rendezvous-kit)** fo
 
 Build spoken verification, anti-deepfake, deterministic Nostr identity trees, encrypted access control, and decentralised identity verification.
 
-Start with **[spoken-token](https://github.com/forgesworn/spoken-token)** for human-speakable rotating codes, **[nsec-tree](https://github.com/forgesworn/nsec-tree)** for deterministic unlinkable Nostr identities, **[signet](https://github.com/forgesworn/signet)** for multi-tier identity verification, or **[canary-kit](https://github.com/forgesworn/canary-kit)** for full spoken-verification flows with duress detection and group sync.
+Start with **[heartwood](https://github.com/forgesworn/heartwood)** for hardware-backed NIP-46 signing on a Raspberry Pi, **[nsec-tree](https://github.com/forgesworn/nsec-tree)** for deterministic unlinkable Nostr identities, **[spoken-token](https://github.com/forgesworn/spoken-token)** for human-speakable rotating codes, **[signet](https://github.com/forgesworn/signet)** for multi-tier identity verification, or **[canary-kit](https://github.com/forgesworn/canary-kit)** for full spoken-verification flows with duress detection and group sync.
 
 | Repository | What it does |
 |:-----------|:-------------|
+| **[heartwood](https://github.com/forgesworn/heartwood)** | Nostr signing software for Raspberry Pi. NIP-46 remote signing, Tor by default, AES-256-GCM encrypted storage, per-client permissions, unlimited unlinkable personas via nsec-tree. `Rust` |
 | **[spoken-token](https://github.com/forgesworn/spoken-token)** | TOTP, but you say it out loud. Derive time-rotating, human-speakable verification tokens from a shared secret. |
 | **[nsec-tree](https://github.com/forgesworn/nsec-tree)** | Deterministic Nostr sub-identity derivation. One master secret, unlimited unlinkable identities. |
 | **[nsec-tree-cli](https://github.com/forgesworn/nsec-tree-cli)** | Offline-first CLI for nsec-tree with derivation, proofs, and Shamir recovery. |
