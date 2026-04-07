@@ -1,104 +1,63 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 800 660" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', monospace">
-  <defs>
-    <style>
-      .hex-label { font-size: 14px; font-weight: 600; text-anchor: middle; }
-      .hex-count { font-size: 11px; font-weight: 400; fill: #94a3b8; text-anchor: middle; }
-      .title { font-size: 16px; font-weight: 600; fill: #e2e8f0; text-anchor: middle; }
-      .subtitle { font-size: 11px; font-weight: 400; fill: #64748b; text-anchor: middle; }
-      a:hover polygon { stroke-width: 3.5; filter: brightness(1.3); }
-    </style>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 620" font-family="system-ui, -apple-system, sans-serif">
 
-  <!-- Background -->
-  <rect width="800" height="660" fill="#0a0a0f" rx="8"/>
+  <rect width="760" height="620" fill="#0a0a0f" rx="8"/>
 
-  <!-- Title -->
-  <text x="400" y="35" class="title">ForgeSworn Ecosystem</text>
-  <text x="400" y="52" class="subtitle">34 open-source tools built from the inside out</text>
+  <text x="380" y="32" font-size="15" font-weight="600" fill="#e2e8f0" text-anchor="middle">ForgeSworn Ecosystem</text>
+  <text x="380" y="50" font-size="10" fill="#64748b" text-anchor="middle">34 open-source tools built from the inside out</text>
 
-  <!-- Architecture rings -->
-  <circle cx="400" cy="340" r="100" fill="none" stroke="#f5a623" stroke-width="0.5" stroke-opacity="0.12" stroke-dasharray="2 4"/>
-  <circle cx="400" cy="340" r="210" fill="none" stroke="#16c79a" stroke-width="0.5" stroke-opacity="0.12" stroke-dasharray="2 4"/>
+  <!-- Rings -->
+  <circle cx="380" cy="320" r="95" fill="none" stroke="#f5a623" stroke-width="0.4" stroke-opacity="0.15" stroke-dasharray="2 4"/>
+  <circle cx="380" cy="320" r="200" fill="none" stroke="#16c79a" stroke-width="0.4" stroke-opacity="0.15" stroke-dasharray="2 4"/>
 
-  <!-- Connection lines -->
-  <line x1="400" y1="300" x2="400" y2="180" stroke="#f5a623" stroke-width="1.5" stroke-opacity="0.35"/>
-  <line x1="400" y1="300" x2="248" y2="428" stroke="#f5a623" stroke-width="1.5" stroke-opacity="0.35"/>
-  <line x1="400" y1="300" x2="552" y2="428" stroke="#f5a623" stroke-width="1" stroke-opacity="0.2" stroke-dasharray="4 3"/>
-  <line x1="400" y1="180" x2="552" y2="252" stroke="#16c79a" stroke-width="1.5" stroke-opacity="0.35"/>
-  <line x1="400" y1="180" x2="552" y2="428" stroke="#16c79a" stroke-width="1" stroke-opacity="0.15" stroke-dasharray="4 3"/>
-  <line x1="400" y1="180" x2="400" y2="508" stroke="#16c79a" stroke-width="1" stroke-opacity="0.15" stroke-dasharray="4 3"/>
-  <line x1="248" y1="428" x2="400" y2="180" stroke="#9b59b6" stroke-width="1" stroke-opacity="0.15" stroke-dasharray="4 3"/>
-  <line x1="248" y1="252" x2="400" y2="180" stroke="#e17055" stroke-width="1" stroke-opacity="0.2"/>
+  <!-- Lines -->
+  <line x1="380" y1="280" x2="380" y2="170" stroke="#f5a623" stroke-width="1.2" stroke-opacity="0.3"/>
+  <line x1="380" y1="280" x2="236" y2="400" stroke="#f5a623" stroke-width="1.2" stroke-opacity="0.3"/>
+  <line x1="380" y1="280" x2="524" y2="400" stroke="#f5a623" stroke-width="0.8" stroke-opacity="0.15" stroke-dasharray="4 3"/>
+  <line x1="380" y1="170" x2="524" y2="240" stroke="#16c79a" stroke-width="1.2" stroke-opacity="0.3"/>
+  <line x1="380" y1="170" x2="524" y2="400" stroke="#16c79a" stroke-width="0.8" stroke-opacity="0.12" stroke-dasharray="4 3"/>
+  <line x1="380" y1="170" x2="380" y2="480" stroke="#16c79a" stroke-width="0.8" stroke-opacity="0.12" stroke-dasharray="4 3"/>
+  <line x1="236" y1="400" x2="380" y2="170" stroke="#9b59b6" stroke-width="0.8" stroke-opacity="0.12" stroke-dasharray="4 3"/>
+  <line x1="236" y1="240" x2="380" y2="170" stroke="#e17055" stroke-width="0.8" stroke-opacity="0.15"/>
 
-  <!-- CORE: Crypto -> identity-stack.md (crypto primitives section) -->
-  <a xlink:href="identity-stack.md#cryptographic-foundation" target="_blank">
-    <g transform="translate(400,340)">
-      <polygon points="0,-80 69,-40 69,40 0,80 -69,40 -69,-40" fill="#1a1400" stroke="#f5a623" stroke-width="2.5" cursor="pointer"/>
-      <text y="-8" class="hex-label" fill="#f5a623">Crypto</text>
-      <text y="12" class="hex-count">4 libraries</text>
-    </g>
-  </a>
+  <!-- Crypto (centre) -->
+  <polygon points="380,240 450,280 450,360 380,400 310,360 310,280" fill="#1a1400" stroke="#f5a623" stroke-width="2"/>
+  <text x="380" y="317" font-size="12" font-weight="600" fill="#f5a623" text-anchor="middle">Crypto</text>
+  <text x="380" y="333" font-size="9" fill="#94a3b8" text-anchor="middle">4</text>
 
-  <!-- Identity -> identity-stack.md -->
-  <a xlink:href="identity-stack.md" target="_blank">
-    <g transform="translate(400,160)">
-      <polygon points="0,-80 69,-40 69,40 0,80 -69,40 -69,-40" fill="#0a1f14" stroke="#16c79a" stroke-width="2.5" cursor="pointer"/>
-      <text y="-8" class="hex-label" fill="#16c79a">Identity</text>
-      <text y="12" class="hex-count">10 repos</text>
-    </g>
-  </a>
+  <!-- Identity (top) -->
+  <polygon points="380,80 450,120 450,200 380,240 310,200 310,120" fill="#0a1f14" stroke="#16c79a" stroke-width="2"/>
+  <text x="380" y="157" font-size="12" font-weight="600" fill="#16c79a" text-anchor="middle">Identity</text>
+  <text x="380" y="173" font-size="9" fill="#94a3b8" text-anchor="middle">10</text>
 
-  <!-- Agents -> bray repo -->
-  <a xlink:href="https://github.com/forgesworn/bray" target="_blank">
-    <g transform="translate(552,250)">
-      <polygon points="0,-80 69,-40 69,40 0,80 -69,40 -69,-40" fill="#001a24" stroke="#00b4d8" stroke-width="2.5" cursor="pointer"/>
-      <text y="-8" class="hex-label" fill="#00b4d8">Agents</text>
-      <text y="12" class="hex-count">1 repo</text>
-    </g>
-  </a>
+  <!-- Agents (top-right) -->
+  <polygon points="524,160 594,200 594,280 524,320 454,280 454,200" fill="#001a24" stroke="#00b4d8" stroke-width="2"/>
+  <text x="524" y="237" font-size="12" font-weight="600" fill="#00b4d8" text-anchor="middle">Agents</text>
+  <text x="524" y="253" font-size="9" fill="#94a3b8" text-anchor="middle">1</text>
 
-  <!-- L402 -> l402-pipeline.md -->
-  <a xlink:href="l402-pipeline.md" target="_blank">
-    <g transform="translate(552,430)">
-      <polygon points="0,-80 69,-40 69,40 0,80 -69,40 -69,-40" fill="#1f0a14" stroke="#e94560" stroke-width="2.5" cursor="pointer"/>
-      <text y="-8" class="hex-label" fill="#e94560">L402</text>
-      <text y="12" class="hex-count">9 repos</text>
-    </g>
-  </a>
+  <!-- L402 (bottom-right) -->
+  <polygon points="524,320 594,360 594,440 524,480 454,440 454,360" fill="#1f0a14" stroke="#e94560" stroke-width="2"/>
+  <text x="524" y="397" font-size="12" font-weight="600" fill="#e94560" text-anchor="middle">L402</text>
+  <text x="524" y="413" font-size="9" fill="#94a3b8" text-anchor="middle">9</text>
 
-  <!-- Trust -> nostr-attestations repo -->
-  <a xlink:href="https://github.com/forgesworn/nostr-attestations" target="_blank">
-    <g transform="translate(248,430)">
-      <polygon points="0,-80 69,-40 69,40 0,80 -69,40 -69,-40" fill="#1a0f24" stroke="#9b59b6" stroke-width="2.5" cursor="pointer"/>
-      <text y="-8" class="hex-label" fill="#9b59b6">Trust</text>
-      <text y="12" class="hex-count">2 repos</text>
-    </g>
-  </a>
+  <!-- Trust (bottom-left) -->
+  <polygon points="236,320 306,360 306,440 236,480 166,440 166,360" fill="#1a0f24" stroke="#9b59b6" stroke-width="2"/>
+  <text x="236" y="397" font-size="12" font-weight="600" fill="#9b59b6" text-anchor="middle">Trust</text>
+  <text x="236" y="413" font-size="9" fill="#94a3b8" text-anchor="middle">2</text>
 
-  <!-- Compliance -> jurisdiction-kit repo -->
-  <a xlink:href="https://github.com/forgesworn/jurisdiction-kit" target="_blank">
-    <g transform="translate(248,250)">
-      <polygon points="0,-65 56,-32.5 56,32.5 0,65 -56,32.5 -56,-32.5" fill="#1f0f0a" stroke="#e17055" stroke-width="2" cursor="pointer"/>
-      <text y="-6" class="hex-label" fill="#e17055" font-size="13">Compliance</text>
-      <text y="14" class="hex-count">1 repo</text>
-    </g>
-  </a>
+  <!-- Compliance (top-left) -->
+  <polygon points="236,160 306,200 306,280 236,320 166,280 166,200" fill="#1f0f0a" stroke="#e17055" stroke-width="2"/>
+  <text x="236" y="237" font-size="11" font-weight="600" fill="#e17055" text-anchor="middle">Compliance</text>
+  <text x="236" y="253" font-size="9" fill="#94a3b8" text-anchor="middle">1</text>
 
-  <!-- Spatial -> rendezvous-kit repo -->
-  <a xlink:href="https://github.com/forgesworn/rendezvous-kit" target="_blank">
-    <g transform="translate(400,520)">
-      <polygon points="0,-65 56,-32.5 56,32.5 0,65 -56,32.5 -56,-32.5" fill="#0a0f1f" stroke="#0f3460" stroke-width="2" cursor="pointer"/>
-      <text y="-6" class="hex-label" fill="#0f3460" font-size="13">Spatial</text>
-      <text y="14" class="hex-count">3 repos</text>
-    </g>
-  </a>
+  <!-- Spatial (bottom) -->
+  <polygon points="380,400 450,440 450,520 380,560 310,520 310,440" fill="#0a0f1f" stroke="#0f3460" stroke-width="2"/>
+  <text x="380" y="477" font-size="12" font-weight="600" fill="#0f3460" text-anchor="middle">Spatial</text>
+  <text x="380" y="493" font-size="9" fill="#94a3b8" text-anchor="middle">3</text>
 
   <!-- Legend -->
-  <g transform="translate(640,600)">
-    <line x1="0" y1="0" x2="20" y2="0" stroke="#f5a623" stroke-width="1.5" stroke-opacity="0.5"/>
-    <text x="26" y="4" style="font-size:9px;fill:#64748b">depends on</text>
-    <line x1="0" y1="16" x2="20" y2="16" stroke="#64748b" stroke-width="1" stroke-opacity="0.3" stroke-dasharray="4 3"/>
-    <text x="26" y="20" style="font-size:9px;fill:#64748b">integrates with</text>
-  </g>
+  <line x1="600" y1="560" x2="618" y2="560" stroke="#f5a623" stroke-width="1.2" stroke-opacity="0.5"/>
+  <text x="624" y="563" font-size="8" fill="#64748b">depends on</text>
+  <line x1="600" y1="575" x2="618" y2="575" stroke="#64748b" stroke-width="0.8" stroke-opacity="0.3" stroke-dasharray="4 3"/>
+  <text x="624" y="578" font-size="8" fill="#64748b">integrates with</text>
 
 </svg>
