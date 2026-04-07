@@ -1,6 +1,8 @@
 # Ecosystem Overview
 
-How the ForgeSworn building blocks fit together. Eight categories built on a shared foundation of cryptographic primitives.
+How the ForgeSworn building blocks fit together. Built from the inside out: audited cryptographic primitives at the core, protocol libraries in the middle, user-facing applications at the edge.
+
+![ForgeSworn Architecture](forgesworn-architecture.svg)
 
 ## System Context
 

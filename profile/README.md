@@ -13,6 +13,8 @@ Open-source building blocks for sovereign commerce, identity, and trust.
 
 Built on Nostr, Lightning, and zero-trust cryptography. Every repo works standalone or as a composable part of the ecosystem.
 
+![ForgeSworn Architecture](../docs/forgesworn-architecture.svg)
+
 **Visual guides:** [Ecosystem overview](../docs/ecosystem-overview.md) | [L402 pipeline](../docs/l402-pipeline.md) | [Identity stack](../docs/identity-stack.md)
 
 ## Start Here
