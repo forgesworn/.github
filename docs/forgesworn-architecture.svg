@@ -32,11 +32,5 @@
   <text x="255.1" y="273.5" font-size="11" font-weight="600" fill="#4a7ab5" text-anchor="middle">Spatial</text>
   <text x="255.1" y="287.5" font-size="8" fill="#94a3b8" text-anchor="middle">3</text>
 
-  <line x1="694" y1="249" x2="755" y2="100" stroke="#16c79a" stroke-width="0.8" stroke-opacity="0.4"/>
-  <text x="755" y="96" font-size="9" fill="#64748b" text-anchor="start">nsec-tree, heartwood, bark</text>
-  <line x1="450" y1="672" x2="775" y2="590" stroke="#e94560" stroke-width="0.8" stroke-opacity="0.4"/>
-  <text x="775" y="586" font-size="9" fill="#64748b" text-anchor="start">toll-booth, 402-mcp</text>
-  <line x1="206" y1="249" x2="125" y2="100" stroke="#00b4d8" stroke-width="0.8" stroke-opacity="0.4"/>
-  <text x="125" y="96" font-size="9" fill="#64748b" text-anchor="end">bray (234 tools)</text>
 
 </svg>
