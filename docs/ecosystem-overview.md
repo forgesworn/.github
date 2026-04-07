@@ -2,7 +2,7 @@
 
 How the ForgeSworn building blocks fit together. Built from the inside out: audited cryptographic primitives at the core, protocol libraries in the middle, user-facing applications at the edge.
 
-![ForgeSworn Architecture](forgesworn-architecture.svg)
+<img src="forgesworn-architecture.svg" alt="ForgeSworn Ecosystem - hexagonal architecture diagram showing crypto core, identity, agents, L402 payments, trust, compliance, and spatial categories" width="100%"/>
 
 ## System Context
 
