@@ -10,6 +10,7 @@ Open-source building blocks for sovereign commerce, identity, and trust.
 - AI agent tooling for sovereign Nostr interaction
 - Cryptographic primitives: ring signatures, range proofs, Shamir secret sharing
 - Nostr protocol extensions and conformance testing
+- Build infrastructure: reproducible, hardened npm publishing
 
 Built on Nostr, Lightning, and zero-trust cryptography. Every repo works standalone or as a composable part of the ecosystem.
 
@@ -24,7 +25,7 @@ Built on Nostr, Lightning, and zero-trust cryptography. Every repo works standal
 - **[402-mcp](https://github.com/forgesworn/402-mcp)**: Let AI agents discover, pay for, and consume paid APIs.
   Pair with **[toll-booth](https://github.com/forgesworn/toll-booth)** and **[402-pub](https://github.com/forgesworn/402-pub)**.
 - **[bray](https://github.com/forgesworn/bray)**: Give AI agents a sovereign Nostr identity.
-  234 tools across identity, social, payments, dispatch, trust, moderation, privacy, spells, and encrypted access. Built on **[nsec-tree](https://github.com/forgesworn/nsec-tree)** for identity derivation and **[dominion](https://github.com/forgesworn/dominion)** for encrypted access.
+  235 tools across 27 groups covering identity, social, payments, dispatch, trust, moderation, privacy, spells, and encrypted access. Built on **[nsec-tree](https://github.com/forgesworn/nsec-tree)** for identity derivation and **[dominion](https://github.com/forgesworn/dominion)** for encrypted access.
 - **[nostr-veil](https://github.com/forgesworn/nostr-veil)**: Privacy-preserving Web of Trust.
   Anonymous trust assertions using LSAG ring signatures over NIP-85. Built on **[ring-sig](https://github.com/forgesworn/ring-sig)**.
 - **[rendezvous-kit](https://github.com/forgesworn/rendezvous-kit)**: Build fair meeting-point or spatial apps.
@@ -40,14 +41,16 @@ Built on Nostr, Lightning, and zero-trust cryptography. Every repo works standal
 - **[canary-kit](https://github.com/forgesworn/canary-kit)**: Build spoken verification, duress detection, or privacy-preserving identity flows.
   Add **[ring-sig](https://github.com/forgesworn/ring-sig)**, **[range-proof](https://github.com/forgesworn/range-proof)**, and **[shamir-words](https://github.com/forgesworn/shamir-words)**.
 - **[signet](https://github.com/forgesworn/signet)**: Decentralised identity verification for Nostr.
-  4 verification tiers, ZKP age proofs, Signet IQ scoring. Built on **[nostr-attestations](https://github.com/forgesworn/nostr-attestations)** and **[range-proof](https://github.com/forgesworn/range-proof)**.
+  4 verification tiers, ZKP age proofs, Signet IQ scoring. Built on **[nostr-attestations](https://github.com/forgesworn/nostr-attestations)** and **[range-proof](https://github.com/forgesworn/range-proof)**. Drop it into a website with **[signet-verify](https://github.com/forgesworn/signet-verify)** (one script tag, one function call).
 - **[dominion](https://github.com/forgesworn/dominion)**: Encrypted access control with epoch-based key rotation.
   Tiered audiences, HKDF content keys, Shamir secret sharing. Used by **[bray](https://github.com/forgesworn/bray)**.
 - **[nostr-attestations](https://github.com/forgesworn/nostr-attestations)**: One Nostr event kind for all attestations (NIP-VA, kind 31000).
   Credentials, endorsements, vouches, provenance, licensing, and trust.
 - **[jurisdiction-kit](https://github.com/forgesworn/jurisdiction-kit)**: Work with jurisdiction and professional-registry data.
   Pair with **[canary-kit](https://github.com/forgesworn/canary-kit)** or **[signet](https://github.com/forgesworn/signet)** for identity-sensitive flows.
-- **[nip-drafts](https://github.com/forgesworn/nip-drafts)**: 29 Nostr protocol extensions covering service coordination, trust, payments, disputes, key hierarchy, and encrypted access.
+- **[nip-drafts](https://github.com/forgesworn/nip-drafts)**: 30 Nostr protocol extensions covering service coordination, trust, payments, disputes, key hierarchy, resource curation, and encrypted access. Classified as upstream, ecosystem, or incubating.
+- **[anvil](https://github.com/forgesworn/anvil)**: Ship JS/TS libraries with reproducible, hardened npm releases.
+  Multi-runner byte-identical build attestation, OIDC trusted publishing, SLSA provenance, secret scanning, exports-map checks. Pure bash, auditable in under thirty minutes. Used by 24+ repos in this org.
 
 ## Common Flows
 
@@ -55,9 +58,12 @@ Built on Nostr, Lightning, and zero-trust cryptography. Every repo works standal
 - `toll-booth -> toll-booth-mcp`: Monitor a toll-booth with analytics dashboards and widget UIs.
 - `geohash-kit -> rendezvous-kit -> rendezvous-mcp`: Encode spatial data, compute fair meeting points, expose to AI agents.
 - `nsec-tree -> heartwood -> bark`: Derive sub-identities on a dedicated Pi, sign remotely via NIP-46 over Tor, use from the browser via NIP-07.
+- `nsec-tree -> heartwood-esp32 -> sapwood`: Experimental microcontroller signing token on ESP32-S3, configured via a web management UI.
 - `nsec-tree -> bray -> dominion`: Derive sub-identities, give them to an AI agent, gate content access by tier and epoch.
 - `nsec-tree -> spoken-token / canary-kit`: Derive purpose-specific Nostr identities, attach spoken verification or higher-trust identity flows.
 - `ring-sig -> nostr-veil`: Anonymous trust assertions -- prove group membership without revealing who endorsed.
+- `ring-sig -> nostr-anon-vote`: Anonymous voting with double-vote prevention, without revealing voters.
+- `nostr-attestations -> signet -> signet-verify`: Protocol plus drop-in SDK so any website can age-gate or identity-gate in one script tag.
 - `nostr-attestations -> signet -> canary-kit / jurisdiction-kit`: Issue verifiable attestations, verify identities with tiers and ZKP age proofs, add jurisdiction context.
 - `spoken-token -> canary-kit -> ring-sig / range-proof / shamir-words`: Spoken verification, privacy-preserving proofs, human-recoverable secret handling.
 - `shamir-core -> shamir-words -> nsec-tree-cli`: Core secret sharing, BIP-39 word output, offline identity recovery.
@@ -95,22 +101,38 @@ Start with **[rendezvous-kit](https://github.com/forgesworn/rendezvous-kit)** fo
 | **[rendezvous-kit](https://github.com/forgesworn/rendezvous-kit)** | Find fair meeting points for `N` participants with isochrone intersection, venue search, and fairness scoring. |
 | **[rendezvous-mcp](https://github.com/forgesworn/rendezvous-mcp)** | MCP server for AI-driven fair meeting-point discovery. |
 
-## Identity / Access
+## Identity Primitives
 
-Build spoken verification, anti-deepfake, deterministic Nostr identity trees, encrypted access control, and decentralised identity verification.
+Composable libraries for deterministic identity derivation, spoken verification, and encrypted access control.
 
-Start with **[heartwood](https://github.com/forgesworn/heartwood)** for hardware-backed NIP-46 signing on a Raspberry Pi, **[nsec-tree](https://github.com/forgesworn/nsec-tree)** for deterministic unlinkable Nostr identities, **[spoken-token](https://github.com/forgesworn/spoken-token)** for human-speakable rotating codes, **[signet](https://github.com/forgesworn/signet)** for multi-tier identity verification, or **[canary-kit](https://github.com/forgesworn/canary-kit)** for full spoken-verification flows with duress detection and group sync.
+Start with **[nsec-tree](https://github.com/forgesworn/nsec-tree)** for deterministic unlinkable Nostr identities, **[spoken-token](https://github.com/forgesworn/spoken-token)** for human-speakable rotating codes, **[dominion](https://github.com/forgesworn/dominion)** for tiered encrypted access, or **[canary-kit](https://github.com/forgesworn/canary-kit)** for full spoken-verification flows with duress detection and group sync.
+
+| Repository | What it does |
+|:-----------|:-------------|
+| **[nsec-tree](https://github.com/forgesworn/nsec-tree)** | Deterministic Nostr sub-identity derivation. One master secret, unlimited unlinkable identities. |
+| **[nsec-tree-cli](https://github.com/forgesworn/nsec-tree-cli)** | Offline-first CLI for nsec-tree with derivation, proofs, and Shamir recovery. |
+| **[spoken-token](https://github.com/forgesworn/spoken-token)** | TOTP, but you say it out loud. Derive time-rotating, human-speakable verification tokens from a shared secret. |
+| **[canary-kit](https://github.com/forgesworn/canary-kit)** | Deepfake-proof identity verification with per-member spoken words, silent duress detection, encrypted group sync, and an open protocol. |
+| **[dominion](https://github.com/forgesworn/dominion)** | Epoch-based encrypted access control. Your content. Your keys. Your rules. HKDF content keys per tier/epoch, AES-256-GCM, Shamir secret sharing, tiered audiences. |
+
+## Signers and Identity Apps
+
+Running signers, hardware variants, and decentralised-identity applications built on the primitives above.
+
+**Signer stack** -- **[heartwood](https://github.com/forgesworn/heartwood)** is a Raspberry Pi signing appliance, **[bark](https://github.com/forgesworn/bark)** is the NIP-07 browser client that speaks to it, and **[heartwood-esp32](https://github.com/forgesworn/heartwood-esp32)** + **[sapwood](https://github.com/forgesworn/sapwood)** are an experimental microcontroller variant with a web management UI.
+
+**Signet stack** -- **[signet](https://github.com/forgesworn/signet)** is the verification protocol, **[signet-app](https://github.com/forgesworn/signet-app)** is the reference user app, **[signet-verify](https://github.com/forgesworn/signet-verify)** is the drop-in SDK for any website, and **[signet-verification-bot](https://github.com/forgesworn/signet-verification-bot)** is a reference verifier-credential checker.
 
 | Repository | What it does |
 |:-----------|:-------------|
 | **[heartwood](https://github.com/forgesworn/heartwood)** | Nostr signing software for Raspberry Pi. NIP-46 remote signing, Tor by default, AES-256-GCM encrypted storage, per-client permissions, unlimited unlinkable personas via nsec-tree. `Rust` |
 | **[bark](https://github.com/forgesworn/bark)** | NIP-07 Nostr signer backed by NIP-46 remote signing. Self-sovereign keys, derived personas with Heartwood. |
-| **[spoken-token](https://github.com/forgesworn/spoken-token)** | TOTP, but you say it out loud. Derive time-rotating, human-speakable verification tokens from a shared secret. |
-| **[nsec-tree](https://github.com/forgesworn/nsec-tree)** | Deterministic Nostr sub-identity derivation. One master secret, unlimited unlinkable identities. |
-| **[nsec-tree-cli](https://github.com/forgesworn/nsec-tree-cli)** | Offline-first CLI for nsec-tree with derivation, proofs, and Shamir recovery. |
-| **[canary-kit](https://github.com/forgesworn/canary-kit)** | Deepfake-proof identity verification with per-member spoken words, silent duress detection, encrypted group sync, and an open protocol. |
+| **[heartwood-esp32](https://github.com/forgesworn/heartwood-esp32)** | Experimental nsec-tree signing token for Heltec WiFi LoRa 32 V4 (ESP32-S3). `Rust` |
+| **[sapwood](https://github.com/forgesworn/sapwood)** | Web management UI for the Heartwood ESP32 signer. |
 | **[signet](https://github.com/forgesworn/signet)** | Decentralised identity verification for Nostr. 4 verification tiers, ZKP age proofs, Signet IQ (0-200), professional verifier anti-corruption, verifier delegation. |
-| **[dominion](https://github.com/forgesworn/dominion)** | Epoch-based encrypted access control. Your content. Your keys. Your rules. HKDF content keys per tier/epoch, AES-256-GCM, Shamir secret sharing, tiered audiences. |
+| **[signet-app](https://github.com/forgesworn/signet-app)** | My Signet -- the reference identity verification app. React + Vite. |
+| **[signet-verify](https://github.com/forgesworn/signet-verify)** | Drop-in age verification SDK for websites. One script tag, one function call. |
+| **[signet-verification-bot](https://github.com/forgesworn/signet-verification-bot)** | Reference verifier-credential checker bot for Signet. |
 
 ## AI Agents
 
@@ -118,7 +140,7 @@ Give AI agents sovereign Nostr identities with trust-aware tooling.
 
 | Repository | What it does |
 |:-----------|:-------------|
-| **[bray](https://github.com/forgesworn/bray)** | Trust-aware Nostr MCP for AI and humans. 234 tools across 22 groups: identity, social, trust, dispatch, relay, marketplace, safety, privacy, and encrypted access. NIP-A7 Spell casting. Three trust dimensions: Verification (Signet), Proximity (WoT), and Access (Dominion). |
+| **[bray](https://github.com/forgesworn/bray)** | Trust-aware Nostr MCP for AI and humans. 235 tools across 27 groups: identity, social, trust, dispatch, relay, marketplace, safety, privacy, and encrypted access. NIP-A7 Spell casting. Three trust dimensions: Verification (Signet), Proximity (WoT), and Access (Dominion). |
 
 ## Trust / Privacy
 
@@ -127,6 +149,7 @@ Privacy-preserving trust and verifiable attestations.
 | Repository | What it does |
 |:-----------|:-------------|
 | **[nostr-veil](https://github.com/forgesworn/nostr-veil)** | Anonymous trust assertions for Nostr. LSAG ring signatures over NIP-85 so endorsements are verifiable but contributors are unidentifiable. Solves the Trust Trilemma. |
+| **[nostr-anon-vote](https://github.com/forgesworn/nostr-anon-vote)** | Anonymous voting on Nostr with LSAG ring signatures. Double-vote prevention without revealing voter identity. |
 | **[nostr-attestations](https://github.com/forgesworn/nostr-attestations)** | One Nostr event kind for all attestations -- credentials, endorsements, vouches, provenance, licensing, and trust. NIP-VA (kind 31000). |
 
 ## Cryptographic Primitives
@@ -154,5 +177,13 @@ Nostr protocol extensions and conformance testing.
 
 | Repository | What it does |
 |:-----------|:-------------|
-| **[nip-drafts](https://github.com/forgesworn/nip-drafts)** | 29 Nostr protocol extensions: service coordination, trust, payments, disputes, key hierarchy, resource curation, paid APIs, and encrypted access. Each NIP is independent. |
+| **[nip-drafts](https://github.com/forgesworn/nip-drafts)** | 30 Nostr protocol extensions: service coordination, trust, payments, disputes, key hierarchy, resource curation, paid APIs, and encrypted access. Classified as upstream, ecosystem, or incubating. Each NIP is independent. |
 | **[trott-conformance](https://github.com/forgesworn/trott-conformance)** | Protocol conformance test suite. Lifecycle fixtures for TROTT task kinds. |
+
+## Tooling / Build Infrastructure
+
+Infrastructure that underpins how the other repos are built and published.
+
+| Repository | What it does |
+|:-----------|:-------------|
+| **[anvil](https://github.com/forgesworn/anvil)** | Hardened npm publishing GitHub Action. Multi-runner byte-identical build attestation, OIDC trusted publishing, SLSA provenance, secret scanning, exports-map checks, frozen-vector gates. Pure bash, auditable in under thirty minutes. Used by 24+ repos in this org. |
