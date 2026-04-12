@@ -80,13 +80,13 @@ for repo in $REPOS; do
   cp "$TEMPLATE_DIR/dependabot.$kind.yml"        .github/dependabot.yml
   cp "$TEMPLATE_DIR/dependabot-auto-merge.yml"   .github/workflows/dependabot-auto-merge.yml
 
-  if git diff --quiet; then
+  git add .github/dependabot.yml .github/workflows/dependabot-auto-merge.yml
+  if git diff --cached --quiet; then
     echo "  no changes; skipping $repo"
     cd - >/dev/null
     continue
   fi
 
-  git add .github/dependabot.yml .github/workflows/dependabot-auto-merge.yml
   git commit -m "chore: sync dependabot config from template
 
 Tiered auto-merge: patch/minor grouped and auto-merged on green CI;
@@ -96,6 +96,7 @@ ignored here -- upgraded deliberately as project work."
 
   gh pr create \
     --repo "forgesworn/$repo" \
+    --head "$BRANCH" \
     --title "chore: sync dependabot config from template" \
     --body "Syncs canonical \`dependabot.yml\` and auto-merge workflow from \`forgesworn/.github/templates/dependabot/\`.
 
