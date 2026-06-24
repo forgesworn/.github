@@ -35,7 +35,7 @@ Built on Nostr, Lightning, and zero-trust cryptography. Every repo works standal
 - **[nsec-tree](https://github.com/forgesworn/nsec-tree)**: Derive deterministic, unlinkable Nostr sub-identities from one master secret.
   Use it when one seed needs separate identities for roles, apps, bots, or privacy boundaries. Add **[nsec-tree-cli](https://github.com/forgesworn/nsec-tree-cli)** for an offline-first CLI. Used by **[bray](https://github.com/forgesworn/bray)**, **[heartwood](https://github.com/forgesworn/heartwood)**, and **[signet](https://github.com/forgesworn/signet)**.
 - **[heartwood](https://github.com/forgesworn/heartwood)**: Nostr signing software for Raspberry Pi.
-  NIP-46 remote signing with Tor, AES-256-GCM encrypted storage, per-client kind permissions, and unlimited unlinkable personas from one mnemonic via **[nsec-tree](https://github.com/forgesworn/nsec-tree)**. Flash an SD card, boot, scan QR. `Rust`
+  NIP-46 remote signing over Nostr relays, AES-256-GCM encrypted storage, per-client kind permissions, and unlimited unlinkable personas from one mnemonic via **[nsec-tree](https://github.com/forgesworn/nsec-tree)**. Flash an SD card, boot, scan QR. `Rust`
 - **[bark](https://github.com/forgesworn/bark)**: NIP-07 Nostr signer backed by NIP-46 remote signing.
   Self-sovereign keys, derived personas with **[heartwood](https://github.com/forgesworn/heartwood)**.
 - **[canary-kit](https://github.com/forgesworn/canary-kit)**: Build spoken verification, duress detection, or privacy-preserving identity flows.
@@ -57,7 +57,7 @@ Built on Nostr, Lightning, and zero-trust cryptography. Every repo works standal
 - `toll-booth -> toll-booth-announce -> 402-announce -> 402-indexer -> 402-pub -> 402-mcp`: Gate an API, announce it on Nostr, index it, publish a directory, let AI agents consume it.
 - `toll-booth -> toll-booth-mcp`: Monitor a toll-booth with analytics dashboards and widget UIs.
 - `geohash-kit -> rendezvous-kit -> rendezvous-mcp`: Encode spatial data, compute fair meeting points, expose to AI agents.
-- `nsec-tree -> heartwood -> bark`: Derive sub-identities on a dedicated Pi, sign remotely via NIP-46 over Tor, use from the browser via NIP-07.
+- `nsec-tree -> heartwood -> bark`: Derive sub-identities on a dedicated Pi, sign remotely via NIP-46 over Nostr relays, use from the browser via NIP-07.
 - `nsec-tree -> heartwood-esp32 -> sapwood`: Experimental microcontroller signing token on ESP32-S3, configured via a web management UI.
 - `nsec-tree -> bray -> dominion`: Derive sub-identities, give them to an AI agent, gate content access by tier and epoch.
 - `nsec-tree -> spoken-token / canary-kit`: Derive purpose-specific Nostr identities, attach spoken verification or higher-trust identity flows.
@@ -125,7 +125,7 @@ Running signers, hardware variants, and decentralised-identity applications buil
 
 | Repository | What it does |
 |:-----------|:-------------|
-| **[heartwood](https://github.com/forgesworn/heartwood)** | Nostr signing software for Raspberry Pi. NIP-46 remote signing, Tor by default, AES-256-GCM encrypted storage, per-client permissions, unlimited unlinkable personas via nsec-tree. `Rust` |
+| **[heartwood](https://github.com/forgesworn/heartwood)** | Nostr signing software for Raspberry Pi. NIP-46 remote signing over Nostr relays, optional Tor for the web UI, AES-256-GCM encrypted storage, per-client permissions, unlimited unlinkable personas via nsec-tree. `Rust` |
 | **[bark](https://github.com/forgesworn/bark)** | NIP-07 Nostr signer backed by NIP-46 remote signing. Self-sovereign keys, derived personas with Heartwood. |
 | **[heartwood-esp32](https://github.com/forgesworn/heartwood-esp32)** | Experimental nsec-tree signing token for Heltec WiFi LoRa 32 V4 (ESP32-S3). `Rust` |
 | **[sapwood](https://github.com/forgesworn/sapwood)** | Web management UI for the Heartwood ESP32 signer. |
