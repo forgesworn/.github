@@ -160,6 +160,7 @@ Standalone cryptographic building blocks used across the ecosystem.
 |:-----------|:-------------|
 | **[ring-sig](https://github.com/forgesworn/ring-sig)** | SAG and LSAG ring signatures on secp256k1 for proving group membership without revealing identity. |
 | **[range-proof](https://github.com/forgesworn/range-proof)** | Pedersen commitment range proofs on secp256k1 for proving a value is in range without revealing it. |
+| **[private-equality](https://github.com/forgesworn/private-equality)** | Socialist Millionaires' Protocol over Ristretto255 for deciding whether two parties hold the same secret, revealing only one bit. |
 | **[shamir-core](https://github.com/forgesworn/shamir-core)** | Shamir's Secret Sharing over GF(256) with core utilities. Backend for shamir-words. |
 | **[shamir-words](https://github.com/forgesworn/shamir-words)** | Split secrets into human-readable BIP-39 word shares using Shamir's Secret Sharing. Built on shamir-core. |
 

@@ -355,6 +355,15 @@
           "usedBy": ["signet", "canary-kit"]
         },
         {
+          "name": "private-equality",
+          "github": "https://github.com/forgesworn/private-equality",
+          "npm": "@forgesworn/private-equality",
+          "description": "Socialist Millionaires' Protocol over Ristretto255 — decide whether two parties hold the same secret, revealing only one bit.",
+          "tags": ["crypto", "smp", "ristretto255"],
+          "dependsOn": [],
+          "usedBy": []
+        },
+        {
           "name": "shamir-core",
           "github": "https://github.com/forgesworn/shamir-core",
           "npm": "@forgesworn/shamir-core",
