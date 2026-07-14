@@ -1,7 +1,7 @@
 {
-  "generated": "2026-06-24",
-  "totalPublicRepos": 44,
-  "catalogedProjectRepos": 41,
+  "generated": "2026-07-14",
+  "totalPublicRepos": 48,
+  "catalogedProjectRepos": 45,
   "excludedPublicRepos": [
     { "name": ".github", "reason": "organisation profile" },
     { "name": "forgesworn.dev", "reason": "landing page source" },
@@ -175,34 +175,52 @@
           "name": "heartwood",
           "github": "https://github.com/forgesworn/heartwood",
           "npm": null,
-          "description": "Dedicated Nostr signing appliance for cheap ARM boards. Encrypted key storage, NIP-46 remote signing over Nostr relays, unlimited derived identities.",
+          "description": "Keyless NIP-46 bridge daemon for hardware Nostr signers (ESP32 or Ledger). Keys live on the device and never touch the networked computer.",
           "tags": ["identity", "nostr", "nip-46", "hardware", "signing", "rust"],
           "dependsOn": ["nsec-tree"],
-          "usedBy": ["bark"]
+          "usedBy": ["bark", "cambium"]
         },
         {
           "name": "heartwood-esp32",
           "github": "https://github.com/forgesworn/heartwood-esp32",
           "npm": null,
-          "description": "Experimental nsec-tree signing token for Heltec WiFi LoRa 32 V4 (ESP32-S3).",
+          "description": "nsec-tree signing token for Heltec WiFi LoRa 32 V3/V4 (ESP32-S3). On-device button approval, up to 8 master identities.",
           "tags": ["identity", "nostr", "hardware", "signing", "esp32", "rust"],
           "dependsOn": ["nsec-tree"],
-          "usedBy": ["sapwood"]
+          "usedBy": ["sapwood", "heartwood"]
+        },
+        {
+          "name": "heartwood-ledger",
+          "github": "https://github.com/forgesworn/heartwood-ledger",
+          "npm": null,
+          "description": "Heartwood signer as a Ledger embedded app. NIP-46, NIP-44, and nsec-tree personas on the secure element — emulator-proven prototype.",
+          "tags": ["identity", "nostr", "hardware", "signing", "ledger", "rust"],
+          "dependsOn": ["nsec-tree"],
+          "usedBy": ["heartwood"]
         },
         {
           "name": "bark",
           "github": "https://github.com/forgesworn/bark",
           "npm": null,
-          "description": "NIP-07 browser extension backed by NIP-46 remote signing. Zero key storage, derived personas with Heartwood.",
+          "description": "NIP-07 browser extension backed by NIP-46 remote signing. No user keys stored; derived personas with Heartwood.",
           "tags": ["identity", "nostr", "nip-07", "nip-46", "signer"],
           "dependsOn": ["heartwood", "nsec-tree"],
+          "usedBy": []
+        },
+        {
+          "name": "cambium",
+          "github": "https://github.com/forgesworn/cambium",
+          "npm": null,
+          "description": "Android NIP-55 signer that holds no keys. Every request is proxied to a Heartwood hardware signer over NIP-46.",
+          "tags": ["identity", "nostr", "nip-55", "nip-46", "android", "kotlin"],
+          "dependsOn": ["heartwood"],
           "usedBy": []
         },
         {
           "name": "sapwood",
           "github": "https://github.com/forgesworn/sapwood",
           "npm": null,
-          "description": "Browser-based device manager for Heartwood. Web Serial and HTTP bridge, firmware updates, policy management. 21 KB.",
+          "description": "Browser-based device manager for Heartwood. Web Serial and HTTP bridge, firmware updates, policy management.",
           "tags": ["identity", "device-management", "web-serial", "svelte"],
           "dependsOn": ["heartwood-esp32", "nsec-tree"],
           "usedBy": []
@@ -214,6 +232,15 @@
           "description": "Offline-first CLI for nsec-tree with derivation, proofs, and Shamir recovery.",
           "tags": ["identity", "cli"],
           "dependsOn": ["nsec-tree"],
+          "usedBy": []
+        },
+        {
+          "name": "nsec-tree-py",
+          "github": "https://github.com/forgesworn/nsec-tree-py",
+          "npm": null,
+          "description": "Python port of nsec-tree. Conformant deterministic sub-identity derivation, interop-tested against the TypeScript implementation.",
+          "tags": ["identity", "nostr", "derivation", "python"],
+          "dependsOn": [],
           "usedBy": []
         },
         {
@@ -238,7 +265,7 @@
           "name": "signet",
           "github": "https://github.com/forgesworn/signet",
           "npm": "signet-protocol",
-          "description": "Decentralised identity verification for Nostr. 4 verification tiers, ZKP age proofs, Signet IQ.",
+          "description": "Decentralised identity verification for Nostr. 4 verification tiers, ZKP age proofs, Signet Score (0-200).",
           "tags": ["identity", "verification", "zkp"],
           "dependsOn": ["nostr-attestations", "nsec-tree", "range-proof"],
           "usedBy": ["signet-credentials", "signet-login", "signet-protocol-rs", "signet-verify"]
@@ -392,7 +419,7 @@
           "name": "jurisdiction-kit",
           "github": "https://github.com/forgesworn/jurisdiction-kit",
           "npm": "jurisdiction-kit",
-          "description": "Professional body registries and jurisdiction intelligence for 30+ countries.",
+          "description": "Professional body registries and jurisdiction intelligence for 28 countries.",
           "tags": ["compliance", "jurisdiction", "registries"],
           "dependsOn": [],
           "usedBy": []
@@ -408,7 +435,7 @@
           "name": "nip-drafts",
           "github": "https://github.com/forgesworn/nip-drafts",
           "npm": null,
-          "description": "29 Nostr protocol extensions for service coordination, trust, payments, disputes, key hierarchy, resource curation, and paid API discovery.",
+          "description": "36 Nostr protocol extensions for service coordination, trust, payments, disputes, key hierarchy, resource curation, and paid API discovery.",
           "tags": ["protocol", "nostr", "nips"],
           "dependsOn": [],
           "usedBy": []

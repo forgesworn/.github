@@ -10,7 +10,7 @@ graph TB
         direction LR
         CK["<b>canary-kit</b><br/><i>Duress detection, group sync,<br/>location beacons, dead man's switch</i>"]
         NA["<b>nostr-attestations</b><br/><i>NIP-VA kind 31000<br/>Credentials, endorsements,<br/>vouches, provenance, trust</i>"]
-        SG["<b>signet</b><br/><i>4 verification tiers,<br/>ZKP age proofs, Signet IQ</i>"]
+        SG["<b>signet</b><br/><i>4 verification tiers,<br/>ZKP age proofs, Signet Score</i>"]
         DM["<b>dominion</b><br/><i>Epoch-based encrypted<br/>access control, tiered audiences</i>"]
     end
 
@@ -31,7 +31,7 @@ graph TB
 
     subgraph layer4["Layer 4 -- Compliance"]
         direction LR
-        JK["<b>jurisdiction-kit</b><br/><i>Professional registries<br/>30+ countries</i>"]
+        JK["<b>jurisdiction-kit</b><br/><i>Professional registries<br/>28 countries</i>"]
     end
 
     layer3 --> layer2
@@ -65,7 +65,7 @@ graph TB
 
 **[nostr-attestations](https://github.com/forgesworn/nostr-attestations)** -- NIP-VA (kind 31000). One Nostr event kind for all attestations: credentials, endorsements, vouches, provenance, licensing, trust. Builders, parsers, and validators.
 
-**[signet](https://github.com/forgesworn/signet)** -- decentralised identity verification for Nostr. Four verification tiers (self-declared, peer-vouched, professionally verified, institutionally certified), ZKP age proofs via range-proof, Signet IQ scoring (0-200), professional verifier anti-corruption mechanisms, and verifier delegation.
+**[signet](https://github.com/forgesworn/signet)** -- decentralised identity verification for Nostr. Four verification tiers (self-declared, peer-vouched, professionally verified, institutionally certified), ZKP age proofs via range-proof, Signet Score (0-200), professional verifier anti-corruption mechanisms, and verifier delegation.
 
 **[dominion](https://github.com/forgesworn/dominion)** -- epoch-based encrypted access control. Your content. Your keys. Your rules. HKDF content keys per tier/epoch, AES-256-GCM encryption, Shamir secret sharing for key recovery, and tiered audiences so you control exactly who can decrypt what.
 
@@ -89,6 +89,6 @@ graph TB
 
 ### Layer 4 -- Compliance
 
-**[jurisdiction-kit](https://github.com/forgesworn/jurisdiction-kit)** -- professional body registries and jurisdiction intelligence for 30+ countries. Feeds into attestations and identity-sensitive flows with compliance, data protection, and mutual recognition context.
+**[jurisdiction-kit](https://github.com/forgesworn/jurisdiction-kit)** -- professional body registries and jurisdiction intelligence for 28 countries. Feeds into attestations and identity-sensitive flows with compliance, data protection, and mutual recognition context.
 
 **Back to:** [Ecosystem overview](ecosystem-overview.md)
