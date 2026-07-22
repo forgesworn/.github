@@ -1,11 +1,12 @@
 {
   "generated": "2026-07-14",
-  "totalPublicRepos": 48,
-  "catalogedProjectRepos": 45,
+  "totalPublicRepos": 56,
+  "catalogedProjectRepos": 52,
   "excludedPublicRepos": [
     { "name": ".github", "reason": "organisation profile" },
     { "name": "forgesworn.dev", "reason": "landing page source" },
-    { "name": "nips", "reason": "upstream fork" }
+    { "name": "nips", "reason": "upstream fork" },
+    { "name": "flock", "reason": "consumer app — featured as a product callout + use case, not a building block" }
   ],
   "categories": [
     {
@@ -135,7 +136,7 @@
           "description": "Zero-dependency geohash toolkit for encoding, decoding, polygon coverage, and Nostr location filters.",
           "tags": ["spatial", "geohash"],
           "dependsOn": [],
-          "usedBy": ["rendezvous-kit"]
+          "usedBy": ["rendezvous-kit", "flock-kit"]
         },
         {
           "name": "rendezvous-kit",
@@ -153,6 +154,24 @@
           "description": "MCP server for AI-driven fair meeting-point discovery.",
           "tags": ["spatial", "mcp", "ai-agents"],
           "dependsOn": ["rendezvous-kit"],
+          "usedBy": []
+        },
+        {
+          "name": "flock-kit",
+          "github": "https://github.com/forgesworn/flock-kit",
+          "npm": null,
+          "description": "Framework-free location-safety and trusted-circle primitives: the honest radar guidance core, heading engine, cue grammar, and consented live-session rules.",
+          "tags": ["spatial", "location", "navigation", "privacy"],
+          "dependsOn": ["geohash-kit"],
+          "usedBy": []
+        },
+        {
+          "name": "capacitor-mesh-ble",
+          "github": "https://github.com/forgesworn/capacitor-mesh-ble",
+          "npm": null,
+          "description": "Configurable Bluetooth LE mesh transport for Capacitor apps — discovery, GATT, chunking, dedup, and multi-hop relay over an encrypted phone-to-phone mesh.",
+          "tags": ["spatial", "ble", "mesh", "offline", "capacitor"],
+          "dependsOn": [],
           "usedBy": []
         }
       ]
@@ -314,6 +333,33 @@
           "tags": ["identity", "access-control", "encryption"],
           "dependsOn": [],
           "usedBy": ["bray"]
+        },
+        {
+          "name": "covey-kit",
+          "github": "https://github.com/forgesworn/covey-kit",
+          "npm": null,
+          "description": "Private circle primitives for Nostr: derived per-circle keys, roles, word-code invites, personal inboxes, and convergent membership state.",
+          "tags": ["identity", "access", "circles", "nostr"],
+          "dependsOn": [],
+          "usedBy": []
+        },
+        {
+          "name": "roost-kit",
+          "github": "https://github.com/forgesworn/roost-kit",
+          "npm": null,
+          "description": "Nostr transport for private circles: NIP-59 gift wraps, relay fan-out, rotating inboxes, and a pre-signed offline outbox.",
+          "tags": ["identity", "access", "nostr", "nip-59"],
+          "dependsOn": [],
+          "usedBy": []
+        },
+        {
+          "name": "keystore-kit",
+          "github": "https://github.com/forgesworn/keystore-kit",
+          "npm": null,
+          "description": "Browser key-at-rest — protect a secret with a PIN, WebAuthn-PRF, or a grace window; pluggable storage and burn. Curve-agnostic, pure Web Crypto, zero runtime deps.",
+          "tags": ["identity", "access", "keys", "webauthn"],
+          "dependsOn": [],
+          "usedBy": []
         }
       ]
     },
@@ -447,6 +493,24 @@
           "description": "Protocol conformance test suite. Lifecycle fixtures for TROTT task kinds.",
           "tags": ["protocol", "testing", "conformance"],
           "dependsOn": [],
+          "usedBy": []
+        },
+        {
+          "name": "mesh-kit",
+          "github": "https://github.com/forgesworn/mesh-kit",
+          "npm": null,
+          "description": "Transport-agnostic encrypted offline-mesh substrate — a MeshTransport interface, a Noise_XX SecureChannel, reliability and reconciliation, with deterministic in-memory sims.",
+          "tags": ["mesh", "offline", "encryption", "transport"],
+          "dependsOn": [],
+          "usedBy": ["mesh-nostr-kit"]
+        },
+        {
+          "name": "mesh-nostr-kit",
+          "github": "https://github.com/forgesworn/mesh-nostr-kit",
+          "npm": null,
+          "description": "Nostr relay transport for opaque mesh-kit frames.",
+          "tags": ["mesh", "nostr", "transport"],
+          "dependsOn": ["mesh-kit"],
           "usedBy": []
         }
       ]
