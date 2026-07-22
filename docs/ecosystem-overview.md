@@ -17,6 +17,7 @@ graph TB
         A_BRAY["bray"]
         A_BARK["bark"]
         A_CAMBIUM["cambium"]
+        A_FLOCK ~~~ A_SIGNET ~~~ A_BRAY ~~~ A_BARK ~~~ A_CAMBIUM
     end
 
     subgraph L2["Domain Libraries -- payments, identity, trust, safety, spatial, compliance"]
@@ -31,6 +32,7 @@ graph TB
         D_COVEY["covey-kit"]
         D_RDV["rendezvous-kit"]
         D_JURIS["jurisdiction-kit"]
+        D_TOLL ~~~ D_402 ~~~ D_CANARY ~~~ D_DOMINION ~~~ D_VEIL ~~~ D_ATTEST ~~~ D_FLOCKKIT ~~~ D_COVEY ~~~ D_RDV ~~~ D_JURIS
     end
 
     subgraph L3["Transport & Signing -- move it, mesh it, sign it"]
@@ -40,6 +42,7 @@ graph TB
         T_MESHN["mesh-nostr-kit"]
         T_BLE["capacitor-mesh-ble"]
         T_HEART["heartwood"]
+        T_ROOST ~~~ T_MESH ~~~ T_MESHN ~~~ T_BLE ~~~ T_HEART
     end
 
     subgraph L4["Identity & Keys -- who you are, kept on your device"]
@@ -48,6 +51,7 @@ graph TB
         K_KEYSTORE["keystore-kit"]
         K_SPOKEN["spoken-token"]
         K_GEO["geohash-kit"]
+        K_NSEC ~~~ K_KEYSTORE ~~~ K_SPOKEN ~~~ K_GEO
     end
 
     subgraph L5["Cryptographic Primitives -- the audited core"]
@@ -57,6 +61,7 @@ graph TB
         C_PE["private-equality"]
         C_SHAMIR["shamir-core"]
         C_SHAMIRW["shamir-words"]
+        C_RING ~~~ C_RANGE ~~~ C_PE ~~~ C_SHAMIR ~~~ C_SHAMIRW
     end
 
     L1 --> L2
