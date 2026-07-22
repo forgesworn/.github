@@ -4,6 +4,105 @@ How the ForgeSworn building blocks fit together. Built from the inside out: audi
 
 <img src="forgesworn-architecture.svg" alt="ForgeSworn Ecosystem - hexagonal architecture diagram showing crypto core, identity, agents, L402 payments, trust, compliance, and spatial categories" width="100%"/>
 
+## Architecture, Top to Bottom
+
+The same building blocks as a stack: end-user applications on top, resting on domain libraries, then transport and signing, then identity and keys, and — at the foundation — the audited cryptographic primitives everything else is built from.
+
+```mermaid
+graph TB
+    subgraph L1["Applications -- what people and agents run"]
+        direction LR
+        A_FLOCK["flock"]
+        A_SIGNET["signet"]
+        A_BRAY["bray"]
+        A_BARK["bark"]
+        A_CAMBIUM["cambium"]
+    end
+
+    subgraph L2["Domain Libraries -- payments, identity, trust, safety, spatial, compliance"]
+        direction LR
+        D_TOLL["toll-booth"]
+        D_402["402-mcp"]
+        D_CANARY["canary-kit"]
+        D_DOMINION["dominion"]
+        D_VEIL["nostr-veil"]
+        D_ATTEST["nostr-attestations"]
+        D_FLOCKKIT["flock-kit"]
+        D_COVEY["covey-kit"]
+        D_RDV["rendezvous-kit"]
+        D_JURIS["jurisdiction-kit"]
+    end
+
+    subgraph L3["Transport & Signing -- move it, mesh it, sign it"]
+        direction LR
+        T_ROOST["roost-kit"]
+        T_MESH["mesh-kit"]
+        T_MESHN["mesh-nostr-kit"]
+        T_BLE["capacitor-mesh-ble"]
+        T_HEART["heartwood"]
+    end
+
+    subgraph L4["Identity & Keys -- who you are, kept on your device"]
+        direction LR
+        K_NSEC["nsec-tree"]
+        K_KEYSTORE["keystore-kit"]
+        K_SPOKEN["spoken-token"]
+        K_GEO["geohash-kit"]
+    end
+
+    subgraph L5["Cryptographic Primitives -- the audited core"]
+        direction LR
+        C_RING["ring-sig"]
+        C_RANGE["range-proof"]
+        C_PE["private-equality"]
+        C_SHAMIR["shamir-core"]
+        C_SHAMIRW["shamir-words"]
+    end
+
+    L1 --> L2
+    L2 --> L3
+    L3 --> L4
+    L4 --> L5
+
+    click A_FLOCK "https://github.com/forgesworn/flock" _blank
+    click A_SIGNET "https://github.com/forgesworn/signet" _blank
+    click A_BRAY "https://github.com/forgesworn/bray" _blank
+    click A_BARK "https://github.com/forgesworn/bark" _blank
+    click A_CAMBIUM "https://github.com/forgesworn/cambium" _blank
+    click D_TOLL "https://github.com/forgesworn/toll-booth" _blank
+    click D_402 "https://github.com/forgesworn/402-mcp" _blank
+    click D_CANARY "https://github.com/forgesworn/canary-kit" _blank
+    click D_DOMINION "https://github.com/forgesworn/dominion" _blank
+    click D_VEIL "https://github.com/forgesworn/nostr-veil" _blank
+    click D_ATTEST "https://github.com/forgesworn/nostr-attestations" _blank
+    click D_FLOCKKIT "https://github.com/forgesworn/flock-kit" _blank
+    click D_COVEY "https://github.com/forgesworn/covey-kit" _blank
+    click D_RDV "https://github.com/forgesworn/rendezvous-kit" _blank
+    click D_JURIS "https://github.com/forgesworn/jurisdiction-kit" _blank
+    click T_ROOST "https://github.com/forgesworn/roost-kit" _blank
+    click T_MESH "https://github.com/forgesworn/mesh-kit" _blank
+    click T_MESHN "https://github.com/forgesworn/mesh-nostr-kit" _blank
+    click T_BLE "https://github.com/forgesworn/capacitor-mesh-ble" _blank
+    click T_HEART "https://github.com/forgesworn/heartwood" _blank
+    click K_NSEC "https://github.com/forgesworn/nsec-tree" _blank
+    click K_KEYSTORE "https://github.com/forgesworn/keystore-kit" _blank
+    click K_SPOKEN "https://github.com/forgesworn/spoken-token" _blank
+    click K_GEO "https://github.com/forgesworn/geohash-kit" _blank
+    click C_RING "https://github.com/forgesworn/ring-sig" _blank
+    click C_RANGE "https://github.com/forgesworn/range-proof" _blank
+    click C_PE "https://github.com/forgesworn/private-equality" _blank
+    click C_SHAMIR "https://github.com/forgesworn/shamir-core" _blank
+    click C_SHAMIRW "https://github.com/forgesworn/shamir-words" _blank
+
+    style L1 fill:#1b3d3d,stroke:#00b4d8,color:#eee,stroke-width:3px
+    style L2 fill:#1b3d2d,stroke:#16c79a,color:#eee,stroke-width:3px
+    style L3 fill:#1b2d3d,stroke:#0f3460,color:#eee,stroke-width:3px
+    style L4 fill:#2d1b3d,stroke:#9b59b6,color:#eee,stroke-width:3px
+    style L5 fill:#2d2d1b,stroke:#f5a623,color:#eee,stroke-width:3px
+```
+
+*A simplified view — each layer holds more than shown; the [full catalogue](../profile/README.md) lists every repo.*
+
 ## System Context
 
 ```mermaid
