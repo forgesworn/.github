@@ -7,6 +7,7 @@ Open-source building blocks for sovereign commerce, identity, and trust.
 - Privacy-preserving trust and anonymous reputation
 - Spoken verification, anti-deepfake, and coercion resistance
 - Fair meeting points and spatial coordination
+- Coercion-resistant location sharing and phone-to-phone offline mesh
 - AI agent tooling for sovereign Nostr interaction
 - Cryptographic primitives: ring signatures, range proofs, Shamir secret sharing
 - Nostr protocol extensions and conformance testing
@@ -30,6 +31,8 @@ Built on Nostr, Lightning, and zero-trust cryptography. Every repo works standal
   Anonymous trust assertions using LSAG ring signatures over NIP-85. Built on **[ring-sig](https://github.com/forgesworn/ring-sig)**.
 - **[rendezvous-kit](https://github.com/forgesworn/rendezvous-kit)**: Build fair meeting-point or spatial apps.
   Add **[geohash-kit](https://github.com/forgesworn/geohash-kit)** and **[rendezvous-mcp](https://github.com/forgesworn/rendezvous-mcp)**.
+- **[flock](https://github.com/forgesworn/flock)**: A coercion-resistant friend-finder that walks you the last half-mile to a moving friend by ear — location end-to-end encrypted over Nostr, and a decoy unlock if the phone is taken.
+  Built on **[flock-kit](https://github.com/forgesworn/flock-kit)**, **[covey-kit](https://github.com/forgesworn/covey-kit)**, **[roost-kit](https://github.com/forgesworn/roost-kit)**, **[keystore-kit](https://github.com/forgesworn/keystore-kit)**, and an offline **[mesh-kit](https://github.com/forgesworn/mesh-kit)** / **[capacitor-mesh-ble](https://github.com/forgesworn/capacitor-mesh-ble)** stack.
 - **[spoken-token](https://github.com/forgesworn/spoken-token)**: Add human-speakable rotating verification codes.
   Pair with **[canary-kit](https://github.com/forgesworn/canary-kit)**.
 - **[nsec-tree](https://github.com/forgesworn/nsec-tree)**: Derive deterministic, unlinkable Nostr sub-identities from one master secret.
@@ -68,6 +71,8 @@ Built on Nostr, Lightning, and zero-trust cryptography. Every repo works standal
 - `nostr-attestations -> signet -> canary-kit / jurisdiction-kit`: Issue verifiable attestations, verify identities with tiers and ZKP age proofs, add jurisdiction context.
 - `spoken-token -> canary-kit -> ring-sig / range-proof / shamir-words`: Spoken verification, privacy-preserving proofs, human-recoverable secret handling.
 - `shamir-core -> shamir-words -> nsec-tree-cli`: Core secret sharing, BIP-39 word output, offline identity recovery.
+- `covey-kit -> roost-kit -> flock-kit`: Build an encrypted circle, deliver each member's position as a NIP-59 gift wrap, and guide people to each other by sound and vibration.
+- `mesh-kit -> mesh-nostr-kit / capacitor-mesh-ble`: Run an authenticated, encrypted, in-order channel over any transport — a Bluetooth mesh between phones, a Nostr relay, or both bridged so someone out of range still hears it.
 
 ## L402 / Machine Payments
 
@@ -101,6 +106,23 @@ Start with **[rendezvous-kit](https://github.com/forgesworn/rendezvous-kit)** fo
 | **[geohash-kit](https://github.com/forgesworn/geohash-kit)** | Zero-dependency geohash toolkit for encoding, decoding, polygon coverage, and Nostr location filters. |
 | **[rendezvous-kit](https://github.com/forgesworn/rendezvous-kit)** | Find fair meeting points for `N` participants with isochrone intersection, venue search, and fairness scoring. |
 | **[rendezvous-mcp](https://github.com/forgesworn/rendezvous-mcp)** | MCP server for AI-driven fair meeting-point discovery. |
+
+## Safety, Location & Offline Mesh
+
+Coordinate and stay safe on open protocols, with location that belongs to the person it describes — and keeps working when the network doesn't.
+
+**flock stack** — **[flock](https://github.com/forgesworn/flock)** is the app: a coercion-resistant friend-finder that guides you the last half-mile to a moving friend by voice, sound, and vibration, with the phone still in your pocket. Location is end-to-end encrypted over Nostr, shared only as precisely and as briefly as its owner chooses, held by no server — and a compelled unlock opens a decoy, not the real thing. Under it: **[flock-kit](https://github.com/forgesworn/flock-kit)** is the pure guidance-and-safety core, **[covey-kit](https://github.com/forgesworn/covey-kit)** holds the encrypted circles, **[roost-kit](https://github.com/forgesworn/roost-kit)** moves everything as NIP-59 gift wraps, **[keystore-kit](https://github.com/forgesworn/keystore-kit)** guards the on-device key — and when the signal drops, **[mesh-kit](https://github.com/forgesworn/mesh-kit)**, **[mesh-nostr-kit](https://github.com/forgesworn/mesh-nostr-kit)**, and **[capacitor-mesh-ble](https://github.com/forgesworn/capacitor-mesh-ble)** carry the same encrypted frames phone-to-phone over a Bluetooth mesh.
+
+| Repository | What it does |
+|:-----------|:-------------|
+| **[flock](https://github.com/forgesworn/flock)** | Coercion-resistant friend-finder. Guides you to a moving friend by ear and vibration; location end-to-end encrypted over Nostr, shared at the precision and for the time you choose; a decoy unlock under duress. |
+| **[flock-kit](https://github.com/forgesworn/flock-kit)** | Framework-free guidance and location-safety core: radar state machine, heading engine, honest degradation, precision tiers, and consented live-session rules. |
+| **[covey-kit](https://github.com/forgesworn/covey-kit)** | Private circles for Nostr: derived per-circle keys, roles, word-code invites, personal inboxes, and convergent membership state. |
+| **[roost-kit](https://github.com/forgesworn/roost-kit)** | Nostr transport for private circles: NIP-59 gift wraps, relay fan-out, rotating inboxes, and a pre-signed offline outbox. |
+| **[keystore-kit](https://github.com/forgesworn/keystore-kit)** | Browser key-at-rest. Protect one secret behind a PIN, a WebAuthn-PRF biometric, or a grace window; pluggable storage and an irreversible burn. Zero runtime dependencies. |
+| **[mesh-kit](https://github.com/forgesworn/mesh-kit)** | Transport-agnostic encrypted offline-mesh substrate. A Noise_XX secure channel, store-and-forward reliability, and deterministic sims — carries opaque frames without knowing the application. |
+| **[mesh-nostr-kit](https://github.com/forgesworn/mesh-nostr-kit)** | Nostr relay transport for opaque mesh-kit frames, so a mesh reaches anyone still holding a relay path. |
+| **[capacitor-mesh-ble](https://github.com/forgesworn/capacitor-mesh-ble)** | Bluetooth LE mesh transport for Capacitor apps: discovery, GATT links, chunking, dedup, and multi-hop relay — phone-to-phone with no network. |
 
 ## Identity Primitives
 
