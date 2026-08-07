@@ -26,7 +26,7 @@ Built on Nostr, Lightning, and zero-trust cryptography. Every repo works standal
 - **[402-mcp](https://github.com/forgesworn/402-mcp)**: Let AI agents discover, pay for, and consume paid APIs.
   Pair with **[toll-booth](https://github.com/forgesworn/toll-booth)** and **[402-pub](https://github.com/forgesworn/402-pub)**.
 - **[bray](https://github.com/forgesworn/bray)**: Give AI agents a sovereign Nostr identity.
-  251 tools across 27 groups covering identity, social, payments, dispatch, trust, moderation, privacy, spells, and encrypted access. Built on **[nsec-tree](https://github.com/forgesworn/nsec-tree)** for identity derivation and **[dominion](https://github.com/forgesworn/dominion)** for encrypted access.
+  253 tools across 28 groups covering identity, social, payments, dispatch, trust, moderation, privacy, spells, and encrypted access. Built on **[nsec-tree](https://github.com/forgesworn/nsec-tree)** for identity derivation and **[dominion](https://github.com/forgesworn/dominion)** for encrypted access.
 - **[nostr-veil](https://github.com/forgesworn/nostr-veil)**: Privacy-preserving Web of Trust.
   Anonymous trust assertions using LSAG ring signatures over NIP-85. Built on **[ring-sig](https://github.com/forgesworn/ring-sig)**.
 - **[rendezvous-kit](https://github.com/forgesworn/rendezvous-kit)**: Build fair meeting-point or spatial apps.
@@ -51,7 +51,7 @@ Built on Nostr, Lightning, and zero-trust cryptography. Every repo works standal
   Credentials, endorsements, vouches, provenance, licensing, and trust.
 - **[jurisdiction-kit](https://github.com/forgesworn/jurisdiction-kit)**: Work with jurisdiction and professional-registry data.
   Pair with **[canary-kit](https://github.com/forgesworn/canary-kit)** or **[signet](https://github.com/forgesworn/signet)** for identity-sensitive flows.
-- **[nip-drafts](https://github.com/forgesworn/nip-drafts)**: 36 Nostr protocol extensions covering service coordination, trust, payments, disputes, key hierarchy, resource curation, and encrypted access. Classified as upstream, ecosystem, or incubating.
+- **[nip-drafts](https://github.com/forgesworn/nip-drafts)**: 37 Nostr protocol extensions covering service coordination, trust, payments, disputes, key hierarchy, resource curation, and encrypted access. Classified as upstream, ecosystem, or incubating.
 - **[anvil](https://github.com/forgesworn/anvil)**: Ship JS/TS libraries with reproducible, hardened npm releases.
   Multi-runner byte-identical build attestation, OIDC trusted publishing, SLSA provenance, secret scanning, exports-map checks. Pure bash, auditable in under thirty minutes. Used by 24+ repos in this org.
 
@@ -94,6 +94,7 @@ Start with **[toll-booth](https://github.com/forgesworn/toll-booth)** to put a L
 | **[payment-methods](https://github.com/forgesworn/payment-methods)** | Specifications for HTTP Payment Authentication methods (Lightning, Cashu, Session). |
 | **[aperture-phoenixd](https://github.com/forgesworn/aperture-phoenixd)** | Use Phoenixd as the Lightning backend for Aperture, with no LND required. `Go` |
 | **[aperture-announce](https://github.com/forgesworn/aperture-announce)** | Announce Aperture L402 services on Nostr for decentralised discovery. `Go` |
+| **[farrier-kit](https://github.com/forgesworn/farrier-kit)** | Lightning payment primitives without running a node: BOLT-11 decoding, preimage verification, LNURL-pay resolution. Browser and Node from one codebase, with language-neutral conformance vectors. |
 
 ## Spatial / Meeting
 
@@ -164,7 +165,7 @@ Give AI agents sovereign Nostr identities with trust-aware tooling.
 
 | Repository | What it does |
 |:-----------|:-------------|
-| **[bray](https://github.com/forgesworn/bray)** | Trust-aware Nostr MCP for AI and humans. 251 tools across 27 groups: identity, social, trust, dispatch, relay, marketplace, safety, privacy, and encrypted access. NIP-A7 Spell casting. Three trust dimensions: Verification (Signet), Proximity (WoT), and Access (Dominion). |
+| **[bray](https://github.com/forgesworn/bray)** | Trust-aware Nostr MCP for AI and humans. 253 tools across 28 groups: identity, social, trust, dispatch, relay, marketplace, safety, privacy, and encrypted access. NIP-A7 Spell casting. Three trust dimensions: Verification (Signet), Proximity (WoT), and Access (Dominion). |
 
 ## Trust / Privacy
 
@@ -174,6 +175,7 @@ Privacy-preserving trust and verifiable attestations.
 |:-----------|:-------------|
 | **[nostr-veil](https://github.com/forgesworn/nostr-veil)** | Anonymous trust assertions for Nostr. LSAG ring signatures over NIP-85 so endorsements are verifiable but contributors are unidentifiable. Solves the Trust Trilemma. |
 | **[nostr-attestations](https://github.com/forgesworn/nostr-attestations)** | One Nostr event kind for all attestations -- credentials, endorsements, vouches, provenance, licensing, and trust. NIP-VA (kind 31000). |
+| **[nostr-anon-vote](https://github.com/forgesworn/nostr-anon-vote)** | Anonymous voting on Nostr with LSAG ring signatures -- double-vote prevention without revealing identity. Built on ring-sig. |
 
 ## Cryptographic Primitives
 
@@ -201,8 +203,10 @@ Nostr protocol extensions and conformance testing.
 
 | Repository | What it does |
 |:-----------|:-------------|
-| **[nip-drafts](https://github.com/forgesworn/nip-drafts)** | 36 Nostr protocol extensions: service coordination, trust, payments, disputes, key hierarchy, resource curation, paid APIs, and encrypted access. Classified as upstream, ecosystem, or incubating. Each NIP is independent. |
+| **[nip-drafts](https://github.com/forgesworn/nip-drafts)** | 37 Nostr protocol extensions: service coordination, trust, payments, disputes, key hierarchy, resource curation, paid APIs, and encrypted access. Classified as upstream, ecosystem, or incubating. Each NIP is independent. |
 | **[trott-conformance](https://github.com/forgesworn/trott-conformance)** | Protocol conformance test suite. Lifecycle fixtures for TROTT task kinds. |
+| **[gopherkind](https://github.com/forgesworn/gopherkind)** | Signed gopherholes served from Nostr relays (kind `31436`), with Gopher, Gemini, HTTP and CLI readers. [gopherkind.com](https://gopherkind.com) |
+| **[gopherkind-protocol-py](https://github.com/forgesworn/gopherkind-protocol-py)** | Independent Python implementation of the Gopherkind kind `31436` grammar, interop-validated against the language-neutral fixture. `Python` |
 
 ## Tooling / Build Infrastructure
 

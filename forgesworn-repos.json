@@ -1,7 +1,7 @@
 {
-  "generated": "2026-07-14",
-  "totalPublicRepos": 56,
-  "catalogedProjectRepos": 52,
+  "generated": "2026-08-07",
+  "totalPublicRepos": 60,
+  "catalogedProjectRepos": 56,
   "excludedPublicRepos": [
     { "name": ".github", "reason": "organisation profile" },
     { "name": "forgesworn.dev", "reason": "landing page source" },
@@ -119,6 +119,15 @@
           "npm": null,
           "description": "Announce Aperture L402 services on Nostr for decentralised discovery.",
           "tags": ["l402", "go", "nostr"],
+          "dependsOn": [],
+          "usedBy": []
+        },
+        {
+          "name": "farrier-kit",
+          "github": "https://github.com/forgesworn/farrier-kit",
+          "npm": "farrier-kit",
+          "description": "Lightning payment primitives that work anywhere: BOLT-11 decoding, preimage verification, LNURL-pay resolution. Browser and Node from one codebase, with language-neutral conformance vectors.",
+          "tags": ["lightning", "bolt11", "lnurl", "payments"],
           "dependsOn": [],
           "usedBy": []
         }
@@ -401,6 +410,15 @@
           "tags": ["trust", "attestations", "nostr"],
           "dependsOn": [],
           "usedBy": ["signet"]
+        },
+        {
+          "name": "nostr-anon-vote",
+          "github": "https://github.com/forgesworn/nostr-anon-vote",
+          "npm": "nostr-anon-vote",
+          "description": "Anonymous voting on Nostr with LSAG ring signatures — double-vote prevention without revealing identity.",
+          "tags": ["voting", "privacy", "ring-signatures", "nostr"],
+          "dependsOn": ["ring-sig"],
+          "usedBy": []
         }
       ]
     },
@@ -416,7 +434,7 @@
           "description": "SAG and LSAG ring signatures on secp256k1 for anonymous group membership proofs.",
           "tags": ["crypto", "ring-signatures", "secp256k1"],
           "dependsOn": [],
-          "usedBy": ["nostr-veil", "canary-kit"]
+          "usedBy": ["nostr-veil", "canary-kit", "nostr-anon-vote"]
         },
         {
           "name": "range-proof",
@@ -511,6 +529,24 @@
           "description": "Nostr relay transport for opaque mesh-kit frames.",
           "tags": ["mesh", "nostr", "transport"],
           "dependsOn": ["mesh-kit"],
+          "usedBy": []
+        },
+        {
+          "name": "gopherkind",
+          "github": "https://github.com/forgesworn/gopherkind",
+          "npm": "gopherkind",
+          "description": "Signed gopherholes served from Nostr relays (kind 31436), with Gopher, Gemini, HTTP and CLI readers.",
+          "tags": ["gopher", "nostr", "protocol", "publishing"],
+          "dependsOn": [],
+          "usedBy": []
+        },
+        {
+          "name": "gopherkind-protocol-py",
+          "github": "https://github.com/forgesworn/gopherkind-protocol-py",
+          "npm": null,
+          "description": "Independent Python implementation of the Gopherkind kind 31436 grammar, interop-validated against the language-neutral fixture published by gopherkind.",
+          "tags": ["gopher", "nostr", "protocol", "python"],
+          "dependsOn": [],
           "usedBy": []
         }
       ]
