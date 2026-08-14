@@ -1,7 +1,7 @@
 {
-  "generated": "2026-08-07",
-  "totalPublicRepos": 60,
-  "catalogedProjectRepos": 56,
+  "generated": "2026-08-14",
+  "totalPublicRepos": 61,
+  "catalogedProjectRepos": 57,
   "excludedPublicRepos": [
     {
       "name": ".github",
@@ -218,6 +218,22 @@
           ],
           "dependsOn": [],
           "usedBy": []
+        },
+        {
+          "name": "nwc-kit",
+          "github": "https://github.com/forgesworn/nwc-kit",
+          "npm": "@forgesworn/nwc-kit",
+          "description": "Small NIP-47 wallet client with NIP-44 v2, signed capability discovery, authenticated responses, and bounded requests.",
+          "tags": [
+            "lightning",
+            "nostr",
+            "nip-47",
+            "nwc"
+          ],
+          "dependsOn": [],
+          "usedBy": [
+            "402-mcp"
+          ]
         }
       ]
     },
