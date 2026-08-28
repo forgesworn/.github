@@ -1,7 +1,7 @@
 {
-  "generated": "2026-08-14",
-  "totalPublicRepos": 61,
-  "catalogedProjectRepos": 57,
+  "generated": "2026-08-28",
+  "totalPublicRepos": 72,
+  "catalogedProjectRepos": 60,
   "excludedPublicRepos": [
     {
       "name": ".github",
@@ -662,6 +662,55 @@
           ],
           "dependsOn": [],
           "usedBy": []
+        }
+      ]
+    },
+    {
+      "name": "Storage / Data",
+      "slug": "storage",
+      "description": "Keep your files alive across machines you control: encrypted, content-addressed Blossom storage that is reachable without depending on one host.",
+      "repos": [
+        {
+          "name": "wildbloom",
+          "github": "https://github.com/forgesworn/wildbloom",
+          "description": "Local-first encrypted publishing over Nostr and Blossom: files that outlive their host. Publishes to standard Blossom servers over HTTPS or optional Tor, with BitTorrent as an extra lane.",
+          "tags": [
+            "blossom",
+            "nostr",
+            "publishing",
+            "storage"
+          ],
+          "dependsOn": [],
+          "usedBy": []
+        },
+        {
+          "name": "wildbloom-node",
+          "github": "https://github.com/forgesworn/wildbloom-node",
+          "description": "Self-hosted Blossom storage node. Owner, friend and guest retention tiers over one deduplicated store; Tor is optional or run behind your own HTTPS; verified BUD-04 mirror and exact-hash repair.",
+          "tags": [
+            "blossom",
+            "storage",
+            "tor",
+            "self-hosted"
+          ],
+          "dependsOn": [
+            "shelter-kit"
+          ],
+          "usedBy": []
+        },
+        {
+          "name": "shelter-kit",
+          "github": "https://github.com/forgesworn/shelter-kit",
+          "description": "Transport-neutral Blossom storage core in Rust: unbound router, BUD authorisation, content-addressed streaming store, owner/friend/guest retention and verified mirror-and-repair. A library, not a daemon.",
+          "tags": [
+            "blossom",
+            "storage",
+            "rust"
+          ],
+          "dependsOn": [],
+          "usedBy": [
+            "wildbloom-node"
+          ]
         }
       ]
     },
