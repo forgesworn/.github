@@ -3,7 +3,11 @@
 Open-source building blocks for sovereign commerce, identity, and trust.
 
 - Machine-payable APIs and Lightning payment gating
+- Lightning bearer notes: an LNURLcash mint and a crash-safe wallet
 - Deterministic Nostr identities and encrypted access control
+- Family wardship on the family's own keys, enforced on-device
+- Encrypted, content-addressed storage that outlives its host
+- Video rooms and live streams signalled over Nostr relays, no operator in the middle
 - Privacy-preserving trust and anonymous reputation
 - Spoken verification, anti-deepfake, and coercion resistance
 - Fair meeting points and spatial coordination
@@ -73,10 +77,14 @@ Built on Nostr, Lightning, and zero-trust cryptography. Every repo works standal
 - `shamir-core -> shamir-words -> nsec-tree-cli`: Core secret sharing, BIP-39 word output, offline identity recovery.
 - `covey-kit -> roost-kit -> flock-kit`: Build an encrypted circle, deliver each member's position as a NIP-59 gift wrap, and guide people to each other by sound and vibration.
 - `mesh-kit -> mesh-nostr-kit / capacitor-mesh-ble`: Run an authenticated, encrypted, in-order channel over any transport — a Bluetooth mesh between phones, a Nostr relay, or both bridged so someone out of range still hears it.
+- `nwc-lnd-bridge -> nwc-kit -> toll-booth / 402-mcp`: Front any LND node as an NWC wallet, connect to it with a bounded client, and let it fund a toll booth or an agent's payments.
+- `moneyer -> notecase`: Strike Lightning bearer notes at a mint, then hold, split, merge and melt them in a wallet built so no crash or lying mint can lose one.
+- `wildbloom -> wildbloom-node -> forgesworn-link`: Publish encrypted, hash-addressed files, keep them on your own node, and mirror between nodes over a direct QUIC path or an opaque relay.
+- `kithmoot -> kithmoot-android`: A conference-room protocol over Nostr, implemented twice from the published wire contract so no single codebase is load-bearing.
 
-## L402 / Machine Payments
+## Payments / L402
 
-Make APIs payable, discoverable, and consumable by people and agents.
+Make APIs payable, discoverable, and consumable by people and agents. Reach Lightning wallets you do not hold, and mint or carry bearer notes.
 
 Start with **[toll-booth](https://github.com/forgesworn/toll-booth)** to put a Lightning paywall in front of an API. Add announcement and indexing repos for discovery, then **[402-mcp](https://github.com/forgesworn/402-mcp)** when the client is an AI agent.
 
@@ -95,6 +103,10 @@ Start with **[toll-booth](https://github.com/forgesworn/toll-booth)** to put a L
 | **[aperture-phoenixd](https://github.com/forgesworn/aperture-phoenixd)** | Use Phoenixd as the Lightning backend for Aperture, with no LND required. `Go` |
 | **[aperture-announce](https://github.com/forgesworn/aperture-announce)** | Announce Aperture L402 services on Nostr for decentralised discovery. `Go` |
 | **[farrier-kit](https://github.com/forgesworn/farrier-kit)** | Lightning payment primitives without running a node: BOLT-11 decoding, preimage verification, LNURL-pay resolution. Browser and Node from one codebase, with language-neutral conformance vectors. |
+| **[nwc-kit](https://github.com/forgesworn/nwc-kit)** | Small NIP-47 wallet client with NIP-44 v2, signed capability discovery, authenticated responses, and bounded requests. [nwc-kit.forgesworn.dev](https://nwc-kit.forgesworn.dev) |
+| **[nwc-lnd-bridge](https://github.com/forgesworn/nwc-lnd-bridge)** | Minimal NIP-47 wallet service in front of an LND node. Invoice-only by default, with the method allowlist enforced before a request reaches LND, so the connection URI cannot spend. |
+| **[moneyer](https://github.com/forgesworn/moneyer)** | LNURLcash (LUD-25) mint that strikes Lightning bearer notes. Independent implementation with cln and lnd funding sources, SQLite, a crash-safe melt discipline, and the public conformance grader in its own test suite. |
+| **[notecase](https://github.com/forgesworn/notecase)** | LNURLcash (LUD-25) wallet for Lightning bearer notes: receive, hold, split, merge, send and melt notes whose secret is the money. Built so no crash, timeout or lying mint can lose one; CLI and web surface, NWC-assisted minting and melting. |
 
 ## Spatial / Meeting
 
@@ -124,6 +136,31 @@ Coordinate and stay safe on open protocols, with location that belongs to the pe
 | **[mesh-kit](https://github.com/forgesworn/mesh-kit)** | Transport-agnostic encrypted offline-mesh substrate. A Noise_XX secure channel, store-and-forward reliability, and deterministic sims — carries opaque frames without knowing the application. |
 | **[mesh-nostr-kit](https://github.com/forgesworn/mesh-nostr-kit)** | Nostr relay transport for opaque mesh-kit frames, so a mesh reaches anyone still holding a relay path. |
 | **[capacitor-mesh-ble](https://github.com/forgesworn/capacitor-mesh-ble)** | Bluetooth LE mesh transport for Capacitor apps: discovery, GATT links, chunking, dedup, and multi-hop relay — phone-to-phone with no network. |
+| **[kintrinsic](https://github.com/forgesworn/kintrinsic)** | Libre, self-hosted digital wardship. A guardian grants scoped, revocable screen-time, app, content and comms clauses to a child's devices, signed with the family's own keys and enforced on-device: an Android Device Owner ward app, a Linux warden, a guardian app and a Nostr wire contract, with no platform account in the middle. `Rust` `Kotlin` |
+
+## Storage / Data
+
+Keep your files alive across machines you control: encrypted, content-addressed Blossom storage that is reachable without depending on one host.
+
+Start with **[wildbloom](https://github.com/forgesworn/wildbloom)** to publish; run **[wildbloom-node](https://github.com/forgesworn/wildbloom-node)** to hold and mirror; build your own on **[shelter-kit](https://github.com/forgesworn/shelter-kit)**; join nodes over **[forgesworn-link](https://github.com/forgesworn/forgesworn-link)** when Tor is not an option.
+
+| Repository | What it does |
+|:-----------|:-------------|
+| **[wildbloom](https://github.com/forgesworn/wildbloom)** | Local-first encrypted publishing over Nostr and Blossom: files that outlive their host. Publishes to standard Blossom servers over HTTPS or optional Tor, with BitTorrent as an extra lane. [wildbloom.forgesworn.dev](https://wildbloom.forgesworn.dev) |
+| **[wildbloom-node](https://github.com/forgesworn/wildbloom-node)** | Self-hosted Blossom storage node. Owner, friend and guest retention tiers over one deduplicated store; Tor is optional or run behind your own HTTPS; verified BUD-04 mirror and exact-hash repair. `Rust` |
+| **[shelter-kit](https://github.com/forgesworn/shelter-kit)** | Transport-neutral Blossom storage core in Rust: unbound router, BUD authorisation, content-addressed streaming store, owner/friend/guest retention and verified mirror-and-repair. A library, not a daemon. `Rust` |
+| **[forgesworn-link](https://github.com/forgesworn/forgesworn-link)** | Wide-area transport lane for ForgeSworn storage: two authorised nodes find a route, try a direct QUIC path and fall back to an opaque relay, on standard Rust crates and nobody's endpoint IDs. `Rust` |
+
+## Live / Real-time
+
+Video rooms and live streams whose signalling rides Nostr relays, with media device to device and no operator in the middle.
+
+| Repository | What it does |
+|:-----------|:-------------|
+| **[kithmoot](https://github.com/forgesworn/kithmoot)** | Multi-device conference rooms over Nostr: a town hall nobody owns. A room is a secret held by whoever has the link, and a person rather than a device is the unit that joins, so a phone and a laptop appear as one participant. Mesh WebRTC, Kindred-gated access tiers, and the relays, STUN and TURN the room names itself. [kithmoot.forgesworn.dev](https://kithmoot.forgesworn.dev) |
+| **[kithmoot-android](https://github.com/forgesworn/kithmoot-android)** | Native Kotlin implementation of the KithMoot protocol: the second, independent implementation, written against the published interop vectors, and the proof that the protocol is infrastructure rather than a product. `Kotlin` |
+| **[relayswarm](https://github.com/forgesworn/relayswarm)** | Peer-assisted HLS live-stream distribution with WebRTC signalling over Nostr relays instead of a dedicated tracker, so there is no signalling service for anyone to seize. Segments verified by hash, plain HLS as the floor. |
+| **[relayswarm-kit](https://github.com/forgesworn/relayswarm-kit)** | Swift implementation of RelaySwarm signalling for macOS and iOS: presence and NIP-44-encrypted SDP exchange over Nostr relays, a minimal Nostr client, throwaway per-session keys, and WebRTC data channels via libdatachannel. `Swift` |
 
 ## Identity Primitives
 
