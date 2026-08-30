@@ -1,7 +1,7 @@
 {
-  "generated": "2026-08-28",
-  "totalPublicRepos": 72,
-  "catalogedProjectRepos": 60,
+  "generated": "2026-08-30",
+  "totalPublicRepos": 73,
+  "catalogedProjectRepos": 69,
   "excludedPublicRepos": [
     {
       "name": ".github",
@@ -22,9 +22,9 @@
   ],
   "categories": [
     {
-      "name": "L402 / Machine Payments",
+      "name": "Payments / L402",
       "slug": "l402",
-      "description": "Make APIs payable, discoverable, and consumable by people and agents.",
+      "description": "Make APIs payable, discoverable, and consumable by people and agents. Reach Lightning wallets you do not hold, and mint or carry bearer notes.",
       "repos": [
         {
           "name": "toll-booth",
@@ -217,7 +217,9 @@
             "payments"
           ],
           "dependsOn": [],
-          "usedBy": []
+          "usedBy": [
+            "notecase"
+          ]
         },
         {
           "name": "nwc-kit",
@@ -232,8 +234,62 @@
           ],
           "dependsOn": [],
           "usedBy": [
-            "402-mcp"
+            "402-mcp",
+            "notecase"
           ]
+        },
+        {
+          "name": "nwc-lnd-bridge",
+          "github": "https://github.com/forgesworn/nwc-lnd-bridge",
+          "npm": null,
+          "description": "Minimal NIP-47 wallet service in front of an LND node. Invoice-only by default, with the method allowlist enforced before a request reaches LND, so the connection URI cannot spend.",
+          "tags": [
+            "lightning",
+            "nostr",
+            "nip-47",
+            "nwc",
+            "lnd"
+          ],
+          "dependsOn": [],
+          "usedBy": []
+        },
+        {
+          "name": "moneyer",
+          "github": "https://github.com/forgesworn/moneyer",
+          "npm": "@forgesworn/moneyer",
+          "description": "LNURLcash (LUD-25) mint that strikes Lightning bearer notes. Independent implementation with cln and lnd funding sources, SQLite, a crash-safe melt discipline, and the public conformance grader in its own test suite.",
+          "tags": [
+            "lightning",
+            "lnurlcash",
+            "lud-25",
+            "mint",
+            "bearer-notes"
+          ],
+          "dependsOn": [],
+          "usedBy": [
+            "notecase"
+          ]
+        },
+        {
+          "name": "notecase",
+          "github": "https://github.com/forgesworn/notecase",
+          "npm": "@forgesworn/notecase",
+          "description": "LNURLcash (LUD-25) wallet for Lightning bearer notes: receive, hold, split, merge, send and melt notes whose secret is the money. Built so no crash, timeout or lying mint can lose one; CLI and web surface, NWC-assisted minting and melting.",
+          "tags": [
+            "lightning",
+            "lnurlcash",
+            "lud-25",
+            "wallet",
+            "bearer-notes"
+          ],
+          "dependsOn": [
+            "farrier-kit",
+            "nwc-kit",
+            "keystore-kit",
+            "shamir-words",
+            "moneyer"
+          ],
+          "usedBy": []
         }
       ]
     },
@@ -324,7 +380,7 @@
     {
       "name": "Identity / Access",
       "slug": "identity",
-      "description": "Hardware-backed Nostr signing, deterministic identities, spoken verification, encrypted access control, and decentralised identity verification.",
+      "description": "Hardware-backed Nostr signing, deterministic identities, spoken verification, encrypted access control, decentralised identity verification, and family wardship on your own keys.",
       "repos": [
         {
           "name": "nsec-tree",
@@ -661,6 +717,26 @@
             "webauthn"
           ],
           "dependsOn": [],
+          "usedBy": [
+            "notecase"
+          ]
+        },
+        {
+          "name": "kintrinsic",
+          "github": "https://github.com/forgesworn/kintrinsic",
+          "npm": "@forgesworn/charter",
+          "description": "Libre, self-hosted digital wardship. A guardian grants scoped, revocable screen-time, app, content and comms clauses to a child’s devices, signed with the family’s own keys and enforced on-device: an Android Device Owner ward app, a Linux warden, a guardian app and a Nostr wire contract, with no platform account in the middle.",
+          "tags": [
+            "identity",
+            "access",
+            "wardship",
+            "family",
+            "nostr",
+            "nip-59",
+            "android",
+            "rust"
+          ],
+          "dependsOn": [],
           "usedBy": []
         }
       ]
@@ -709,8 +785,101 @@
           ],
           "dependsOn": [],
           "usedBy": [
-            "wildbloom-node"
+            "wildbloom-node",
+            "forgesworn-link"
           ]
+        },
+        {
+          "name": "forgesworn-link",
+          "github": "https://github.com/forgesworn/forgesworn-link",
+          "npm": null,
+          "description": "Wide-area transport lane for ForgeSworn storage: two authorised nodes find a route, try a direct QUIC path and fall back to an opaque relay, on standard Rust crates and nobody’s endpoint IDs. The native lane a Tor-less Wildbloom node uses to mirror and repair between machines.",
+          "tags": [
+            "storage",
+            "transport",
+            "quic",
+            "relay",
+            "rust"
+          ],
+          "dependsOn": [
+            "shelter-kit"
+          ],
+          "usedBy": []
+        }
+      ]
+    },
+    {
+      "name": "Live / Real-time",
+      "slug": "live",
+      "description": "Video rooms and live streams whose signalling rides Nostr relays, with media device to device and no operator in the middle.",
+      "repos": [
+        {
+          "name": "kithmoot",
+          "github": "https://github.com/forgesworn/kithmoot",
+          "npm": null,
+          "description": "Multi-device conference rooms over Nostr: a town hall nobody owns. A room is a secret held by whoever has the link, and a person rather than a device is the unit that joins, so a phone and a laptop appear as one participant. Mesh WebRTC, Kindred-gated access tiers, and the relays, STUN and TURN the room names itself.",
+          "tags": [
+            "live",
+            "webrtc",
+            "nostr",
+            "conference",
+            "video"
+          ],
+          "dependsOn": [],
+          "usedBy": [
+            "kithmoot-android"
+          ]
+        },
+        {
+          "name": "kithmoot-android",
+          "github": "https://github.com/forgesworn/kithmoot-android",
+          "npm": null,
+          "description": "Native Kotlin implementation of the KithMoot protocol: the second, independent implementation, written against the published interop vectors, and the proof that the protocol is infrastructure rather than a product.",
+          "tags": [
+            "live",
+            "webrtc",
+            "nostr",
+            "android",
+            "kotlin"
+          ],
+          "dependsOn": [
+            "kithmoot"
+          ],
+          "usedBy": []
+        },
+        {
+          "name": "relayswarm",
+          "github": "https://github.com/forgesworn/relayswarm",
+          "npm": null,
+          "description": "Peer-assisted HLS live-stream distribution with WebRTC signalling over Nostr relays instead of a dedicated tracker, so there is no signalling service for anyone to seize. Segments verified by hash, plain HLS as the floor.",
+          "tags": [
+            "live",
+            "hls",
+            "webrtc",
+            "nostr",
+            "p2p"
+          ],
+          "dependsOn": [],
+          "usedBy": [
+            "relayswarm-kit"
+          ]
+        },
+        {
+          "name": "relayswarm-kit",
+          "github": "https://github.com/forgesworn/relayswarm-kit",
+          "npm": null,
+          "description": "Swift implementation of RelaySwarm signalling for macOS and iOS: presence and NIP-44-encrypted SDP exchange over Nostr relays, a minimal Nostr client, throwaway per-session keys, and WebRTC data channels via libdatachannel.",
+          "tags": [
+            "live",
+            "webrtc",
+            "nostr",
+            "swift",
+            "apple"
+          ],
+          "dependsOn": [
+            "relayswarm"
+          ],
+          "usedBy": []
         }
       ]
     },
@@ -885,7 +1054,8 @@
           ],
           "usedBy": [
             "nsec-tree-cli",
-            "canary-kit"
+            "canary-kit",
+            "notecase"
           ]
         }
       ]
