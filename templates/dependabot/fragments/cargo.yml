@@ -1,0 +1,35 @@
+  - package-ecosystem: cargo
+    # Set `directories` per repo when the crates do not live at the root, e.g.
+    # a repo with `/core` and `/linux` workspaces lists both.
+    directory: "/"
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: chore
+      include: scope
+    groups:
+      # Listed first: a dependency joins the first group whose patterns match.
+      # The RustCrypto crates share a `digest` version and CANNOT be bumped one
+      # at a time -- sha2 0.11 pulls digest 0.11 into a tree where hmac 0.12
+      # still wants digest 0.10, and the build dies on "expected trait ... found
+      # trait" for KeyInit and CoreProxy. Every per-crate PR in the family fails
+      # the same way no matter how often it is retried. Grouped across all update
+      # types so majors keep manual review but arrive together and buildable.
+      rustcrypto:
+        patterns:
+          - "sha2"
+          - "sha3"
+          - "hkdf"
+          - "hmac"
+          - "digest"
+          - "chacha20*"
+          - "cipher"
+          - "aead"
+          - "crypto-common"
+          - "block-buffer"
+          - "universal-hash"
+          - "poly1305"
+        update-types: ["patch", "minor", "major"]
+      cargo-minor:
+        update-types: ["patch", "minor"]

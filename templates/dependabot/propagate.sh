@@ -35,20 +35,50 @@ read -ra SKIP_REPOS <<< "${DEPENDABOT_SKIP_REPOS:-}"
 REPOS=$(gh api "/orgs/forgesworn/repos?per_page=100" --paginate \
   -q '.[] | select(.archived == false and .fork == false) | .name')
 
-classify_repo() {
-  # echoes "npm", "gomod", or "skip"
-  local repo="$1"
-  if gh api "/repos/forgesworn/$repo/contents/go.mod" >/dev/null 2>&1; then
-    echo gomod; return
+# Echoes every ecosystem the repo actually contains, space separated, e.g.
+# "npm cargo". Deliberately NOT first-match-wins: charter carries a package.json
+# for its console AND two cargo workspaces, and the old first-match version
+# labelled it "npm", so its whole Rust tree went unmanaged. Sixteen cargo PRs
+# opened and then sat unrebased for seven weeks before anyone noticed.
+detect_ecosystems() {
+  local repo="$1" found=""
+  gh api "/repos/forgesworn/$repo/contents/go.mod"       >/dev/null 2>&1 && found="$found gomod"
+  gh api "/repos/forgesworn/$repo/contents/package.json" >/dev/null 2>&1 && found="$found npm"
+  gh api "/repos/forgesworn/$repo/contents/Cargo.toml"   >/dev/null 2>&1 && found="$found cargo"
+  # Cargo crates often live in subdirectories rather than at the root. Look one
+  # level down before concluding there is no Rust here.
+  if [[ "$found" != *cargo* ]]; then
+    if gh api "/repos/forgesworn/$repo/contents/" -q '.[]|select(.type=="dir")|.name' 2>/dev/null \
+        | while read -r d; do
+            gh api "/repos/forgesworn/$repo/contents/$d/Cargo.toml" >/dev/null 2>&1 && { echo hit; break; }
+          done | grep -q hit; then
+      found="$found cargo"
+    fi
   fi
-  if gh api "/repos/forgesworn/$repo/contents/package.json" >/dev/null 2>&1; then
-    echo npm; return
-  fi
-  echo skip
+  echo "${found# }"
+}
+
+# Compose .github/dependabot.yml from one fragment per detected ecosystem plus
+# the shared github-actions block. The previous version copied a single whole
+# template over the file, which cannot express a repo with two ecosystems and
+# silently discarded any hand-added block on the next run.
+compose_config() {
+  local out="$1"; shift
+  {
+    cat "$TEMPLATE_DIR/fragments/header.yml"
+    for eco in "$@"; do cat "$TEMPLATE_DIR/fragments/$eco.yml"; echo; done
+    cat "$TEMPLATE_DIR/fragments/github-actions.yml"
+  } > "$out"
 }
 
 in_skiplist() {
   local r="$1"
+  # Guard the length first. Under `set -u` on bash 3.2 -- which is what macOS
+  # still ships -- expanding "${SKIP_REPOS[@]}" on an empty array is an unbound
+  # variable error, so the script aborted on its very first repo unless
+  # DEPENDABOT_SKIP_REPOS happened to be set. That is almost certainly why repos
+  # have been running stale copies of these templates.
+  [[ ${#SKIP_REPOS[@]} -eq 0 ]] && return 1
   for s in "${SKIP_REPOS[@]}"; do [[ "$r" == "$s" ]] && return 0; done
   return 1
 }
@@ -57,15 +87,15 @@ for repo in $REPOS; do
   [[ -n "$ONLY_REPO" && "$repo" != "$ONLY_REPO" ]] && continue
   in_skiplist "$repo" && { echo "skip (skiplist): $repo"; continue; }
 
-  kind=$(classify_repo "$repo")
-  if [[ "$kind" == "skip" ]]; then
-    echo "skip (no npm/gomod): $repo"
+  read -ra ECOSYSTEMS <<< "$(detect_ecosystems "$repo")"
+  if [[ ${#ECOSYSTEMS[@]} -eq 0 ]]; then
+    echo "skip (no npm/gomod/cargo): $repo"
     continue
   fi
 
-  echo "=== $repo ($kind) ==="
+  echo "=== $repo (${ECOSYSTEMS[*]}) ==="
   if [[ $APPLY -eq 0 ]]; then
-    echo "  would apply: dependabot.$kind.yml + dependabot-auto-merge.yml"
+    echo "  would apply: ${ECOSYSTEMS[*]} fragments + github-actions + dependabot-auto-merge.yml"
     continue
   fi
 
@@ -77,8 +107,15 @@ for repo in $REPOS; do
   git switch -c "$BRANCH"
 
   mkdir -p .github/workflows
-  cp "$TEMPLATE_DIR/dependabot.$kind.yml"        .github/dependabot.yml
+  compose_config .github/dependabot.yml "${ECOSYSTEMS[@]}"
   cp "$TEMPLATE_DIR/dependabot-auto-merge.yml"   .github/workflows/dependabot-auto-merge.yml
+
+  # A cargo repo whose crates are not at the root needs `directories` listing
+  # them. Composition cannot know that, so say so rather than quietly shipping
+  # a config that watches the wrong path.
+  if [[ " ${ECOSYSTEMS[*]} " == *" cargo "* ]]; then
+    echo "  NOTE: $repo has cargo -- check the directory/directories key matches where its crates live"
+  fi
 
   git add .github/dependabot.yml .github/workflows/dependabot-auto-merge.yml
   if git diff --cached --quiet; then
