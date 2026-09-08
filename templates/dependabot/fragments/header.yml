@@ -18,27 +18,3 @@ version: 2
 # all in that category.
 
 updates:
-  - package-ecosystem: gomod
-    directory: "/"
-    schedule:
-      interval: weekly
-      day: monday
-    open-pull-requests-limit: 10
-    commit-message:
-      prefix: chore
-      include: scope
-    groups:
-      gomod-minor:
-        update-types: ["patch", "minor"]
-
-  - package-ecosystem: github-actions
-    directory: "/"
-    schedule:
-      interval: monthly
-    open-pull-requests-limit: 5
-    commit-message:
-      prefix: chore
-      include: scope
-    groups:
-      actions-minor:
-        update-types: ["patch", "minor"]
