@@ -1,7 +1,7 @@
 {
-  "generated": "2026-08-30",
-  "totalPublicRepos": 73,
-  "catalogedProjectRepos": 69,
+  "generated": "2026-09-08T14:47:24Z",
+  "totalPublicRepos": 77,
+  "catalogedProjectRepos": 70,
   "excludedPublicRepos": [
     {
       "name": ".github",
@@ -17,7 +17,11 @@
     },
     {
       "name": "flock",
-      "reason": "consumer app — featured as a product callout + use case, not a building block"
+      "reason": "consumer app \u2014 featured as a product callout + use case, not a building block"
+    },
+    {
+      "name": "den",
+      "reason": "consumer app \u2014 the signed Android build of Vitark Den for direct download, not a building block"
     }
   ],
   "categories": [
@@ -290,6 +294,20 @@
             "moneyer"
           ],
           "usedBy": []
+        },
+        {
+          "name": "notelocker",
+          "github": "https://github.com/forgesworn/notelocker",
+          "description": "One CLI for LNURLcash bearer-note locker devices. Ask a locker what it is holding, mint a secret on it, release one when you need to spend. Speaks lnurl-vault's serial command set over either framing, so the same commands drive an lnurl-vault and a heartwood without knowing which is on the cable.",
+          "tags": [
+            "lightning",
+            "lnurlcash",
+            "lud-25",
+            "hardware",
+            "cli"
+          ],
+          "dependsOn": [],
+          "usedBy": []
         }
       ]
     },
@@ -364,7 +382,7 @@
           "name": "capacitor-mesh-ble",
           "github": "https://github.com/forgesworn/capacitor-mesh-ble",
           "npm": null,
-          "description": "Configurable Bluetooth LE mesh transport for Capacitor apps — discovery, GATT, chunking, dedup, and multi-hop relay over an encrypted phone-to-phone mesh.",
+          "description": "Configurable Bluetooth LE mesh transport for Capacitor apps \u2014 discovery, GATT, chunking, dedup, and multi-hop relay over an encrypted phone-to-phone mesh.",
           "tags": [
             "spatial",
             "ble",
@@ -443,7 +461,7 @@
           "name": "heartwood-ledger",
           "github": "https://github.com/forgesworn/heartwood-ledger",
           "npm": null,
-          "description": "Heartwood signer as a Ledger embedded app. NIP-46, NIP-44, and nsec-tree personas on the secure element — emulator-proven prototype.",
+          "description": "Heartwood signer as a Ledger embedded app. NIP-46, NIP-44, and nsec-tree personas on the secure element \u2014 emulator-proven prototype.",
           "tags": [
             "identity",
             "nostr",
@@ -709,7 +727,7 @@
           "name": "keystore-kit",
           "github": "https://github.com/forgesworn/keystore-kit",
           "npm": null,
-          "description": "Browser key-at-rest — protect a secret with a PIN, WebAuthn-PRF, or a grace window; pluggable storage and burn. Curve-agnostic, pure Web Crypto, zero runtime deps.",
+          "description": "Browser key-at-rest \u2014 protect a secret with a PIN, WebAuthn-PRF, or a grace window; pluggable storage and burn. Curve-agnostic, pure Web Crypto, zero runtime deps.",
           "tags": [
             "identity",
             "access",
@@ -725,7 +743,7 @@
           "name": "kintrinsic",
           "github": "https://github.com/forgesworn/kintrinsic",
           "npm": "@forgesworn/charter",
-          "description": "Libre, self-hosted digital wardship. A guardian grants scoped, revocable screen-time, app, content and comms clauses to a child’s devices, signed with the family’s own keys and enforced on-device: an Android Device Owner ward app, a Linux warden, a guardian app and a Nostr wire contract, with no platform account in the middle.",
+          "description": "Libre, self-hosted digital wardship. A guardian grants scoped, revocable screen-time, app, content and comms clauses to a child\u2019s devices, signed with the family\u2019s own keys and enforced on-device: an Android Device Owner ward app, a Linux warden, a guardian app and a Nostr wire contract, with no platform account in the middle.",
           "tags": [
             "identity",
             "access",
@@ -793,7 +811,7 @@
           "name": "forgesworn-link",
           "github": "https://github.com/forgesworn/forgesworn-link",
           "npm": null,
-          "description": "Wide-area transport lane for ForgeSworn storage: two authorised nodes find a route, try a direct QUIC path and fall back to an opaque relay, on standard Rust crates and nobody’s endpoint IDs. The native lane a Tor-less Wildbloom node uses to mirror and repair between machines.",
+          "description": "Wide-area transport lane for ForgeSworn storage: two authorised nodes find a route, try a direct QUIC path and fall back to an opaque relay, on standard Rust crates and nobody\u2019s endpoint IDs. The native lane a Tor-less Wildbloom node uses to mirror and repair between machines.",
           "tags": [
             "storage",
             "transport",
@@ -959,7 +977,7 @@
           "name": "nostr-anon-vote",
           "github": "https://github.com/forgesworn/nostr-anon-vote",
           "npm": "nostr-anon-vote",
-          "description": "Anonymous voting on Nostr with LSAG ring signatures — double-vote prevention without revealing identity.",
+          "description": "Anonymous voting on Nostr with LSAG ring signatures \u2014 double-vote prevention without revealing identity.",
           "tags": [
             "voting",
             "privacy",
@@ -1015,7 +1033,7 @@
           "name": "private-equality",
           "github": "https://github.com/forgesworn/private-equality",
           "npm": "@forgesworn/private-equality",
-          "description": "Socialist Millionaires' Protocol over Ristretto255 — decide whether two parties hold the same secret, revealing only one bit.",
+          "description": "Socialist Millionaires' Protocol over Ristretto255 \u2014 decide whether two parties hold the same secret, revealing only one bit.",
           "tags": [
             "crypto",
             "smp",
@@ -1115,7 +1133,7 @@
           "name": "mesh-kit",
           "github": "https://github.com/forgesworn/mesh-kit",
           "npm": null,
-          "description": "Transport-agnostic encrypted offline-mesh substrate — a MeshTransport interface, a Noise_XX SecureChannel, reliability and reconciliation, with deterministic in-memory sims.",
+          "description": "Transport-agnostic encrypted offline-mesh substrate \u2014 a MeshTransport interface, a Noise_XX SecureChannel, reliability and reconciliation, with deterministic in-memory sims.",
           "tags": [
             "mesh",
             "offline",
