@@ -107,7 +107,20 @@ for repo in $REPOS; do
   git switch -c "$BRANCH"
 
   mkdir -p .github/workflows
+  # Compose from the template, then hand back the settings that belong to the
+  # repo rather than the template: where its packages live, how often to look,
+  # how many PRs at once. Without this the sync flattens charter's cargo
+  # `directories: [/core, /linux]` to `/`, which has no Cargo.toml, and
+  # un-manages the very tree the cargo fragment was added to cover.
+  PREV_CONFIG=""
+  if [[ -f .github/dependabot.yml ]]; then
+    PREV_CONFIG="$(mktemp)"; cp .github/dependabot.yml "$PREV_CONFIG"
+  fi
   compose_config .github/dependabot.yml "${ECOSYSTEMS[@]}"
+  if [[ -n "$PREV_CONFIG" ]]; then
+    python3 "$TEMPLATE_DIR/merge-local.py" "$PREV_CONFIG" .github/dependabot.yml
+    rm -f "$PREV_CONFIG"
+  fi
   cp "$TEMPLATE_DIR/dependabot-auto-merge.yml"   .github/workflows/dependabot-auto-merge.yml
 
   # A cargo repo whose crates are not at the root needs `directories` listing
