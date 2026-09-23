@@ -1,7 +1,7 @@
 {
-  "generated": "2026-09-08T14:47:24Z",
-  "totalPublicRepos": 77,
-  "catalogedProjectRepos": 70,
+  "generated": "2026-09-23T16:50:20Z",
+  "totalPublicRepos": 82,
+  "catalogedProjectRepos": 75,
   "excludedPublicRepos": [
     {
       "name": ".github",
@@ -412,7 +412,8 @@
           ],
           "dependsOn": [],
           "usedBy": [
-            "heartwood"
+            "heartwood",
+            "nostr-succession"
           ]
         },
         {
@@ -692,7 +693,8 @@
           ],
           "dependsOn": [],
           "usedBy": [
-            "bray"
+            "bray",
+            "epoch-seal"
           ]
         },
         {
@@ -755,6 +757,34 @@
             "rust"
           ],
           "dependsOn": [],
+          "usedBy": []
+        },
+        {
+          "name": "nostr-contact-card",
+          "github": "https://github.com/forgesworn/nostr-contact-card",
+          "npm": "nostr-contact-card",
+          "description": "One QR or link that makes a stranger a contact: a signed, ephemeral kind 21641 card carried in the link, never posted to a relay.",
+          "tags": [
+            "identity",
+            "qr",
+            "contacts"
+          ],
+          "dependsOn": [],
+          "usedBy": []
+        },
+        {
+          "name": "nostr-succession",
+          "github": "https://github.com/forgesworn/nostr-succession",
+          "npm": "nostr-succession",
+          "description": "Key succession for Nostr: a public pre-commitment to a migration key (kind 1360) and the migration itself (kind 1361), so a stolen key cannot invent the move.",
+          "tags": [
+            "identity",
+            "key-rotation",
+            "recovery"
+          ],
+          "dependsOn": [
+            "nsec-tree"
+          ],
           "usedBy": []
         }
       ]
@@ -935,6 +965,20 @@
             "spoken-token"
           ],
           "usedBy": []
+        },
+        {
+          "name": "context",
+          "github": "https://github.com/forgesworn/context",
+          "npm": null,
+          "description": "Z1P Core: local code graphs and bounded, signed evidence for coding agents. Runs on your machine, no account, no hosted service.",
+          "tags": [
+            "ai-agents",
+            "mcp",
+            "local-first",
+            "knowledge-graph"
+          ],
+          "dependsOn": [],
+          "usedBy": []
         }
       ]
     },
@@ -987,6 +1031,21 @@
           "dependsOn": [
             "ring-sig"
           ],
+          "usedBy": [
+            "epoch-seal"
+          ]
+        },
+        {
+          "name": "nostr-deaddrop",
+          "github": "https://github.com/forgesworn/nostr-deaddrop",
+          "npm": "nostr-deaddrop",
+          "description": "Gift wraps nobody can trace. Rendezvous keys replace the recipient's p tag, and cover traffic hides whether you had anything to say.",
+          "tags": [
+            "privacy",
+            "nip-59",
+            "metadata"
+          ],
+          "dependsOn": [],
           "usedBy": []
         }
       ]
@@ -1010,7 +1069,8 @@
           "usedBy": [
             "nostr-veil",
             "canary-kit",
-            "nostr-anon-vote"
+            "nostr-anon-vote",
+            "epoch-seal"
           ]
         },
         {
@@ -1075,6 +1135,23 @@
             "canary-kit",
             "notecase"
           ]
+        },
+        {
+          "name": "epoch-seal",
+          "github": "https://github.com/forgesworn/epoch-seal",
+          "npm": "epoch-seal",
+          "description": "Threshold epoch-key sealing with refusable recovery: an old epoch needs a quorum of your circle, a delay, and nobody saying no.",
+          "tags": [
+            "crypto",
+            "threshold",
+            "recovery"
+          ],
+          "dependsOn": [
+            "ring-sig",
+            "dominion",
+            "nostr-anon-vote"
+          ],
+          "usedBy": []
         }
       ]
     },
