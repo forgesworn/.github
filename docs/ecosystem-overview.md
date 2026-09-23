@@ -6,7 +6,7 @@ How the ForgeSworn building blocks fit together. Built from the inside out: audi
 
 ## Architecture, Top to Bottom
 
-The same building blocks as a stack: end-user applications on top, resting on domain libraries, then transport and signing, then identity and keys, and — at the foundation — the audited cryptographic primitives everything else is built from.
+The same building blocks as a stack: end-user applications on top, resting on domain libraries, then transport and signing, then identity and keys, and, at the foundation, the audited cryptographic primitives everything else is built from.
 
 ```mermaid
 graph TB
@@ -106,7 +106,7 @@ graph TB
     style L5 fill:#2d2d1b,stroke:#f5a623,color:#eee,stroke-width:3px
 ```
 
-*A simplified view — each layer holds more than shown; the [full catalogue](../profile/README.md) lists every repo.*
+*A simplified view: each layer holds more than shown; the [full catalogue](../profile/README.md) lists every repo.*
 
 ## System Context
 

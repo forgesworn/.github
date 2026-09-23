@@ -30,19 +30,19 @@ Built on Nostr, Lightning, and zero-trust cryptography. Every repo works standal
 - **[402-mcp](https://github.com/forgesworn/402-mcp)**: Let AI agents discover, pay for, and consume paid APIs.
   Pair with **[toll-booth](https://github.com/forgesworn/toll-booth)** and **[402-pub](https://github.com/forgesworn/402-pub)**.
 - **[bray](https://github.com/forgesworn/bray)**: Give AI agents a sovereign Nostr identity.
-  253 tools across 28 groups covering identity, social, payments, dispatch, trust, moderation, privacy, spells, and encrypted access. Built on **[nsec-tree](https://github.com/forgesworn/nsec-tree)** for identity derivation and **[dominion](https://github.com/forgesworn/dominion)** for encrypted access.
+  261 tools across 29 groups covering identity, social, payments, dispatch, trust, moderation, privacy, spells, and encrypted access. Built on **[nsec-tree](https://github.com/forgesworn/nsec-tree)** for identity derivation and **[dominion](https://github.com/forgesworn/dominion)** for encrypted access.
 - **[nostr-veil](https://github.com/forgesworn/nostr-veil)**: Privacy-preserving Web of Trust.
   Anonymous trust assertions using LSAG ring signatures over NIP-85. Built on **[ring-sig](https://github.com/forgesworn/ring-sig)**.
 - **[rendezvous-kit](https://github.com/forgesworn/rendezvous-kit)**: Build fair meeting-point or spatial apps.
   Add **[geohash-kit](https://github.com/forgesworn/geohash-kit)** and **[rendezvous-mcp](https://github.com/forgesworn/rendezvous-mcp)**.
-- **[flock](https://github.com/forgesworn/flock)**: A coercion-resistant friend-finder that walks you the last half-mile to a moving friend by ear — location end-to-end encrypted over Nostr, and a decoy unlock if the phone is taken.
+- **[flock](https://github.com/forgesworn/flock)**: A coercion-resistant friend-finder that walks you the last half-mile to a moving friend by ear, with location end-to-end encrypted over Nostr, and a decoy unlock if the phone is taken.
   Built on **[flock-kit](https://github.com/forgesworn/flock-kit)**, **[covey-kit](https://github.com/forgesworn/covey-kit)**, **[roost-kit](https://github.com/forgesworn/roost-kit)**, **[keystore-kit](https://github.com/forgesworn/keystore-kit)**, and an offline **[mesh-kit](https://github.com/forgesworn/mesh-kit)** / **[capacitor-mesh-ble](https://github.com/forgesworn/capacitor-mesh-ble)** stack.
 - **[spoken-token](https://github.com/forgesworn/spoken-token)**: Add human-speakable rotating verification codes.
   Pair with **[canary-kit](https://github.com/forgesworn/canary-kit)**.
 - **[nsec-tree](https://github.com/forgesworn/nsec-tree)**: Derive deterministic, unlinkable Nostr sub-identities from one master secret.
   Use it when one seed needs separate identities for roles, apps, bots, or privacy boundaries. Add **[nsec-tree-cli](https://github.com/forgesworn/nsec-tree-cli)** for an offline-first CLI. Used by **[bray](https://github.com/forgesworn/bray)**, **[heartwood](https://github.com/forgesworn/heartwood)**, and **[signet](https://github.com/forgesworn/signet)**.
 - **[heartwood](https://github.com/forgesworn/heartwood)**: Keyless NIP-46 bridge for hardware Nostr signers.
-  Connects Nostr relays to a USB-tethered **[heartwood-esp32](https://github.com/forgesworn/heartwood-esp32)** token or **[heartwood-ledger](https://github.com/forgesworn/heartwood-ledger)** app — the bridge holds no seed, no PIN, no plaintext; every operation happens on the device. Per-client kind permissions enforced on-device, unlimited unlinkable personas from one mnemonic via **[nsec-tree](https://github.com/forgesworn/nsec-tree)**. `Rust`
+  Connects Nostr relays to a USB-tethered **[heartwood-esp32](https://github.com/forgesworn/heartwood-esp32)** token or **[heartwood-ledger](https://github.com/forgesworn/heartwood-ledger)** app. The bridge holds no seed, no PIN, no plaintext; every operation happens on the device. Per-client kind permissions enforced on-device, unlimited unlinkable personas from one mnemonic via **[nsec-tree](https://github.com/forgesworn/nsec-tree)**. `Rust`
 - **[bark](https://github.com/forgesworn/bark)**: NIP-07 Nostr signer backed by NIP-46 remote signing.
   Self-sovereign keys, derived personas with **[heartwood](https://github.com/forgesworn/heartwood)**.
 - **[canary-kit](https://github.com/forgesworn/canary-kit)**: Build spoken verification, duress detection, or privacy-preserving identity flows.
@@ -67,7 +67,7 @@ Built on Nostr, Lightning, and zero-trust cryptography. Every repo works standal
 - `nsec-tree -> heartwood-esp32 -> heartwood -> bark`: Keys on a hardware token, relayed by the keyless bridge via NIP-46 over Nostr relays, used from the browser via NIP-07.
 - `nsec-tree -> heartwood-esp32 -> sapwood`: Microcontroller signing token on ESP32-S3, configured via a web management UI.
 - `nsec-tree -> heartwood-ledger -> heartwood`: The same signer running as a Ledger embedded app, keys in the secure element (emulator-proven).
-- `heartwood -> cambium`: Android NIP-55 signing with no keys on the phone — every request proxied to the hardware signer.
+- `heartwood -> cambium`: Android NIP-55 signing with no keys on the phone: every request proxied to the hardware signer.
 - `nsec-tree -> bray -> dominion`: Derive sub-identities, give them to an AI agent, gate content access by tier and epoch.
 - `nsec-tree -> spoken-token / canary-kit`: Derive purpose-specific Nostr identities, attach spoken verification or higher-trust identity flows.
 - `ring-sig -> nostr-veil`: Anonymous trust assertions -- prove group membership without revealing who endorsed.
@@ -76,7 +76,7 @@ Built on Nostr, Lightning, and zero-trust cryptography. Every repo works standal
 - `spoken-token -> canary-kit -> ring-sig / range-proof / shamir-words`: Spoken verification, privacy-preserving proofs, human-recoverable secret handling.
 - `shamir-core -> shamir-words -> nsec-tree-cli`: Core secret sharing, BIP-39 word output, offline identity recovery.
 - `covey-kit -> roost-kit -> flock-kit`: Build an encrypted circle, deliver each member's position as a NIP-59 gift wrap, and guide people to each other by sound and vibration.
-- `mesh-kit -> mesh-nostr-kit / capacitor-mesh-ble`: Run an authenticated, encrypted, in-order channel over any transport — a Bluetooth mesh between phones, a Nostr relay, or both bridged so someone out of range still hears it.
+- `mesh-kit -> mesh-nostr-kit / capacitor-mesh-ble`: Run an authenticated, encrypted, in-order channel over any transport: a Bluetooth mesh between phones, a Nostr relay, or both bridged so someone out of range still hears it.
 - `nwc-lnd-bridge -> nwc-kit -> toll-booth / 402-mcp`: Front any LND node as an NWC wallet, connect to it with a bounded client, and let it fund a toll booth or an agent's payments.
 - `moneyer -> notecase`: Strike Lightning bearer notes at a mint, then hold, split, merge and melt them in a wallet built so no crash or lying mint can lose one.
 - `wildbloom -> wildbloom-node -> forgesworn-link`: Publish encrypted, hash-addressed files, keep them on your own node, and mirror between nodes over a direct QUIC path or an opaque relay.
@@ -122,9 +122,9 @@ Start with **[rendezvous-kit](https://github.com/forgesworn/rendezvous-kit)** fo
 
 ## Safety, Location & Offline Mesh
 
-Coordinate and stay safe on open protocols, with location that belongs to the person it describes — and keeps working when the network doesn't.
+Coordinate and stay safe on open protocols, with location that belongs to the person it describes, and keeps working when the network doesn't.
 
-**flock stack** — **[flock](https://github.com/forgesworn/flock)** is the app: a coercion-resistant friend-finder that guides you the last half-mile to a moving friend by voice, sound, and vibration, with the phone still in your pocket. Location is end-to-end encrypted over Nostr, shared only as precisely and as briefly as its owner chooses, held by no server — and a compelled unlock opens a decoy, not the real thing. Under it: **[flock-kit](https://github.com/forgesworn/flock-kit)** is the pure guidance-and-safety core, **[covey-kit](https://github.com/forgesworn/covey-kit)** holds the encrypted circles, **[roost-kit](https://github.com/forgesworn/roost-kit)** moves everything as NIP-59 gift wraps, **[keystore-kit](https://github.com/forgesworn/keystore-kit)** guards the on-device key — and when the signal drops, **[mesh-kit](https://github.com/forgesworn/mesh-kit)**, **[mesh-nostr-kit](https://github.com/forgesworn/mesh-nostr-kit)**, and **[capacitor-mesh-ble](https://github.com/forgesworn/capacitor-mesh-ble)** carry the same encrypted frames phone-to-phone over a Bluetooth mesh.
+**flock stack**: **[flock](https://github.com/forgesworn/flock)** is the app: a coercion-resistant friend-finder that guides you the last half-mile to a moving friend by voice, sound, and vibration, with the phone still in your pocket. Location is end-to-end encrypted over Nostr, shared only as precisely and as briefly as its owner chooses, held by no server, and a compelled unlock opens a decoy, not the real thing. Under it: **[flock-kit](https://github.com/forgesworn/flock-kit)** is the pure guidance-and-safety core, **[covey-kit](https://github.com/forgesworn/covey-kit)** holds the encrypted circles, **[roost-kit](https://github.com/forgesworn/roost-kit)** moves everything as NIP-59 gift wraps, **[keystore-kit](https://github.com/forgesworn/keystore-kit)** guards the on-device key, and when the signal drops, **[mesh-kit](https://github.com/forgesworn/mesh-kit)**, **[mesh-nostr-kit](https://github.com/forgesworn/mesh-nostr-kit)**, and **[capacitor-mesh-ble](https://github.com/forgesworn/capacitor-mesh-ble)** carry the same encrypted frames phone-to-phone over a Bluetooth mesh.
 
 | Repository | What it does |
 |:-----------|:-------------|
@@ -133,9 +133,9 @@ Coordinate and stay safe on open protocols, with location that belongs to the pe
 | **[covey-kit](https://github.com/forgesworn/covey-kit)** | Private circles for Nostr: derived per-circle keys, roles, word-code invites, personal inboxes, and convergent membership state. |
 | **[roost-kit](https://github.com/forgesworn/roost-kit)** | Nostr transport for private circles: NIP-59 gift wraps, relay fan-out, rotating inboxes, and a pre-signed offline outbox. |
 | **[keystore-kit](https://github.com/forgesworn/keystore-kit)** | Browser key-at-rest. Protect one secret behind a PIN, a WebAuthn-PRF biometric, or a grace window; pluggable storage and an irreversible burn. Zero runtime dependencies. |
-| **[mesh-kit](https://github.com/forgesworn/mesh-kit)** | Transport-agnostic encrypted offline-mesh substrate. A Noise_XX secure channel, store-and-forward reliability, and deterministic sims — carries opaque frames without knowing the application. |
+| **[mesh-kit](https://github.com/forgesworn/mesh-kit)** | Transport-agnostic encrypted offline-mesh substrate. A Noise_XX secure channel, store-and-forward reliability, and deterministic sims. It carries opaque frames without knowing the application. |
 | **[mesh-nostr-kit](https://github.com/forgesworn/mesh-nostr-kit)** | Nostr relay transport for opaque mesh-kit frames, so a mesh reaches anyone still holding a relay path. |
-| **[capacitor-mesh-ble](https://github.com/forgesworn/capacitor-mesh-ble)** | Bluetooth LE mesh transport for Capacitor apps: discovery, GATT links, chunking, dedup, and multi-hop relay — phone-to-phone with no network. |
+| **[capacitor-mesh-ble](https://github.com/forgesworn/capacitor-mesh-ble)** | Bluetooth LE mesh transport for Capacitor apps: discovery, GATT links, chunking, dedup, and multi-hop relay, phone-to-phone with no network. |
 | **[kintrinsic](https://github.com/forgesworn/kintrinsic)** | Libre, self-hosted digital wardship. A guardian grants scoped, revocable screen-time, app, content and comms clauses to a child's devices, signed with the family's own keys and enforced on-device: an Android Device Owner ward app, a Linux warden, a guardian app and a Nostr wire contract, with no platform account in the middle. `Rust` `Kotlin` |
 
 ## Storage / Data
@@ -176,6 +176,8 @@ Start with **[nsec-tree](https://github.com/forgesworn/nsec-tree)** for determin
 | **[spoken-token](https://github.com/forgesworn/spoken-token)** | TOTP, but you say it out loud. Derive time-rotating, human-speakable verification tokens from a shared secret. |
 | **[canary-kit](https://github.com/forgesworn/canary-kit)** | Deepfake-proof identity verification with per-member spoken words, silent duress detection, encrypted group sync, and an open protocol. |
 | **[dominion](https://github.com/forgesworn/dominion)** | Epoch-based encrypted access control. Your content. Your keys. Your rules. HKDF content keys per tier/epoch, AES-256-GCM, Shamir secret sharing, tiered audiences. |
+| **[nostr-succession](https://github.com/forgesworn/nostr-succession)** | Key succession for Nostr. A public pre-commitment to a migration key (kind 1360) and the migration itself (kind 1361), so a thief who steals today's key cannot also invent the move. |
+| **[nostr-contact-card](https://github.com/forgesworn/nostr-contact-card)** | One QR or link that makes a stranger a contact. A signed, ephemeral kind 21641 card carried in the link itself, never posted to a relay. |
 
 ## Signers and Identity Apps
 
@@ -189,9 +191,9 @@ Running signers, hardware variants, and decentralised-identity applications buil
 |:-----------|:-------------|
 | **[heartwood](https://github.com/forgesworn/heartwood)** | Keyless NIP-46 bridge for hardware Nostr signers. Relay-mediated (no open ports), per-client permissions enforced on-device, unlimited unlinkable personas via nsec-tree. `Rust` |
 | **[heartwood-esp32](https://github.com/forgesworn/heartwood-esp32)** | nsec-tree signing token for Heltec WiFi LoRa 32 V3/V4 (ESP32-S3). On-device button approval, up to 8 master identities. `Rust` |
-| **[heartwood-ledger](https://github.com/forgesworn/heartwood-ledger)** | Heartwood signer as a Ledger embedded app — NIP-46, NIP-44, and nsec-tree personas on the secure element. Emulator-proven prototype. `Rust` |
+| **[heartwood-ledger](https://github.com/forgesworn/heartwood-ledger)** | Heartwood signer as a Ledger embedded app: NIP-46, NIP-44, and nsec-tree personas on the secure element. Emulator-proven prototype. `Rust` |
 | **[bark](https://github.com/forgesworn/bark)** | NIP-07 Nostr signer backed by NIP-46 remote signing. No user keys stored; derived personas with Heartwood. |
-| **[cambium](https://github.com/forgesworn/cambium)** | Android NIP-55 signer that holds no keys — every request proxied to a Heartwood hardware signer over NIP-46. `Kotlin` |
+| **[cambium](https://github.com/forgesworn/cambium)** | Android NIP-55 signer that holds no keys: every request proxied to a Heartwood hardware signer over NIP-46. `Kotlin` |
 | **[sapwood](https://github.com/forgesworn/sapwood)** | Web management UI for the Heartwood ESP32 signer. |
 | **[signet](https://github.com/forgesworn/signet)** | Decentralised identity verification for Nostr. 4 verification tiers, ZKP age proofs, Signet Score (0-200), professional verifier anti-corruption, verifier delegation. |
 | **[signet-verify](https://github.com/forgesworn/signet-verify)** | Drop-in age verification SDK for websites. One script tag, one function call. |
@@ -202,7 +204,8 @@ Give AI agents sovereign Nostr identities with trust-aware tooling.
 
 | Repository | What it does |
 |:-----------|:-------------|
-| **[bray](https://github.com/forgesworn/bray)** | Trust-aware Nostr MCP for AI and humans. 253 tools across 28 groups: identity, social, trust, dispatch, relay, marketplace, safety, privacy, and encrypted access. NIP-A7 Spell casting. Three trust dimensions: Verification (Signet), Proximity (WoT), and Access (Dominion). |
+| **[bray](https://github.com/forgesworn/bray)** | Trust-aware Nostr MCP for AI and humans. 261 tools across 29 groups: identity, social, trust, dispatch, relay, marketplace, safety, privacy, and encrypted access. NIP-A7 Spell casting. Three trust dimensions: Verification (Signet), Proximity (WoT), and Access (Dominion). |
+| **[context](https://github.com/forgesworn/context)** | Z1P Core: local code graphs and bounded, signed evidence for coding agents. Runs on your machine with no account and no hosted service. |
 
 ## Trust / Privacy
 
@@ -213,6 +216,7 @@ Privacy-preserving trust and verifiable attestations.
 | **[nostr-veil](https://github.com/forgesworn/nostr-veil)** | Anonymous trust assertions for Nostr. LSAG ring signatures over NIP-85 so endorsements are verifiable but contributors are unidentifiable. Solves the Trust Trilemma. |
 | **[nostr-attestations](https://github.com/forgesworn/nostr-attestations)** | One Nostr event kind for all attestations -- credentials, endorsements, vouches, provenance, licensing, and trust. NIP-VA (kind 31000). |
 | **[nostr-anon-vote](https://github.com/forgesworn/nostr-anon-vote)** | Anonymous voting on Nostr with LSAG ring signatures -- double-vote prevention without revealing identity. Built on ring-sig. |
+| **[nostr-deaddrop](https://github.com/forgesworn/nostr-deaddrop)** | Gift wraps nobody can trace. Rendezvous keys replace the recipient's `p` tag, and cover traffic hides whether you had anything to say at all. |
 
 ## Cryptographic Primitives
 
@@ -225,6 +229,7 @@ Standalone cryptographic building blocks used across the ecosystem.
 | **[private-equality](https://github.com/forgesworn/private-equality)** | Socialist Millionaires' Protocol over Ristretto255 for deciding whether two parties hold the same secret, revealing only one bit. |
 | **[shamir-core](https://github.com/forgesworn/shamir-core)** | Shamir's Secret Sharing over GF(256) with core utilities. Backend for shamir-words. |
 | **[shamir-words](https://github.com/forgesworn/shamir-words)** | Split secrets into human-readable BIP-39 word shares using Shamir's Secret Sharing. Built on shamir-core. |
+| **[epoch-seal](https://github.com/forgesworn/epoch-seal)** | Threshold epoch-key sealing with refusable recovery. An old epoch needs a quorum of your circle, a delay, and nobody saying no. Built on **[ring-sig](https://github.com/forgesworn/ring-sig)**, **[dominion](https://github.com/forgesworn/dominion)** and **[nostr-anon-vote](https://github.com/forgesworn/nostr-anon-vote)**. |
 
 ## Compliance
 
