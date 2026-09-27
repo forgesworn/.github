@@ -185,7 +185,7 @@ Running signers, hardware variants, and decentralised-identity applications buil
 
 **Signer stack** -- the keys live on a hardware signer (**[heartwood-esp32](https://github.com/forgesworn/heartwood-esp32)** token or **[heartwood-ledger](https://github.com/forgesworn/heartwood-ledger)** secure-element app), **[heartwood](https://github.com/forgesworn/heartwood)** is the keyless bridge that connects the device to Nostr relays, **[bark](https://github.com/forgesworn/bark)** (browser, NIP-07) and **[cambium](https://github.com/forgesworn/cambium)** (Android, NIP-55) are the clients that sign through it, and **[sapwood](https://github.com/forgesworn/sapwood)** is the web management UI.
 
-**Signet stack** -- **[signet](https://github.com/forgesworn/signet)** is the verification protocol, [My Signet](https://mysignet.app) is the user app, and **[signet-verify](https://github.com/forgesworn/signet-verify)** is the drop-in SDK for any website.
+**Signet stack** -- **[signet](https://github.com/forgesworn/signet)** is the verification protocol, **[signet-app](https://github.com/forgesworn/signet-app)** is [My Signet](https://mysignet.app), the user app, and **[signet-lite](https://github.com/forgesworn/signet-lite)** is its lighter NIP-46 signer PWA. **[signet-verify](https://github.com/forgesworn/signet-verify)** is the drop-in SDK for any website, and **[signet-contacts](https://github.com/forgesworn/signet-contacts)** lets an app use the contacts a person grants it.
 
 | Repository | What it does |
 |:-----------|:-------------|
@@ -197,6 +197,9 @@ Running signers, hardware variants, and decentralised-identity applications buil
 | **[sapwood](https://github.com/forgesworn/sapwood)** | Web management UI for the Heartwood ESP32 signer. |
 | **[signet](https://github.com/forgesworn/signet)** | Decentralised identity verification for Nostr. 4 verification tiers, ZKP age proofs, Signet Score (0-200), professional verifier anti-corruption, verifier delegation. |
 | **[signet-verify](https://github.com/forgesworn/signet-verify)** | Drop-in age verification SDK for websites. One script tag, one function call. |
+| **[signet-app](https://github.com/forgesworn/signet-app)** | My Signet: the identity verification app for the Signet protocol. Verify once, prove claims such as an age range without sharing personal data, and sign for Nostr apps over NIP-46 or as an Android NIP-55 signer. |
+| **[signet-lite](https://github.com/forgesworn/signet-lite)** | My Signet Lite: a web-based NIP-46 remote signer PWA. Several identities from one seed via nsec-tree, with per-app and per-kind permissions. |
+| **[signet-contacts](https://github.com/forgesworn/signet-contacts)** | SDK for apps to access a Signet contact directory: capability-scoped pairing, per-grant encrypted projections the owner controls, and proposals an app can make but never force. |
 
 ## AI Agents
 
@@ -217,6 +220,8 @@ Privacy-preserving trust and verifiable attestations.
 | **[nostr-attestations](https://github.com/forgesworn/nostr-attestations)** | One Nostr event kind for all attestations -- credentials, endorsements, vouches, provenance, licensing, and trust. NIP-VA (kind 31000). |
 | **[nostr-anon-vote](https://github.com/forgesworn/nostr-anon-vote)** | Anonymous voting on Nostr with LSAG ring signatures -- double-vote prevention without revealing identity. Built on ring-sig. |
 | **[nostr-deaddrop](https://github.com/forgesworn/nostr-deaddrop)** | Gift wraps nobody can trace. Rendezvous keys replace the recipient's `p` tag, and cover traffic hides whether you had anything to say at all. |
+| **[kenspeckle](https://github.com/forgesworn/kenspeckle)** | Verified relationships at three social distances: kin, kith and ken. Handshake, spoken-word bond ceremony, ken trust store and local presence discovery, as pure functions with no storage and no social graph. Built on **[tessera-kit](https://github.com/forgesworn/tessera-kit)**, **[spoken-token](https://github.com/forgesworn/spoken-token)** and **[nostr-attestations](https://github.com/forgesworn/nostr-attestations)**. |
+| **[tessera-kit](https://github.com/forgesworn/tessera-kit)** | Privacy-preserving membership presence. A server publishes one signed, non-enumerable Binary Fuse filter per epoch, so a member tests a friend's key locally with no member list or lookup API. |
 
 ## Cryptographic Primitives
 

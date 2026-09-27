@@ -1,7 +1,7 @@
 {
-  "generated": "2026-09-23T16:50:20Z",
-  "totalPublicRepos": 82,
-  "catalogedProjectRepos": 75,
+  "generated": "2026-09-27T12:36:42Z",
+  "totalPublicRepos": 88,
+  "catalogedProjectRepos": 80,
   "excludedPublicRepos": [
     {
       "name": ".github",
@@ -413,7 +413,9 @@
           "dependsOn": [],
           "usedBy": [
             "heartwood",
-            "nostr-succession"
+            "nostr-succession",
+            "signet-app",
+            "signet-lite"
           ]
         },
         {
@@ -571,7 +573,10 @@
           ],
           "dependsOn": [],
           "usedBy": [
-            "canary-kit"
+            "canary-kit",
+            "kenspeckle",
+            "signet-contacts",
+            "signet-app"
           ]
         },
         {
@@ -608,7 +613,8 @@
             "signet-credentials",
             "signet-login",
             "signet-protocol-rs",
-            "signet-verify"
+            "signet-verify",
+            "signet-app"
           ]
         },
         {
@@ -786,6 +792,65 @@
             "nsec-tree"
           ],
           "usedBy": []
+        },
+        {
+          "name": "signet-app",
+          "github": "https://github.com/forgesworn/signet-app",
+          "npm": null,
+          "description": "My Signet: the identity verification app for the Signet protocol. Verify once, prove claims such as an age range without sharing personal data, sign in with Signet, and sign for Nostr apps over NIP-46 or as an Android NIP-55 signer.",
+          "tags": [
+            "identity",
+            "signet",
+            "nostr",
+            "nip-46",
+            "nip-55",
+            "app"
+          ],
+          "dependsOn": [
+            "signet",
+            "kenspeckle",
+            "tessera-kit",
+            "signet-contacts",
+            "nsec-tree",
+            "shamir-words",
+            "spoken-token"
+          ],
+          "usedBy": []
+        },
+        {
+          "name": "signet-lite",
+          "github": "https://github.com/forgesworn/signet-lite",
+          "npm": null,
+          "description": "My Signet Lite: a web-based NIP-46 remote signer PWA. Several identities from one seed via nsec-tree and per-app, per-kind permissions, so your nsec never touches the apps you use.",
+          "tags": [
+            "identity",
+            "nostr",
+            "nip-46",
+            "signer",
+            "pwa"
+          ],
+          "dependsOn": [
+            "nsec-tree"
+          ],
+          "usedBy": []
+        },
+        {
+          "name": "signet-contacts",
+          "github": "https://github.com/forgesworn/signet-contacts",
+          "npm": null,
+          "description": "SDK for apps to access a Signet contact directory: capability-scoped pairing, per-grant encrypted projections the owner controls, and proposals an app can make but never force.",
+          "tags": [
+            "identity",
+            "signet",
+            "contacts",
+            "sdk"
+          ],
+          "dependsOn": [
+            "spoken-token"
+          ],
+          "usedBy": [
+            "signet-app"
+          ]
         }
       ]
     },
@@ -1014,7 +1079,8 @@
           ],
           "dependsOn": [],
           "usedBy": [
-            "signet"
+            "signet",
+            "kenspeckle"
           ]
         },
         {
@@ -1047,6 +1113,43 @@
           ],
           "dependsOn": [],
           "usedBy": []
+        },
+        {
+          "name": "kenspeckle",
+          "github": "https://github.com/forgesworn/kenspeckle",
+          "npm": "@forgesworn/kenspeckle",
+          "description": "Verified relationships at three social distances: kin (family), kith (mutually verified) and ken (one-way recognised). Handshake, spoken-word bond ceremony, ken trust store and local presence discovery, as pure functions with no storage and no social graph.",
+          "tags": [
+            "trust",
+            "identity",
+            "relationships",
+            "contacts"
+          ],
+          "dependsOn": [
+            "tessera-kit",
+            "nostr-attestations",
+            "spoken-token"
+          ],
+          "usedBy": [
+            "signet-app"
+          ]
+        },
+        {
+          "name": "tessera-kit",
+          "github": "https://github.com/forgesworn/tessera-kit",
+          "npm": "@forgesworn/tessera-kit",
+          "description": "Privacy-preserving membership presence. A server publishes one signed, non-enumerable Binary Fuse filter per epoch, so a member tests a friend's key locally with no member list or lookup API.",
+          "tags": [
+            "trust",
+            "privacy",
+            "presence",
+            "binary-fuse"
+          ],
+          "dependsOn": [],
+          "usedBy": [
+            "kenspeckle",
+            "signet-app"
+          ]
         }
       ]
     },
@@ -1133,7 +1236,8 @@
           "usedBy": [
             "nsec-tree-cli",
             "canary-kit",
-            "notecase"
+            "notecase",
+            "signet-app"
           ]
         },
         {
