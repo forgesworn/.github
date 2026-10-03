@@ -906,7 +906,7 @@
           "name": "forgesworn-link",
           "github": "https://github.com/forgesworn/forgesworn-link",
           "npm": null,
-          "description": "Wide-area transport lane for ForgeSworn storage: two authorised nodes find a route, try a direct QUIC path and fall back to an opaque relay, on standard Rust crates and nobody\u2019s endpoint IDs. The native lane a Tor-less Wildbloom node uses to mirror and repair between machines.",
+          "description": "Wide-area transport lane for ForgeSworn storage: two authorised nodes find a route, try a direct QUIC path and fall back to an opaque relay, on standard Rust crates and nobody\u2019s endpoint IDs. Planned as the native lane for Tor-less Wildbloom nodes, which mirror over Tor or HTTPS today.",
           "tags": [
             "storage",
             "transport",
