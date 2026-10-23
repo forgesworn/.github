@@ -1,7 +1,7 @@
 {
-  "generated": "2026-09-27T12:36:42Z",
-  "totalPublicRepos": 88,
-  "catalogedProjectRepos": 80,
+  "generated": "2026-10-23T21:37:12Z",
+  "totalPublicRepos": 104,
+  "catalogedProjectRepos": 96,
   "excludedPublicRepos": [
     {
       "name": ".github",
@@ -22,6 +22,10 @@
     {
       "name": "den",
       "reason": "consumer app \u2014 the signed Android build of Vitark Den for direct download, not a building block"
+    },
+    {
+      "name": "kindred",
+      "reason": "consumer suite website, not the former library; the reusable relationship primitive is kenspeckle"
     }
   ],
   "categories": [
@@ -851,6 +855,100 @@
           "usedBy": [
             "signet-app"
           ]
+        },
+        {
+          "name": "fold-kit",
+          "github": "https://github.com/forgesworn/fold-kit",
+          "npm": null,
+          "description": "Private Nostr-group primitives: epoch keys, link invitations, removal by rekey and device credentials.",
+          "tags": [
+            "typescript",
+            "nostr",
+            "groups",
+            "encryption"
+          ],
+          "dependsOn": [],
+          "usedBy": []
+        },
+        {
+          "name": "foregather-kit",
+          "github": "https://github.com/forgesworn/foregather-kit",
+          "npm": null,
+          "description": "Portable invitation transfer, spoken verification and experimental live pairing in Rust/WASM.",
+          "tags": [
+            "rust",
+            "wasm",
+            "pairing",
+            "invitations"
+          ],
+          "dependsOn": [],
+          "usedBy": []
+        },
+        {
+          "name": "signet-contacts-kotlin",
+          "github": "https://github.com/forgesworn/signet-contacts-kotlin",
+          "npm": null,
+          "description": "Kotlin implementation of the signet-contacts wire protocol, tested against shared conformance vectors.",
+          "tags": [
+            "kotlin",
+            "nostr",
+            "contacts"
+          ],
+          "dependsOn": [],
+          "usedBy": []
+        },
+        {
+          "name": "signet-contacts-conformance",
+          "github": "https://github.com/forgesworn/signet-contacts-conformance",
+          "npm": null,
+          "description": "Language-neutral signet-contacts v2 conformance vectors for independent implementations.",
+          "tags": [
+            "conformance",
+            "nostr",
+            "contacts"
+          ],
+          "dependsOn": [],
+          "usedBy": []
+        },
+        {
+          "name": "kindependence",
+          "github": "https://github.com/forgesworn/kindependence",
+          "npm": null,
+          "description": "Consent-based family location for parents and children, using the FLOCK-compatible protocol.",
+          "tags": [
+            "typescript",
+            "nostr",
+            "family",
+            "location"
+          ],
+          "dependsOn": [],
+          "usedBy": []
+        },
+        {
+          "name": "kinclude",
+          "github": "https://github.com/forgesworn/kinclude",
+          "npm": null,
+          "description": "Family messaging application in the Kindred suite.",
+          "tags": [
+            "messaging",
+            "family",
+            "nostr"
+          ],
+          "dependsOn": [],
+          "usedBy": []
+        },
+        {
+          "name": "kinterest",
+          "github": "https://github.com/forgesworn/kinterest",
+          "npm": null,
+          "description": "Shared family pocket-money ledger for parents and children. It records balances without holding or moving real money.",
+          "tags": [
+            "typescript",
+            "family",
+            "ledger"
+          ],
+          "dependsOn": [],
+          "usedBy": []
         }
       ]
     },
@@ -924,8 +1022,47 @@
     {
       "name": "Live / Real-time",
       "slug": "live",
-      "description": "Video rooms and live streams whose signalling rides Nostr relays, with media device to device and no operator in the middle.",
+      "description": "Live-media origins, peer-assisted HLS, video rooms and optional relay transport. Choose the media path and independently operated infrastructure the application needs.",
       "repos": [
+        {
+          "name": "sapflow",
+          "github": "https://github.com/forgesworn/sapflow",
+          "npm": null,
+          "description": "Small Rust live-media origin and runtime-free SRT, RTMP and LL-HLS libraries. H.264/AAC ingest, HLS packaging and optional recording; native SDK qualification is separate.",
+          "tags": [
+            "rust",
+            "srt",
+            "rtmp",
+            "hls",
+            "live"
+          ],
+          "dependsOn": [],
+          "usedBy": [],
+          "relatedTo": [
+            "relayswarm",
+            "relayswarm-kit"
+          ]
+        },
+        {
+          "name": "spry-turn",
+          "github": "https://github.com/forgesworn/spry-turn",
+          "npm": null,
+          "description": "Small Rust STUN/TURN server, embeddable relay and WASM packet codec. UDP/TCP clients, optional TLS, expiring shared-secret credentials and bounded resources. Optional peer connectivity, separate from Sapflow ingest and HLS.",
+          "tags": [
+            "rust",
+            "turn",
+            "stun",
+            "webrtc",
+            "wasm"
+          ],
+          "dependsOn": [],
+          "usedBy": [],
+          "relatedTo": [
+            "sapflow",
+            "relayswarm",
+            "kithmoot"
+          ]
+        },
         {
           "name": "kithmoot",
           "github": "https://github.com/forgesworn/kithmoot",
@@ -993,6 +1130,33 @@
             "relayswarm"
           ],
           "usedBy": []
+        },
+        {
+          "name": "fray",
+          "github": "https://github.com/forgesworn/fray",
+          "npm": null,
+          "description": "Rust design-stage multiplayer sessions. The repository records the design; a finished game networking engine is not yet supplied.",
+          "tags": [
+            "rust",
+            "multiplayer",
+            "design"
+          ],
+          "dependsOn": [],
+          "usedBy": []
+        },
+        {
+          "name": "kithmoot-vision",
+          "github": "https://github.com/forgesworn/kithmoot-vision",
+          "npm": null,
+          "description": "Experimental Rust/WASM face detection and foreground matting, with a local model workshop. Real-camera foreground quality remains unqualified.",
+          "tags": [
+            "rust",
+            "wasm",
+            "vision",
+            "experimental"
+          ],
+          "dependsOn": [],
+          "usedBy": []
         }
       ]
     },
@@ -1041,6 +1205,19 @@
             "mcp",
             "local-first",
             "knowledge-graph"
+          ],
+          "dependsOn": [],
+          "usedBy": []
+        },
+        {
+          "name": "quench",
+          "github": "https://github.com/forgesworn/quench",
+          "npm": null,
+          "description": "Claude Code plugin for examining coding-agent spend and ranking changes that could reduce it.",
+          "tags": [
+            "typescript",
+            "ai-agents",
+            "tooling"
           ],
           "dependsOn": [],
           "usedBy": []
@@ -1256,6 +1433,19 @@
             "nostr-anon-vote"
           ],
           "usedBy": []
+        },
+        {
+          "name": "vmls-core",
+          "github": "https://github.com/forgesworn/vmls-core",
+          "npm": null,
+          "description": "Canonical VMLS/1 wire codecs for envelopes, records, leaf binding, capabilities and lane tables.",
+          "tags": [
+            "rust",
+            "codec",
+            "vmls"
+          ],
+          "dependsOn": [],
+          "usedBy": []
         }
       ]
     },
@@ -1368,6 +1558,20 @@
           ],
           "dependsOn": [],
           "usedBy": []
+        },
+        {
+          "name": "nostr-game-controller",
+          "github": "https://github.com/forgesworn/nostr-game-controller",
+          "npm": null,
+          "description": "Proposed publisher-owned game definitions and portable controller profiles, with schemas and reference TypeScript extraction. The extension is not an accepted NIP.",
+          "tags": [
+            "typescript",
+            "nostr",
+            "games",
+            "controllers"
+          ],
+          "dependsOn": [],
+          "usedBy": []
         }
       ]
     },
@@ -1405,6 +1609,32 @@
             "shamir-words",
             "ring-sig"
           ],
+          "usedBy": []
+        },
+        {
+          "name": "archipelago-apps",
+          "github": "https://github.com/forgesworn/archipelago-apps",
+          "npm": null,
+          "description": "ForgeSworn applications packaged for independently operated Archipelago nodes.",
+          "tags": [
+            "deployment",
+            "archipelago",
+            "self-hosted"
+          ],
+          "dependsOn": [],
+          "usedBy": []
+        },
+        {
+          "name": "forgemoji",
+          "github": "https://github.com/forgesworn/forgemoji",
+          "npm": null,
+          "description": "Original Unicode emoji artwork by TheCryptoDonkey for ForgeSworn, bundled locally for applications.",
+          "tags": [
+            "artwork",
+            "emoji",
+            "assets"
+          ],
+          "dependsOn": [],
           "usedBy": []
         }
       ]

@@ -7,7 +7,7 @@ Open-source building blocks for sovereign commerce, identity, and trust.
 - Deterministic Nostr identities and encrypted access control
 - Family wardship on the family's own keys, enforced on-device
 - Encrypted, content-addressed storage that outlives its host
-- Video rooms and live streams signalled over Nostr relays, no operator in the middle
+- Live-media origins, peer-assisted HLS, video rooms and optional relay transport
 - Privacy-preserving trust and anonymous reputation
 - Spoken verification, anti-deepfake, and coercion resistance
 - Fair meeting points and spatial coordination
@@ -153,10 +153,12 @@ Start with **[wildbloom](https://github.com/forgesworn/wildbloom)** to publish; 
 
 ## Live / Real-time
 
-Video rooms and live streams whose signalling rides Nostr relays, with media device to device and no operator in the middle.
+Live-media origins, peer-assisted HLS, video rooms and optional relay transport. Choose the media path and independently operated infrastructure the application needs.
 
 | Repository | What it does |
 |:-----------|:-------------|
+| **[sapflow](https://github.com/forgesworn/sapflow)** | Small Rust SRT/RTMP-to-LL-HLS origin, recording and runtime-free protocol libraries. The documented 750-viewer M4 trial found 79% less CPU and 90% less process RSS for its optional HTTP loop against MediaMTX. [Conditions and evidence](https://forgesworn.dev/live-media.html#performance). `Rust` |
+| **[spry-turn](https://github.com/forgesworn/spry-turn)** | Small Rust STUN/TURN server, embeddable relay and WASM packet codec. Optional peer connectivity alongside RelaySwarm. Public MIT source and GitHub prereleases; integration and field qualification remain explicit gates. `Rust` |
 | **[kithmoot](https://github.com/forgesworn/kithmoot)** | Multi-device conference rooms over Nostr: a town hall nobody owns. A room is a secret held by whoever has the link, and a person rather than a device is the unit that joins, so a phone and a laptop appear as one participant. Mesh WebRTC, Kindred-gated access tiers, and the relays, STUN and TURN the room names itself. [kithmoot.forgesworn.dev](https://kithmoot.forgesworn.dev) |
 | **[kithmoot-android](https://github.com/forgesworn/kithmoot-android)** | Native Kotlin implementation of the KithMoot protocol: the second, independent implementation, written against the published interop vectors, and the proof that the protocol is infrastructure rather than a product. `Kotlin` |
 | **[relayswarm](https://github.com/forgesworn/relayswarm)** | Peer-assisted HLS live-stream distribution with WebRTC signalling over Nostr relays instead of a dedicated tracker, so there is no signalling service for anyone to seize. Segments verified by hash, plain HLS as the floor. |
