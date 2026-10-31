@@ -1,7 +1,7 @@
 {
-  "generated": "2026-10-23T21:37:12Z",
-  "totalPublicRepos": 104,
-  "catalogedProjectRepos": 96,
+  "generated": "2026-10-31T11:28:57Z",
+  "totalPublicRepos": 105,
+  "catalogedProjectRepos": 97,
   "excludedPublicRepos": [
     {
       "name": ".github",
@@ -1142,6 +1142,24 @@
             "design"
           ],
           "dependsOn": [],
+          "usedBy": [
+            "stampede"
+          ]
+        },
+        {
+          "name": "stampede",
+          "github": "https://github.com/forgesworn/stampede",
+          "npm": null,
+          "description": "MIT-licensed native Rust arcade racer for Android and desktop Linux, and the reference consumer of the Fray authority component.",
+          "tags": [
+            "rust",
+            "game",
+            "multiplayer",
+            "android"
+          ],
+          "dependsOn": [
+            "fray"
+          ],
           "usedBy": []
         },
         {
