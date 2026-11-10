@@ -1,7 +1,7 @@
 {
   "generated": "2026-11-10T14:50:42Z",
-  "totalPublicRepos": 108,
-  "catalogedProjectRepos": 100,
+  "totalPublicRepos": 109,
+  "catalogedProjectRepos": 101,
   "excludedPublicRepos": [
     {
       "name": ".github",
@@ -962,6 +962,26 @@
             "gift-wrap"
           ],
           "dependsOn": [],
+          "usedBy": [
+            "signet-play"
+          ]
+        },
+        {
+          "name": "signet-play",
+          "github": "https://github.com/forgesworn/signet-play",
+          "npm": null,
+          "description": "Game sign-in layer for My Signet in Rust: persona sign-in over NIP-46, a local runtime-key attestation that is never published, online-play permission, the played-with book and gift-wrapped invites.",
+          "tags": [
+            "rust",
+            "nostr",
+            "signet",
+            "nip-46",
+            "games"
+          ],
+          "dependsOn": [
+            "friend-link-kit",
+            "fray"
+          ],
           "usedBy": []
         }
       ]
@@ -1157,7 +1177,8 @@
           ],
           "dependsOn": [],
           "usedBy": [
-            "stampede"
+            "stampede",
+            "signet-play"
           ]
         },
         {
