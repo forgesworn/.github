@@ -1,7 +1,7 @@
 {
-  "generated": "2026-10-31T11:28:57Z",
-  "totalPublicRepos": 107,
-  "catalogedProjectRepos": 99,
+  "generated": "2026-11-10T14:50:42Z",
+  "totalPublicRepos": 108,
+  "catalogedProjectRepos": 100,
   "excludedPublicRepos": [
     {
       "name": ".github",
@@ -946,6 +946,20 @@
             "typescript",
             "family",
             "ledger"
+          ],
+          "dependsOn": [],
+          "usedBy": []
+        },
+        {
+          "name": "friend-link-kit",
+          "github": "https://github.com/forgesworn/friend-link-kit",
+          "npm": null,
+          "description": "Friend links for decentralised games and their two-layer encrypted hello packet, delivered to an offline mailbox as Nostr gift wraps. Pure Rust crate decented-invite with no networking and two test-vector files.",
+          "tags": [
+            "rust",
+            "nostr",
+            "invitations",
+            "gift-wrap"
           ],
           "dependsOn": [],
           "usedBy": []
