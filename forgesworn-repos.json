@@ -1,7 +1,7 @@
 {
-  "generated": "2026-10-31T11:28:57Z",
-  "totalPublicRepos": 105,
-  "catalogedProjectRepos": 97,
+  "generated": "2026-11-10T14:50:42Z",
+  "totalPublicRepos": 108,
+  "catalogedProjectRepos": 102,
   "excludedPublicRepos": [
     {
       "name": ".github",
@@ -949,6 +949,57 @@
           ],
           "dependsOn": [],
           "usedBy": []
+        },
+        {
+          "name": "friend-link-kit",
+          "github": "https://github.com/forgesworn/friend-link-kit",
+          "npm": null,
+          "description": "Friend links for decentralised games and their two-layer encrypted hello packet, delivered to an offline mailbox as Nostr gift wraps. Pure Rust crate decented-invite with no networking and two test-vector files.",
+          "tags": [
+            "rust",
+            "nostr",
+            "invitations",
+            "gift-wrap"
+          ],
+          "dependsOn": [],
+          "usedBy": [
+            "signet-play"
+          ]
+        },
+        {
+          "name": "signet-play",
+          "github": "https://github.com/forgesworn/signet-play",
+          "npm": null,
+          "description": "Game sign-in layer for My Signet in Rust: persona sign-in over NIP-46, a local runtime-key attestation that is never published, online-play permission, the played-with book and gift-wrapped invites.",
+          "tags": [
+            "rust",
+            "nostr",
+            "signet",
+            "nip-46",
+            "games"
+          ],
+          "dependsOn": [
+            "friend-link-kit",
+            "fray",
+            "signet-contacts-rs"
+          ],
+          "usedBy": []
+        },
+        {
+          "name": "signet-contacts-rs",
+          "github": "https://github.com/forgesworn/signet-contacts-rs",
+          "npm": null,
+          "description": "Contacts-v2 wire format for Signet in Rust: pairing, ack, vault envelope and projection parsing (the consumer side), checked against the conformance vectors.",
+          "tags": [
+            "rust",
+            "nostr",
+            "signet",
+            "contacts"
+          ],
+          "dependsOn": [],
+          "usedBy": [
+            "signet-play"
+          ]
         }
       ]
     },
@@ -1015,6 +1066,21 @@
           "dependsOn": [
             "shelter-kit"
           ],
+          "usedBy": []
+        },
+        {
+          "name": "wok",
+          "github": "https://github.com/forgesworn/wok",
+          "npm": null,
+          "description": "Nostr relay core in Rust, moving out of the Bothy node. 0.1.0 is the storage half, the wok-store crate: a SQLite event store with public and sheltered partitions, NIP-01 filters, NIP-09 deletion and NIP-45 counts, a group-commit writer and live fan-out bounded per reader. A library: it opens no port and authenticates nobody.",
+          "tags": [
+            "rust",
+            "nostr",
+            "relay",
+            "sqlite",
+            "event-store"
+          ],
+          "dependsOn": [],
           "usedBy": []
         }
       ]
@@ -1143,24 +1209,8 @@
           ],
           "dependsOn": [],
           "usedBy": [
-            "stampede"
+            "signet-play"
           ]
-        },
-        {
-          "name": "stampede",
-          "github": "https://github.com/forgesworn/stampede",
-          "npm": null,
-          "description": "MIT-licensed native Rust arcade racer for Android and desktop Linux, and the reference consumer of the Fray authority component.",
-          "tags": [
-            "rust",
-            "game",
-            "multiplayer",
-            "android"
-          ],
-          "dependsOn": [
-            "fray"
-          ],
-          "usedBy": []
         },
         {
           "name": "kithmoot-vision",
@@ -1464,6 +1514,20 @@
           ],
           "dependsOn": [],
           "usedBy": []
+        },
+        {
+          "name": "blockseed",
+          "github": "https://github.com/forgesworn/blockseed",
+          "npm": null,
+          "description": "A daily random seed nobody picks: the first Bitcoin block of the UTC day, anchored on median time past and verified locally (proof of work, linkage, difficulty rule, linked confirmations), cross-checked on a second explorer. Rust.",
+          "tags": [
+            "rust",
+            "bitcoin",
+            "randomness",
+            "beacon"
+          ],
+          "dependsOn": [],
+          "usedBy": []
         }
       ]
     },
@@ -1651,6 +1715,21 @@
             "artwork",
             "emoji",
             "assets"
+          ],
+          "dependsOn": [],
+          "usedBy": []
+        },
+        {
+          "name": "nostr-release-kit",
+          "github": "https://github.com/forgesworn/nostr-release-kit",
+          "npm": null,
+          "description": "Publish and verify app releases as Nostr kind-30063 events: pinned release key, canonical Blossom URL, hash, size and signing-certificate pin, self-update and sibling-app catalog for sideloaded Android apps. Rust, Java and a Node publisher.",
+          "tags": [
+            "rust",
+            "android",
+            "nostr",
+            "releases",
+            "blossom"
           ],
           "dependsOn": [],
           "usedBy": []
