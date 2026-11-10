@@ -1,7 +1,7 @@
 {
   "generated": "2026-11-10T14:50:42Z",
-  "totalPublicRepos": 109,
-  "catalogedProjectRepos": 101,
+  "totalPublicRepos": 110,
+  "catalogedProjectRepos": 102,
   "excludedPublicRepos": [
     {
       "name": ".github",
@@ -980,9 +980,26 @@
           ],
           "dependsOn": [
             "friend-link-kit",
-            "fray"
+            "fray",
+            "signet-contacts-rs"
           ],
           "usedBy": []
+        },
+        {
+          "name": "signet-contacts-rs",
+          "github": "https://github.com/forgesworn/signet-contacts-rs",
+          "npm": null,
+          "description": "Contacts-v2 wire format for Signet in Rust: pairing, ack, vault envelope and projection parsing (the consumer side), checked against the conformance vectors.",
+          "tags": [
+            "rust",
+            "nostr",
+            "signet",
+            "contacts"
+          ],
+          "dependsOn": [],
+          "usedBy": [
+            "signet-play"
+          ]
         }
       ]
     },
