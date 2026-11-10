@@ -1,7 +1,7 @@
 {
   "generated": "2026-10-31T11:28:57Z",
-  "totalPublicRepos": 105,
-  "catalogedProjectRepos": 97,
+  "totalPublicRepos": 107,
+  "catalogedProjectRepos": 99,
   "excludedPublicRepos": [
     {
       "name": ".github",
@@ -1464,6 +1464,20 @@
           ],
           "dependsOn": [],
           "usedBy": []
+        },
+        {
+          "name": "blockseed",
+          "github": "https://github.com/forgesworn/blockseed",
+          "npm": null,
+          "description": "A daily random seed nobody picks: the first Bitcoin block of the UTC day, anchored on median time past and verified locally (proof of work, linkage, difficulty rule, linked confirmations), cross-checked on a second explorer. Rust.",
+          "tags": [
+            "rust",
+            "bitcoin",
+            "randomness",
+            "beacon"
+          ],
+          "dependsOn": [],
+          "usedBy": []
         }
       ]
     },
@@ -1651,6 +1665,21 @@
             "artwork",
             "emoji",
             "assets"
+          ],
+          "dependsOn": [],
+          "usedBy": []
+        },
+        {
+          "name": "nostr-release-kit",
+          "github": "https://github.com/forgesworn/nostr-release-kit",
+          "npm": null,
+          "description": "Publish and verify app releases as Nostr kind-30063 events: pinned release key, canonical Blossom URL, hash, size and signing-certificate pin, self-update and sibling-app catalog for sideloaded Android apps. Rust, Java and a Node publisher.",
+          "tags": [
+            "rust",
+            "android",
+            "nostr",
+            "releases",
+            "blossom"
           ],
           "dependsOn": [],
           "usedBy": []
