@@ -1,6 +1,6 @@
 {
   "generated": "2026-11-10T14:50:42Z",
-  "totalPublicRepos": 110,
+  "totalPublicRepos": 108,
   "catalogedProjectRepos": 102,
   "excludedPublicRepos": [
     {
@@ -1067,6 +1067,21 @@
             "shelter-kit"
           ],
           "usedBy": []
+        },
+        {
+          "name": "wok",
+          "github": "https://github.com/forgesworn/wok",
+          "npm": null,
+          "description": "Nostr relay core in Rust, moving out of the Bothy node. 0.1.0 is the storage half, the wok-store crate: a SQLite event store with public and sheltered partitions, NIP-01 filters, NIP-09 deletion and NIP-45 counts, a group-commit writer and live fan-out bounded per reader. A library: it opens no port and authenticates nobody.",
+          "tags": [
+            "rust",
+            "nostr",
+            "relay",
+            "sqlite",
+            "event-store"
+          ],
+          "dependsOn": [],
+          "usedBy": []
         }
       ]
     },
@@ -1194,25 +1209,8 @@
           ],
           "dependsOn": [],
           "usedBy": [
-            "stampede",
             "signet-play"
           ]
-        },
-        {
-          "name": "stampede",
-          "github": "https://github.com/forgesworn/stampede",
-          "npm": null,
-          "description": "MIT-licensed native Rust arcade racer for Android and desktop Linux, and the reference consumer of the Fray authority component.",
-          "tags": [
-            "rust",
-            "game",
-            "multiplayer",
-            "android"
-          ],
-          "dependsOn": [
-            "fray"
-          ],
-          "usedBy": []
         },
         {
           "name": "kithmoot-vision",
