@@ -1,7 +1,7 @@
 {
   "generated": "2026-11-10T14:50:42Z",
-  "totalPublicRepos": 109,
-  "catalogedProjectRepos": 103,
+  "totalPublicRepos": 112,
+  "catalogedProjectRepos": 104,
   "excludedPublicRepos": [
     {
       "name": ".github",
@@ -26,6 +26,14 @@
     {
       "name": "kindred",
       "reason": "consumer suite website, not the former library; the reusable relationship primitive is kenspeckle"
+    },
+    {
+      "name": "nanoclaw-upstream",
+      "reason": "upstream fork"
+    },
+    {
+      "name": "nostr-tools",
+      "reason": "upstream fork"
     }
   ],
   "categories": [
@@ -1001,6 +1009,22 @@
           "usedBy": [
             "signet-play"
           ]
+        },
+        {
+          "name": "signet-nip46-client",
+          "github": "https://github.com/forgesworn/signet-nip46-client",
+          "npm": null,
+          "description": "NIP-46 remote-signer client in Rust over fray-relay-client: bunker:// and nostrconnect:// pairing with a secret echo, persisted sessions and checked signing requests.",
+          "tags": [
+            "rust",
+            "nostr",
+            "nip-46",
+            "remote-signer"
+          ],
+          "dependsOn": [
+            "fray-relay-client"
+          ],
+          "usedBy": []
         }
       ]
     },
@@ -1229,7 +1253,8 @@
             "fray"
           ],
           "usedBy": [
-            "signet-play"
+            "signet-play",
+            "signet-nip46-client"
           ]
         },
         {
