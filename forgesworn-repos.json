@@ -1,7 +1,7 @@
 {
   "generated": "2026-11-10T14:50:42Z",
-  "totalPublicRepos": 108,
-  "catalogedProjectRepos": 102,
+  "totalPublicRepos": 109,
+  "catalogedProjectRepos": 103,
   "excludedPublicRepos": [
     {
       "name": ".github",
@@ -981,7 +981,8 @@
           "dependsOn": [
             "friend-link-kit",
             "fray",
-            "signet-contacts-rs"
+            "signet-contacts-rs",
+            "fray-relay-client"
           ],
           "usedBy": []
         },
@@ -1208,6 +1209,25 @@
             "design"
           ],
           "dependsOn": [],
+          "usedBy": [
+            "signet-play",
+            "fray-relay-client"
+          ]
+        },
+        {
+          "name": "fray-relay-client",
+          "github": "https://github.com/forgesworn/fray-relay-client",
+          "npm": null,
+          "description": "Nostr relay client in Rust on fray-relays: one-shot verified reads within a time limit, standing subscriptions kept across reconnects, publishing with per-relay OK reports, and NIP-42 authentication through a connector. Synchronous API over its own small runtime.",
+          "tags": [
+            "rust",
+            "nostr",
+            "relays",
+            "websocket"
+          ],
+          "dependsOn": [
+            "fray"
+          ],
           "usedBy": [
             "signet-play"
           ]
