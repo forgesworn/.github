@@ -1,0 +1,11 @@
+# Repos whose Dependabot PRs are merged by hand, one name per line.
+#
+# These repos deploy on every push to main, so an unreviewed dependency bump
+# would go live with the next push. propagate.sh still syncs their
+# dependabot.yml, so PRs keep opening, but it removes the auto-merge workflow
+# instead of writing it.
+sapwood
+signet-app
+forgesworn.dev
+nostr-veil
+canary-kit

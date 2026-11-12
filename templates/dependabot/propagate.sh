@@ -31,6 +31,14 @@ trap 'rm -rf "$WORKDIR"' EXIT
 # Example: DEPENDABOT_SKIP_REPOS="foo bar baz" ./propagate.sh --apply
 read -ra SKIP_REPOS <<< "${DEPENDABOT_SKIP_REPOS:-}"
 
+# Manual-merge list: repos that keep the synced dependabot.yml but merge their
+# Dependabot PRs by hand, so the sync removes the auto-merge workflow there.
+MANUAL_MERGE_FILE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/manual-merge-repos.txt"
+is_manual_merge() {
+  [[ -f "$MANUAL_MERGE_FILE" ]] || return 1
+  grep -v '^[[:space:]]*#' "$MANUAL_MERGE_FILE" | awk 'NF {print $1}' | grep -qxF "$1"
+}
+
 # Fetch the live repo list from the org; filter archived + forks.
 REPOS=$(gh api "/orgs/forgesworn/repos?per_page=100" --paginate \
   -q '.[] | select(.archived == false and .fork == false) | .name')
@@ -93,9 +101,14 @@ for repo in $REPOS; do
     continue
   fi
 
+  MANUAL=0; is_manual_merge "$repo" && MANUAL=1
   echo "=== $repo (${ECOSYSTEMS[*]}) ==="
   if [[ $APPLY -eq 0 ]]; then
-    echo "  would apply: ${ECOSYSTEMS[*]} fragments + github-actions + dependabot-auto-merge.yml"
+    if [[ $MANUAL -eq 1 ]]; then
+      echo "  would apply: ${ECOSYSTEMS[*]} fragments + github-actions; manual merge, so remove dependabot-auto-merge.yml"
+    else
+      echo "  would apply: ${ECOSYSTEMS[*]} fragments + github-actions + dependabot-auto-merge.yml"
+    fi
     continue
   fi
 
@@ -121,7 +134,11 @@ for repo in $REPOS; do
     python3 "$TEMPLATE_DIR/merge-local.py" "$PREV_CONFIG" .github/dependabot.yml
     rm -f "$PREV_CONFIG"
   fi
-  cp "$TEMPLATE_DIR/dependabot-auto-merge.yml"   .github/workflows/dependabot-auto-merge.yml
+  if [[ $MANUAL -eq 1 ]]; then
+    git rm -q --ignore-unmatch .github/workflows/dependabot-auto-merge.yml
+  else
+    cp "$TEMPLATE_DIR/dependabot-auto-merge.yml"   .github/workflows/dependabot-auto-merge.yml
+  fi
 
   # A cargo repo whose crates are not at the root needs `directories` listing
   # them. Composition cannot know that, so say so rather than quietly shipping
@@ -130,7 +147,8 @@ for repo in $REPOS; do
     echo "  NOTE: $repo has cargo -- check the directory/directories key matches where its crates live"
   fi
 
-  git add .github/dependabot.yml .github/workflows/dependabot-auto-merge.yml
+  git add .github/dependabot.yml
+  [[ $MANUAL -eq 1 ]] || git add .github/workflows/dependabot-auto-merge.yml
   if git diff --cached --quiet; then
     echo "  no changes; skipping $repo"
     cd - >/dev/null
