@@ -1,7 +1,7 @@
 {
   "generated": "2026-11-10T14:50:42Z",
-  "totalPublicRepos": 112,
-  "catalogedProjectRepos": 104,
+  "totalPublicRepos": 116,
+  "catalogedProjectRepos": 105,
   "excludedPublicRepos": [
     {
       "name": ".github",
@@ -662,7 +662,8 @@
           ],
           "dependsOn": [
             "signet",
-            "signet-credentials"
+            "signet-credentials",
+            "qr"
           ],
           "usedBy": []
         },
@@ -1778,6 +1779,23 @@
           ],
           "dependsOn": [],
           "usedBy": []
+        },
+        {
+          "name": "qr",
+          "github": "https://github.com/forgesworn/qr",
+          "npm": "@forgesworn/qr",
+          "description": "Generate and read standard QR codes locally in browsers, workers, Node, Kotlin/JVM and Rust. Includes an allocation-free embedded Rust encoder.",
+          "tags": [
+            "qr",
+            "typescript",
+            "kotlin",
+            "rust",
+            "embedded"
+          ],
+          "dependsOn": [],
+          "usedBy": [
+            "signet-login"
+          ]
         }
       ]
     }
