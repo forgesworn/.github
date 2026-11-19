@@ -1,0 +1,13 @@
+# ForgeSworn on GitHub
+
+> Public project catalogue for ForgeSworn’s open-source Nostr, Lightning, privacy and developer tools.
+
+## Documentation
+
+- [Organisation profile](https://github.com/forgesworn/.github/blob/main/profile/README.md): Project overviews grouped by what they do.
+- [Machine-readable catalogue](https://github.com/forgesworn/.github/blob/main/forgesworn-repos.json): Repository links, categories and dependencies.
+
+## ForgeSworn ecosystem
+
+- [ForgeSworn library guide](https://forgesworn.dev/llms.txt): Find related libraries, tools and integration guides by task and runtime.
+- [ForgeSworn on GitHub](https://github.com/forgesworn): Browse the organisation’s public repositories.
