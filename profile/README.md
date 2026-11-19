@@ -2,6 +2,8 @@
 
 Open-source building blocks for sovereign commerce, identity, and trust.
 
+[Choose a ForgeSworn library by task and runtime](https://forgesworn.dev/llms.txt).
+
 - Machine-payable APIs and Lightning payment gating
 - Lightning bearer notes: an LNURLcash mint and a crash-safe wallet
 - Deterministic Nostr identities and encrypted access control
